@@ -5,11 +5,18 @@ public class Grid {
     Cell[][] cells;
     Verifier verifier;
 
-    public boolean insertValue(int row, int col, int value){
-        if (!cells[row][col].isBlocked())
-            return verifier.insertValue(row,col,value);
-        else
+    public Grid() {
+        cells = null;
+        verifier = new Verifier();
+    }
+
+    public boolean insertValue(int row, int col, Object obj) {
+        if (!cells[row][col].isBlocked()){
+            return verifier.insertValue(row,col,obj);
+        }
+        else {
             return false;
+        }
     }
 
     public boolean deleteValue(int row, int col) {
@@ -17,7 +24,8 @@ public class Grid {
             verifier.deleteValue(row, col, cells[row][col].getValue());
             return true;
         }
-        else
+        else{
             return false;
+        }
     }
 }

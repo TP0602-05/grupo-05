@@ -1,3 +1,4 @@
+/*
 package ar.fiuba.tdd.template;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,7 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.border.*;
-/*
 public class TestGrid01 {
 
     public TestGrid01() {
