@@ -1,5 +1,6 @@
-package ar.fiuba.tdd.template;
+package ar.fiuba.tdd.tp.model;
 
+import ar.fiuba.tdd.tp.model.Cell;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,4 +1,4 @@
-package ar.fiuba.tdd.template;
+package ar.fiuba.tdd.tp.model;
 
 import java.util.ArrayList;
 

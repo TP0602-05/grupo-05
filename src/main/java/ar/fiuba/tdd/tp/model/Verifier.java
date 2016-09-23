@@ -1,4 +1,6 @@
-package ar.fiuba.tdd.template;
+package ar.fiuba.tdd.tp.model;
+
+import ar.fiuba.tdd.tp.model.SetOfValues;
 
 import java.util.ArrayList;
 
