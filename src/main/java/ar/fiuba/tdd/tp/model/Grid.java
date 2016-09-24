@@ -1,31 +1,32 @@
 package ar.fiuba.tdd.tp.model;
 
 
+import ar.fiuba.tdd.tp.model.cell.Cell;
+
+import java.util.Vector;
+
 public class Grid {
-    Cell[][] cells;
-    Verifier verifier;
+    private Vector<Vector<Cell>> cells;
+    private Verifier verifier;
 
-    public Grid() {
-        cells = null;
-        verifier = new Verifier();
-    }
-
-    public boolean insertValue(int row, int col, Object obj) {
-        if (!cells[row][col].isBlocked()){
-            return verifier.insertValue(row,col,obj);
-        }
-        else {
-            return false;
+    public Grid(int width, int height) {
+        this.verifier = new Verifier();
+        this.cells = new Vector<>(height);
+        for(int row = 0; row < height; ++row) {
+            this.cells.insertElementAt(new Vector<Cell>(width),row);
         }
     }
 
-    public boolean deleteValue(int row, int col) {
-        if (!cells[row][col].isBlocked()) {
-            verifier.deleteValue(row, col, cells[row][col].getValue());
-            return true;
-        }
-        else{
-            return false;
-        }
+    public void addCell(Cell cell,int row, int col) {
+        this.cells.elementAt(row).insertElementAt(cell, col);
     }
+
+    public Cell getCell(int row, int col) {
+        return this.cells.elementAt(row).elementAt(col);
+    }
+
+    public boolean verifyRules() {
+        return this.verifier.verifyAll();
+    }
+
 }
