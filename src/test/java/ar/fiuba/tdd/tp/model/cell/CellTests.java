@@ -22,14 +22,14 @@ public class CellTests {
     public void testAddValueToBlockedCell() {
         Cell myCell = new Cell(new Value(5));
         myCell.setValue(new Value(3));
-        assertTrue(myCell.getValue().equals(new Value(5)));
+        assertTrue(myCell.getValue().isEqualTo(new Value(5)));
     }
 
     @Test
     public void testAddValueToEmptyCell() {
         Cell myCell = new Cell();
         myCell.setValue(new Value(5));
-        assertTrue(myCell.getValue().equals(new Value(5)));
+        assertTrue(myCell.getValue().isEqualTo(new Value(5)));
     }
 
     @Test

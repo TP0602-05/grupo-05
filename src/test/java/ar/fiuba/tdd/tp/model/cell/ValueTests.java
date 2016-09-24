@@ -16,13 +16,13 @@ public class ValueTests {
     public void testCreateValuesWithTheSameContent() {
         Value myValue1 = new Value(7);
         Value myValue2 = new Value(7);
-        assertTrue( myValue1.equals(myValue2) );
+        assertTrue( myValue1.isEqualTo(myValue2) );
     }
 
     @Test
     public void testCreateValuesWithDifferentContent() {
         Value myValue1 = new Value(7);
         Value myValue2 = new Value(3);
-        assertFalse( myValue1.equals(myValue2) );
+        assertFalse( myValue1.isEqualTo(myValue2) );
     }
 }
