@@ -2,14 +2,14 @@ package ar.fiuba.tdd.tp.model.cell;
 
 public class Cell {
     private boolean blocked;
-    private Object value;
+    private Value value;
 
     public Cell() {
         this.blocked = false;
         this.value = null;
     }
 
-    Cell(Object value) {
+    Cell(Value value) {
         this.blocked = true;
         this.value = value;
     }
@@ -18,13 +18,13 @@ public class Cell {
         return this.blocked;
     }
 
-    void setValue(Object value) {
+    void setValue(Value value) {
         if ( ! this.isBlocked() ) {
             this.value = value;
         }
     }
 
-    Object getValue() {
+    Value getValue() {
         return this.value;
     }
 }
