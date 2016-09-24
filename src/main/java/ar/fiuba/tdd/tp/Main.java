@@ -5,8 +5,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,8 +19,7 @@ public class Main {
 
             String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/model/" + "input" + ".json";
             System.out.println(path);
-
-            Object obj = parser.parse(new FileReader(path));
+            Object obj = parser.parse(new InputStreamReader(new FileInputStream(path), "UTF-8"));
 
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -31,8 +31,8 @@ public class Main {
 
             // loop array
             JSONArray msg = (JSONArray) jsonObject.get("messages");
-            for (Object aMsg : msg) {
-                System.out.println(aMsg);
+            for (Object message : msg) {
+                System.out.println(message);
             }
 
         } catch (IOException | ParseException e) {
