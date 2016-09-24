@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class NoRepeatRule extends GenericRule{
 
-    public NoRepeatRule(Set<Cell> cells){
+    public NoRepeatRule(Set<Cell> cells) {
         super(cells);
     }
 

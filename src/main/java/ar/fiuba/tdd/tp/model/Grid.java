@@ -12,7 +12,7 @@ public class Grid {
     public Grid(int width, int height) {
         this.verifier = new Verifier();
         this.cells = new Vector<>(height);
-        for(int row = 0; row < height; ++row) {
+        for (int row = 0; row < height; ++row) {
             this.cells.insertElementAt(new Vector<Cell>(width),row);
         }
     }

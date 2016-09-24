@@ -16,7 +16,7 @@ public class GameBuilder {
     public Grid createGrid(int width, int height) {
         Grid grid = new Grid(width,height);
         //TODO: depending on the game, some Cells must be added as ReadCell
-        for(int row = 0; row < height; ++row) {
+        for (int row = 0; row < height; ++row) {
             for (int col = 0; col < width; ++col) {
                 grid.addCell(new WriteCell(),row,col);
             }

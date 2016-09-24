@@ -18,8 +18,12 @@ public class Verifier {
     public boolean verifyAll() {
         boolean verification = true;
         for (Rule rule: this.rules) {
-            if (verification & rule.check()) verification = true;
-            else verification = false;
+            if (verification & rule.check()) {
+                verification = true;
+            }
+            else {
+                verification = false;
+            }
         }
         return verification;
     }
