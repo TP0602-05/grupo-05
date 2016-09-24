@@ -1,10 +1,7 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.model.cell.WriteCell;
+import ar.fiuba.tdd.tp.model.cell.Cell;
 
-/**
- * Created by joaquin on 24/09/16.
- */
 public class GameBuilder {
 
     private String gameName;
@@ -18,7 +15,7 @@ public class GameBuilder {
         //TODO: depending on the game, some Cells must be added as ReadCell
         for (int row = 0; row < height; ++row) {
             for (int col = 0; col < width; ++col) {
-                grid.addCell(new WriteCell(),row,col);
+                grid.addCell(new Cell(),row,col);
             }
         }
         return grid;

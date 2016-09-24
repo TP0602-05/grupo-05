@@ -17,7 +17,7 @@ public class SummationRule extends GenericRule{
     public boolean check() {
         Integer summation = 0;
         for (Cell cell: this.getCells() ) {
-            summation += cell.readValue();
+            summation += 0; // TODO: cell.getValue();
         }
         return summation.equals(this.summationValue);
     }
