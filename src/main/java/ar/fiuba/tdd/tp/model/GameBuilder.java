@@ -24,4 +24,8 @@ public class GameBuilder {
     public void createSetsOfValues(Grid grid) {
 
     }
+
+    public String getGameName() {
+        return this.gameName;
+    }
 }
