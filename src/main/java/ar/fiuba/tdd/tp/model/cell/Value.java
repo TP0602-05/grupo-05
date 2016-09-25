@@ -3,7 +3,7 @@ package ar.fiuba.tdd.tp.model.cell;
 public class Value {
     private Integer value;
 
-    Value(Integer value) {
+    public Value(Integer value) {
         this.value = value;
     }
 
