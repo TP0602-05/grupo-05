@@ -1,4 +1,4 @@
-package ar.fiuba.tdd.tp.model;
+package ar.fiuba.tdd.tp.utils;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
