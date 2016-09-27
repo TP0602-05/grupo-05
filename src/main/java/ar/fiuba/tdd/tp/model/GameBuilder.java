@@ -22,15 +22,15 @@ public class GameBuilder {
     }
 
     public Grid createGrid() {
-        int height = this.gameParser.getJSONInt("rows");
-        int width = this.gameParser.getJSONInt("cols");
+        int height = this.gameParser.getJsonInt("rows");
+        int width = this.gameParser.getJsonInt("cols");
         JSONArray cells = this.gameParser.getJSONarray("cells");
         Grid grid = new Grid(width,height);
         for (Object cell : cells) {
-            JSONObject cellJSON = (JSONObject) cell;
-            int row = ((Long)cellJSON.get("row")).intValue();
-            int col = ((Long)cellJSON.get("col")).intValue();
-            JSONArray values = (JSONArray) cellJSON.get("value");
+            JSONObject cellJson = (JSONObject) cell;
+            int row = ((Long)cellJson.get("row")).intValue();
+            int col = ((Long)cellJson.get("col")).intValue();
+            JSONArray values = (JSONArray) cellJson.get("value");
             for (Object val : values) {
                 //System.out.println(val);
                 int intValue = (int)((Long) val).intValue();

@@ -39,7 +39,7 @@ public class Parser {
 
    // public JSObject getJsonObject(String str) { return (JSObject) this.jsonObject.get(str); }
 
-    public int getJSONInt(String str) {
+    public int getJsonInt(String str) {
         return ((Long)jsonObject.get(str)).intValue();
     }
 

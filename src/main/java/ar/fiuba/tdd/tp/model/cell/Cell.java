@@ -24,7 +24,7 @@ public class Cell {
         }
     }
 
-    Value getValue() {
+    public Value getValue() {
         return this.value;
     }
 

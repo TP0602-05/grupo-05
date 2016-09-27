@@ -1,9 +1,6 @@
 package ar.fiuba.tdd.tp.model;
 
-
-
 import ar.fiuba.tdd.tp.model.cell.Cell;
-import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.util.Vector;
 
@@ -39,8 +36,12 @@ public class Grid {
 
     }
 
-    void addCell(Cell cell,int row, int col) {
+    public void addCell(Cell cell,int row, int col) {
         this.cells.elementAt(row).insertElementAt(cell, col);
+    }
+
+    public void setCell(Cell cell,int row, int col) {
+        this.cells.elementAt(row).setElementAt(cell, col);
     }
 
     public Cell getCell(int row, int col) {
