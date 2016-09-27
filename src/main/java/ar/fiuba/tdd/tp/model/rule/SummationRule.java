@@ -1,24 +1,32 @@
 package ar.fiuba.tdd.tp.model.rule;
 
-import ar.fiuba.tdd.tp.model.cell.Cell;
+import ar.fiuba.tdd.tp.model.cell.Value;
 
-import java.util.Set;
+import java.util.ArrayList;
 
-public class SummationRule extends GenericRule{
+public class SummationRule implements Rule {
 
     private int summationValue;
 
-    public SummationRule(Set<Cell> cells, Integer summationValue) {
-        super(cells);
+    public SummationRule(Integer summationValue) {
         this.summationValue = summationValue;
     }
 
-    @Override
-    public boolean check() {
+    private Integer calculate(ArrayList<Value> values) {
         Integer summation = 0;
-        for (Cell cell: this.getCells() ) {
-            summation += 0; // TODO: cell.getValue();
+        for (Value myValue: values ) {
+            summation += myValue.getValue();
         }
+        return summation;
+    }
+
+    public boolean check(ArrayList<Value> values, Value value) {
+        Integer summation = this.calculate(values) + value.getValue();
+        return (summation <= this.summationValue);
+    }
+
+    public boolean checkFinal(ArrayList<Value> values) {
+        Integer summation = this.calculate(values);
         return summation.equals(this.summationValue);
     }
 }

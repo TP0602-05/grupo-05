@@ -4,12 +4,12 @@ public class Cell {
     private boolean blocked;
     private Value value;
 
-    public Cell() {
+    Cell() {
         this.blocked = false;
         this.value = null;
     }
 
-    Cell(Value value) {
+    public Cell(Value value) {
         this.blocked = true;
         this.value = value;
     }
@@ -26,5 +26,13 @@ public class Cell {
 
     Value getValue() {
         return this.value;
+    }
+
+    public String toString() {
+        return this.value.toString();
+    }
+
+    public void printCell() {
+        this.value.printValue();
     }
 }

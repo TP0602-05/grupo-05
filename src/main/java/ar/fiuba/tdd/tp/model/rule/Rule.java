@@ -1,8 +1,12 @@
 package ar.fiuba.tdd.tp.model.rule;
 
-/**
- * Created by joaquin on 23/09/16.
- */
+import ar.fiuba.tdd.tp.model.cell.Value;
+
+import java.util.ArrayList;
+
 public interface Rule {
-    boolean check();
+
+    boolean check(ArrayList<Value> values, Value value);
+
+    boolean checkFinal(ArrayList<Value> values);
 }

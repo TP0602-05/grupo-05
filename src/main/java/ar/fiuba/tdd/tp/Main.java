@@ -1,23 +1,27 @@
 package ar.fiuba.tdd.tp;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import ar.fiuba.tdd.tp.model.GameBuilder;
+import ar.fiuba.tdd.tp.model.Grid;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("This is just a tp project");
-
-        JSONParser parser = new JSONParser();
-
+        GameBuilder game = new GameBuilder("sudoku");
         try {
+            game.loadConf();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Grid grilla = game.createGrid();
+        String name =  game.getGameName();
+        System.out.println(name);
+        grilla.printGrid();
 
-            String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/model/" + "input" + ".json";
+        //JSONParser parser = new JSONParser();
+
+        /*try {
+
+            String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/model/" ;
             System.out.println(path);
             Object obj = parser.parse(new InputStreamReader(new FileInputStream(path), "UTF-8"));
 
@@ -37,6 +41,7 @@ public class Main {
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
-        }
+        }*/
+
     }
 }
