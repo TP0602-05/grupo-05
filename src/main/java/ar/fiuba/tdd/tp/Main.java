@@ -22,18 +22,18 @@ public class Main {
             Object obj = parser.parse(new InputStreamReader(new FileInputStream(path), "UTF-8"));
 
             JSONObject jsonObject = (JSONObject) obj;
+            JSONArray cells =  (JSONArray)jsonObject.get("cells");
+            System.out.println("cells");
+            for (Object cell : cells) {
+                System.out.println(cell);
+            }
 
-            String name = (String) jsonObject.get("name");
-            System.out.println(name);
-
-            long age = (Long) jsonObject.get("age");
-            System.out.println(age);
+            JSONArray rulesets = (JSONArray) jsonObject.get("rulesets");
+            System.out.println(rulesets);
 
             // loop array
-            JSONArray msg = (JSONArray) jsonObject.get("messages");
-            for (Object message : msg) {
-                System.out.println(message);
-            }
+            //int msg = (int) jsonObject.get("nsets");
+
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
