@@ -95,4 +95,25 @@ public class SetOfValuesTests {
         mySet.insertValue(new Value(7));
         assertFalse(mySet.canInsertValue(new Value(7)));
     }
+
+    @Test
+    public void testSetOfValuesDeleteValue() {
+        SetOfValues mySet = new SetOfValues();
+        mySet.insertRule(new NoRepeatRule());
+        mySet.insertValue(new Value(7));
+        mySet.deleteValue(new Value(7));
+        assertTrue(mySet.canInsertValue(new Value(7)));
+    }
+
+    @Test
+    public void testSetOfValuesDeleteMoreValues() {
+        SetOfValues mySet = new SetOfValues();
+        mySet.insertRule(new NoRepeatRule());
+        mySet.insertValue(new Value(7));
+        mySet.insertValue(new Value(6));
+        mySet.insertValue(new Value(5));
+        mySet.insertValue(new Value(4));
+        mySet.deleteValue(new Value(5));
+        assertTrue(mySet.canInsertValue(new Value(5)));
+    }
 }
