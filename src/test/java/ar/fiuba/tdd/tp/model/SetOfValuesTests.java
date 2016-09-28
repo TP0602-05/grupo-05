@@ -12,9 +12,8 @@ public class SetOfValuesTests {
     @Test
     public void testEmptySetOfValuesAcceptValues() {
         SetOfValues mySet = new SetOfValues();
-        //Value myValue = new Value(3);
-        //assertTrue(mySet.canInsertValue(myValue));
-        assertTrue(mySet.isSetFinished());
+        Value myValue = new Value(3);
+        assertTrue(mySet.canInsertValue(myValue));
     }
 
     @Test
