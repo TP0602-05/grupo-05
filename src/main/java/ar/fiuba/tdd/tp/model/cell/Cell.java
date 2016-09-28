@@ -7,6 +7,7 @@ public class Cell {
     Cell() {
         this.blocked = false;
         this.value = null;
+        // this.value = new Value(0);
     }
 
     public Cell(Value value) {

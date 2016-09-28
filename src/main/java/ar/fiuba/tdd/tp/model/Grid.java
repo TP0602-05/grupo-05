@@ -12,6 +12,7 @@ import java.util.Vector;
 public class Grid {
     private Vector<Vector<Cell>> cells;
     private Vector<SetOfValues> sets;
+    private Vector<Vector<ArrayList<Integer>>> map;
     private int width;
     private int height;
     private int nsets;
@@ -27,6 +28,13 @@ public class Grid {
         this.sets = new Vector<>(nsets);
         for (int row = 0; row < nsets; ++row) {
             this.sets.insertElementAt(new SetOfValues(), row);
+        }
+        this.map = new Vector<>(height);
+        for (int row = 0; row < height; ++row) {
+            this.map.insertElementAt(new Vector<>(width),row);
+            for (int col = 0; col < width; ++col) {
+                this.map.elementAt(row).insertElementAt(new ArrayList<>(),col);
+            }
         }
     }
 
@@ -59,11 +67,22 @@ public class Grid {
         for (Iterator<Long> iterator = sets.iterator(); iterator.hasNext();) {
             int pos = (int)((Long) iterator.next()).intValue();
             this.sets.elementAt(pos - 1).insertValue( cell.getValue());
+            this.map.elementAt(row).elementAt(col).add(pos - 1);
         }
     }
 
     public void setCell(Cell cell,int row, int col) {
-        this.cells.elementAt(row).setElementAt(cell, col);
+        ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
+        boolean canInsert = true;
+        for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
+            int pos = iterator.next();
+            if ( !this.sets.elementAt(pos).canInsertValue(cell.getValue()) ) {
+                canInsert = false;
+            }
+        }
+        if ( canInsert ) {
+            this.cells.elementAt(row).setElementAt(cell, col);
+        }
     }
 
     public Cell getCell(int row, int col) {
