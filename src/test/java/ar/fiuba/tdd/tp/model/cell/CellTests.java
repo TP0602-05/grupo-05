@@ -35,6 +35,6 @@ public class CellTests {
     @Test
     public void testEmptyCellReturnNullValue() {
         Cell myCell = new Cell();
-        assertNull(myCell.getValue());
+        assertTrue(myCell.getValue().isEqualTo(new Value(0)));
     }
 }

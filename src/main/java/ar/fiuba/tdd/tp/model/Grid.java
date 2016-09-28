@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.model.cell.Cell;
+import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.model.rule.NoRepeatRule;
 import ar.fiuba.tdd.tp.model.rule.Rule;
 import ar.fiuba.tdd.tp.model.rule.SummationRule;
@@ -71,17 +71,21 @@ public class Grid {
         }
     }
 
-    public void setCell(Cell cell,int row, int col) {
+    public void setCell(Value value,int row, int col) {
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         boolean canInsert = true;
         for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
             int pos = iterator.next();
-            if ( !this.sets.elementAt(pos).canInsertValue(cell.getValue()) ) {
+            if ( !this.sets.elementAt(pos).canInsertValue(value) ) {
                 canInsert = false;
             }
         }
         if ( canInsert ) {
-            this.cells.elementAt(row).setElementAt(cell, col);
+            this.cells.elementAt(row).elementAt(col).setValue(value);
+            for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
+                int pos = iterator.next();
+                this.sets.elementAt(pos).insertValue(value);
+            }
         }
     }
 

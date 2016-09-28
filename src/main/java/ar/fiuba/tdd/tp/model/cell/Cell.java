@@ -4,10 +4,9 @@ public class Cell {
     private boolean blocked;
     private Value value;
 
-    Cell() {
+    public Cell() {
         this.blocked = false;
-        this.value = null;
-        // this.value = new Value(0);
+        this.value = new Value(0);
     }
 
     public Cell(Value value) {
@@ -15,11 +14,11 @@ public class Cell {
         this.value = value;
     }
 
-    boolean isBlocked() {
+    public boolean isBlocked() {
         return this.blocked;
     }
 
-    void setValue(Value value) {
+    public void setValue(Value value) {
         if ( ! this.isBlocked() ) {
             this.value = value;
         }

@@ -39,14 +39,11 @@ public class GameBuilder {
             ArrayList sets = (JSONArray) cellJson.get("sets");
             for (Object val : values) {
                 int intValue = (int)((Long) val).intValue();
-                grid.addCell(new Cell(new Value(intValue)),row - 1,col - 1, sets);
-                /* TODO: ¿Esto no debería ser así?, sino todas las celdas estan bloqueadas.
                 if (intValue == 0) {
                     grid.addCell(new Cell(), row - 1, col - 1, sets);
                 } else {
                     grid.addCell(new Cell(new Value(intValue)), row - 1, col - 1, sets);
                 }
-                */
             }
         }
         grid.printSets();
