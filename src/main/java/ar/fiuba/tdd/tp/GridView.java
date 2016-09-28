@@ -5,7 +5,8 @@ import ar.fiuba.tdd.tp.model.Observer;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
 import javax.swing.*;
-
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,6 +65,21 @@ public class GridView extends Observer{
                     gbc.gridy = row;
 
                     CellPane cellPane = new CellPane(Game.getInstance().getValue(row,col), row, col);
+
+                    Border border = null;
+                    if ((row % 3) == 0 && (col % 3) == 0) {
+                        border = new MatteBorder(4, 4, 0, 0, Color.pink);
+                    } else {
+                        if ((row % 3) == 0) {
+                            border = new MatteBorder(4, 0, 0, 0, Color.pink);
+                        } else {
+                            if ((col % 3) == 0) {
+                                border = new MatteBorder(0, 4, 0, 0, Color.pink);
+                            }
+                        }
+                    }
+                    cellPane.setBorder(border);
+
                     add(cellPane, gbc);
                 }
             }
