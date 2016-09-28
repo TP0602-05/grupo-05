@@ -37,6 +37,14 @@ public class Game extends Observable {
         return cell.getValue();
     }
 
+    public int getRows() {
+        return this.grid.getHeight();
+    }
+
+    public int getCols() {
+        return this.grid.getWidth();
+    }
+
     public void setValue(int row, int col, Value value) {
         grid.setCell(new Cell(value), row, col);
         this.notifyObservers();

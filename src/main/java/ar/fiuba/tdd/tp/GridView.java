@@ -55,8 +55,11 @@ public class GridView extends Observer{
             setLayout(new GridBagLayout());
             GridBagConstraints gbc = new GridBagConstraints();
 
-            for (int row = 0; row < 9; row++) {
-                for (int col = 0; col < 9; col++) {
+            int gridRows = Game.getInstance().getRows();
+            int gridCols = Game.getInstance().getCols();
+
+            for (int row = 0; row < gridRows; row++) {
+                for (int col = 0; col < gridCols; col++) {
                     gbc.gridx = col;
                     gbc.gridy = row;
 

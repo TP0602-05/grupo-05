@@ -1,7 +1,6 @@
 package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.Cell;
-import ar.fiuba.tdd.tp.model.cell.Value;
 import ar.fiuba.tdd.tp.model.rule.NoRepeatRule;
 import ar.fiuba.tdd.tp.model.rule.Rule;
 import ar.fiuba.tdd.tp.model.rule.SummationRule;
@@ -29,6 +28,14 @@ public class Grid {
         for (int row = 0; row < nsets; ++row) {
             this.sets.insertElementAt(new SetOfValues(), row);
         }
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public void printConsoleGrid() {
