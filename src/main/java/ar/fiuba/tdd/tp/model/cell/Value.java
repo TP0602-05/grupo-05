@@ -15,9 +15,8 @@ public class Value {
         return ( this.value.equals(otherValue.getValue()) );
     }
 
-    boolean printValue() {
+    public void printValue() {
         System.out.println(this.value);
-        return true;
     }
 
     public String toString() {

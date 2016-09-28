@@ -29,4 +29,8 @@ public class SummationRule implements Rule {
         Integer summation = this.calculate(values);
         return summation.equals(this.summationValue);
     }
+
+    public void printRule() {
+        System.out.println("SUM:" + this.summationValue);
+    }
 }

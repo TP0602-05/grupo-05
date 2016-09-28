@@ -18,6 +18,7 @@ public class Game extends Observable {
             e.printStackTrace();
         }
         grid = gameBuilder.createGrid();
+        grid.printRuleSets();
 
         gridView = new GridView(gameName);
         this.addObserver(gridView);

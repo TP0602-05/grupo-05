@@ -4,7 +4,7 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.util.ArrayList;
 
-class NoRepeatRule implements Rule{
+public class NoRepeatRule implements Rule{
 
     public boolean check(ArrayList<Value> values, Value value) {
         boolean notRepeated = true;
@@ -18,5 +18,9 @@ class NoRepeatRule implements Rule{
 
     public boolean checkFinal(ArrayList<Value> values) {
         return true;
+    }
+
+    public void printRule() {
+        System.out.println("NO repeteable");
     }
 }
