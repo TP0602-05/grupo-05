@@ -17,6 +17,11 @@ public class NoRepeatRule implements Rule{
     }
 
     public boolean checkFinal(ArrayList<Value> values) {
+        for (Value value: values) {
+            if (value.isEqualTo(new Value(0))) {
+                return false;
+            }
+        }
         return true;
     }
 

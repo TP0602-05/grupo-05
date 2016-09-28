@@ -21,6 +21,11 @@ public class SetOfValues {
         this.values.add(value);
     }
 
+    void addValue(Value value, Value prevValue) {
+        this.values.add(value);
+        this.deleteValue(prevValue);
+    }
+
     void insertRule(Rule rule) {
         this.rules.add(rule);
     }
@@ -30,7 +35,7 @@ public class SetOfValues {
             Value myValue = iterator.next();
             if (myValue.isEqualTo(value)) {
                 iterator.remove();
-                return;
+                break;
             }
         }
     }
@@ -46,13 +51,12 @@ public class SetOfValues {
     }
 
     public boolean isSetFinished() {
-        boolean result = true;
         for (Rule myRule: this.rules) {
             if ( ! myRule.checkFinal(this.values) ) {
-                result = false;
+                return false;
             }
         }
-        return result;
+        return true;
     }
 
     public void printSet() {

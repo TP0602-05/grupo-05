@@ -9,6 +9,7 @@ public class Game extends Observable {
     private GridView gridView;
     private Grid grid;
     private GameBuilder gameBuilder;
+    private boolean isFinished;
 
     private Game(String gameName) {
         gameBuilder = new GameBuilder(gameName);
@@ -20,8 +21,11 @@ public class Game extends Observable {
         grid = gameBuilder.createGrid();
         grid.printRuleSets();
 
+        this.isFinished = false;
+
         gridView = new GridView(gameName);
         this.addObserver(gridView);
+        this.addObserver(new FinishGameListener());
     }
 
     public static Game getInstance() {
@@ -30,6 +34,14 @@ public class Game extends Observable {
 
     public static void init(String gameName) {
         instance = new Game(gameName);
+    }
+
+    public void update() {
+        this.isFinished = this.grid.checkFinish();
+    }
+
+    public boolean checkFinish() {
+        return this.isFinished;
     }
 
     public Value getValue(int row, int col) {
@@ -51,6 +63,7 @@ public class Game extends Observable {
 
     public void setValue(int row, int col, Value value) {
         grid.setCell(value, row, col);
+        this.update();
         this.notifyObservers();
     }
 

@@ -81,12 +81,22 @@ public class Grid {
             }
         }
         if ( canInsert ) {
+            Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
             this.cells.elementAt(row).elementAt(col).setValue(value);
             for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
                 int pos = iterator.next();
-                this.sets.elementAt(pos).insertValue(value);
+                this.sets.elementAt(pos).addValue(value, prevValue);
             }
         }
+    }
+
+    public boolean checkFinish() {
+        for (SetOfValues set : this.sets) {
+            if (!set.isSetFinished()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public Cell getCell(int row, int col) {
@@ -97,7 +107,6 @@ public class Grid {
         for (int row = 0; row < this.nsets; ++row) {
             System.out.println("SET :" + row);
             SetOfValues set = this.sets.elementAt(row);
-            set.printSet();
         }
     }
 
