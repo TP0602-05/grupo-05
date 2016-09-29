@@ -8,7 +8,6 @@ public class FinishGameListener extends Observer {
 
     @Override
     public void update() {
-        System.out.print("finish game update\n");
         if (Game.getInstance().checkFinish()) {
             JFrame frame = new JFrame();
             frame.setLayout(new GridBagLayout());
@@ -22,7 +21,6 @@ public class FinishGameListener extends Observer {
             frame.setLocationRelativeTo(null);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
-            System.out.print("GANASTE");
         }
     }
 }

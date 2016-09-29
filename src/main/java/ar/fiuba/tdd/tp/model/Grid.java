@@ -71,6 +71,16 @@ public class Grid {
         }
     }
 
+    public void emptyCell(int row, int col) {
+        ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
+        Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
+        this.cells.elementAt(row).elementAt(col).setValue(new Value(0));
+        for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
+            int pos = iterator.next();
+            this.sets.elementAt(pos).addValue(new Value(0), prevValue);
+        }
+    }
+
     public void setCell(Value value,int row, int col) {
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         boolean canInsert = true;
@@ -118,6 +128,7 @@ public class Grid {
         }
     }
 
+
     public void loadRulesSet(int idRules,  Vector<Integer> values) {
         for (int row = 0; row < this.nsets; ++row) {
             SetOfValues set = this.sets.elementAt(row);
@@ -130,6 +141,4 @@ public class Grid {
             set.loadRule(rule);
         }
     }
-
-
 }

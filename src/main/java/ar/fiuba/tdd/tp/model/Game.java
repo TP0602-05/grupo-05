@@ -67,4 +67,9 @@ public class Game extends Observable {
         this.notifyObservers();
     }
 
+    public void deleteValue(int row, int col) {
+        grid.emptyCell(row, col);
+        this.update();
+        this.notifyObservers();
+    }
 }
