@@ -10,151 +10,151 @@
       "row":1,
       "col":1,
       "value":[0],
-      "sets":[1,11]
+      "sets":[1,6,11]
     },
     {
       "row":1,
       "col":2,
       "value":[0],
-      "sets":[2,12]
+      "sets":[2,6,18]
     },
     {
       "row":1,
       "col":3,
       "value":[0],
-      "sets":[3,12]
+      "sets":[3,6,18]
     },
     {
       "row":1,
       "col":4,
       "value":[0],
-      "sets":[4,]
+      "sets":[4,6,15]
     },
     {
       "row":1,
       "col":5,
       "value":[0],
-      "sets":[]
+      "sets":[5,6,17]
     },
     {
       "row":2,
       "col":1,
       "value":[0],
-      "sets":[]
+      "sets":[1,7,11]
     },
     {
       "row":2,
       "col":2,
       "value":[0],
-      "sets":[]
+      "sets":[2,7,19]
     },
     {
       "row":2,
       "col":3,
       "value":[0],
-      "sets":[]
+      "sets":[3,7,19]
     },
     {
       "row":2,
       "col":4,
       "value":[0],
-      "sets":[]
+      "sets":[4,7,16]
     },
     {
       "row":2,
       "col":5,
       "value":[0],
-      "sets":[]
+      "sets":[5,7,17]
     },
     {
       "row":3,
       "col":1,
       "value":[0],
-      "sets":[]
+      "sets":[1,8,20]
     },
     {
       "row":3,
       "col":2,
       "value":[0],
-      "sets":[]
+      "sets":[2,8,20]
     },
     {
       "row":3,
       "col":3,
       "value":[0],
-      "sets":[]
+      "sets":[3,8,14]
     },
     {
       "row":3,
       "col":4,
       "value":[0],
-      "sets":[]
+      "sets":[4,8,16]
     },
     {
       "row":3,
       "col":5,
       "value":[0],
-      "sets":[]
+      "sets":[5,8,17]
     },
     {
       "row":4,
       "col":1,
       "value":[0],
-      "sets":[]
+      "sets":[1,9,12]
     },
     {
       "row":4,
       "col":2,
       "value":[0],
-      "sets":[]
+      "sets":[2,9,13]
     },
     {
       "row":4,
       "col":3,
       "value":[0],
-      "sets":[]
+      "sets":[3,9,14]
     },
     {
       "row":4,
       "col":4,
       "value":[0],
-      "sets":[]
+      "sets":[4,9,21]
     },
     {
       "row":4,
       "col":5,
       "value":[0],
-      "sets":[]
+      "sets":[5,9,21]
     },
     {
       "row":5,
       "col":1,
       "value":[0],
-      "sets":[]
+      "sets":[1,10,12]
     },
     {
       "row":5,
       "col":2,
       "value":[0],
-      "sets":[]
+      "sets":[2,10,13]
     },
     {
       "row":5,
       "col":3,
       "value":[0],
-      "sets":[]
+      "sets":[3,10,14]
     },
     {
       "row":5,
       "col":4,
       "value":[0],
-      "sets":[]
+      "sets":[4,10,22]
     },
     {
       "row":5,
       "col":5,
       "value":[0],
-      "sets":[]
+      "sets":[5,10,22]
     }
   ]
 }
