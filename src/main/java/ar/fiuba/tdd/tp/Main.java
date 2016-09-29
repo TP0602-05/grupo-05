@@ -18,7 +18,7 @@ public class Main {
             e.printStackTrace();
         }
         System.out.println("You will play : " + gameName);
-        Game.init(gameName);
+        Game.init(gameName.trim());
 
     }
 }
