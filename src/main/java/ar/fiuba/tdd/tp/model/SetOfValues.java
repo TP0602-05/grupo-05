@@ -7,7 +7,7 @@ import ar.fiuba.tdd.tp.model.rule.Rule;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class SetOfValues {
+class SetOfValues {
 
     private ArrayList<Value> values;
     private ArrayList<Rule> rules;
@@ -40,7 +40,7 @@ public class SetOfValues {
         }
     }
 
-    public boolean canInsertValue(Value value) {
+    boolean canInsertValue(Value value) {
         boolean result = true;
         for (Rule myRule: this.rules) {
             if ( ! myRule.check(this.values, value) ) {
@@ -50,7 +50,7 @@ public class SetOfValues {
         return result;
     }
 
-    public boolean isSetFinished() {
+    boolean isSetFinished() {
         for (Rule myRule: this.rules) {
             if ( ! myRule.checkFinal(this.values) ) {
                 return false;
@@ -59,21 +59,21 @@ public class SetOfValues {
         return true;
     }
 
-    public void printSet() {
+    void printSet() {
         for (Iterator<Value> iterator = this.values.iterator(); iterator.hasNext();) {
             Value myValue = iterator.next();
             myValue.printValue();
         }
     }
 
-    public void printRules() {
+    void printRules() {
         for (Iterator<Rule> iterator = this.rules.iterator(); iterator.hasNext();) {
             Rule myValue = iterator.next();
             myValue.printRule();
         }
     }
 
-    public void loadRule(Rule rule) {
+    void loadRule(Rule rule) {
 
         this.rules.add(rule);
 

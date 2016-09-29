@@ -1,17 +1,18 @@
 package ar.fiuba.tdd.tp.view;
 
+
 import ar.fiuba.tdd.tp.model.Game;
 import ar.fiuba.tdd.tp.model.Observer;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 
 
 public class GridView extends Observer{

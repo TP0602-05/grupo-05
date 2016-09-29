@@ -46,17 +46,15 @@ public class Parser {
     }
 
     public JSONObject getObjectAttribute(JSONObject object, String attr) {
-        JSONObject atomicObject = (JSONObject) object.get(attr);
-        return atomicObject;
+        return (JSONObject) object.get(attr);
     }
 
     public JSONArray getArrayAttribute(JSONObject object, String attr) {
-        JSONArray atomicObject = (JSONArray) object.get(attr);
-        return atomicObject;
+        return (JSONArray) object.get(attr);
     }
 
     public ArrayList toArrayList(JSONArray array) {
-        ArrayList list = new ArrayList<>();
+        ArrayList<? super Object> list = new ArrayList<>();
 
         int len = array.size();
         for (int i = 0;i < len; i++) {
@@ -68,7 +66,7 @@ public class Parser {
     }
 
     public Vector toVector(JSONArray array) {
-        Vector vector = new Vector<>(array.size());
+        Vector<? super Object> vector = new Vector<>(array.size());
 
         int len = array.size();
         for (int i = 0; i < len; i++) {

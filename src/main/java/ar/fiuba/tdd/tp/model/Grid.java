@@ -64,7 +64,7 @@ public class Grid {
 
     public void addCell(Cell cell, int row, int col, ArrayList sets) {
         this.cells.elementAt(row).insertElementAt(cell, col);
-        for (Iterator<Long> iterator = sets.iterator(); iterator.hasNext();) {
+        for (Iterator iterator = sets.iterator(); iterator.hasNext();) {
             int pos = (int)((Long) iterator.next()).intValue();
             this.sets.elementAt(pos - 1).insertValue( cell.getValue());
             this.map.elementAt(row).elementAt(col).add(pos - 1);
