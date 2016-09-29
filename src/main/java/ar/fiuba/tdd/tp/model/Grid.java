@@ -17,19 +17,21 @@ public class Grid {
     private int height;
     private int nsets;
 
-    //TODO: Dividir esto, tiene demasiadas iteraciones y tira error de NPATH
-    public Grid(int width, int height, int nsets) {
-        this.width = width;
-        this.height = height;
-        this.nsets = nsets;
+    private void initializeVectorCells() {
         this.cells = new Vector<>(height);
         for (int row = 0; row < height; ++row) {
             this.cells.insertElementAt(new Vector<>(width),row);
         }
+    }
+
+    private void initializeVectorSets() {
         this.sets = new Vector<>(nsets);
         for (int row = 0; row < nsets; ++row) {
             this.sets.insertElementAt(new SetOfValues(), row);
         }
+    }
+
+    private void initializeVectorMap() {
         this.map = new Vector<>(height);
         for (int row = 0; row < height; ++row) {
             this.map.insertElementAt(new Vector<>(width),row);
@@ -37,6 +39,15 @@ public class Grid {
                 this.map.elementAt(row).insertElementAt(new ArrayList<>(),col);
             }
         }
+    }
+
+    public Grid(int width, int height, int nsets) {
+        this.width = width;
+        this.height = height;
+        this.nsets = nsets;
+        this.initializeVectorCells();
+        this.initializeVectorSets();
+        this.initializeVectorMap();
     }
 
     public int getWidth() {
@@ -82,17 +93,19 @@ public class Grid {
         }
     }
 
-    //TODO: dividir esto, tiene demasiadas iteraciones y tira error NPATH
-    public void setCell(Value value,int row, int col) {
-        ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-        boolean canInsert = true;
+    private boolean checkNewValueInSets(ArrayList<Integer> mySets, Value newValue) {
         for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
             int pos = iterator.next();
-            if ( !this.sets.elementAt(pos).canInsertValue(value) ) {
-                canInsert = false;
+            if ( !this.sets.elementAt(pos).canInsertValue(newValue) ) {
+                return false;
             }
         }
-        if ( canInsert ) {
+        return true;
+    }
+
+    public void setCell(Value value,int row, int col) {
+        ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
+        if ( checkNewValueInSets(mySets, value) ) {
             Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
             this.cells.elementAt(row).elementAt(col).setValue(value);
             for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {

@@ -41,6 +41,7 @@ class SetOfValues {
     }
 
     boolean canInsertValue(Value value) {
+        // TODO: Recibir valor previo, quitarlo del set antes de chequear y volver a agregarlo al final.
         boolean result = true;
         for (Rule myRule: this.rules) {
             if ( ! myRule.check(this.values, value) ) {
