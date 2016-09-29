@@ -27,11 +27,10 @@ class GameBuilder {
         return this;
     }
 
-    boolean gridHasBlocks() {
+    public boolean gridHasBlocks() {
         return gridHasBlocks;
     }
 
-    //TODO: NCSS max is 20
     Grid createGrid() {
         Grid grid = new Grid(this.gameParser.getJsonInt("cols"),this.gameParser.getJsonInt("rows"), this.gameParser.getJsonInt("nsets"));
         for (Object cell : this.gameParser.getJSONarray("cells")) {
@@ -69,12 +68,14 @@ class GameBuilder {
         JSONArray sums = this.gameParser.getJSONarray("sum");
         Vector<Long> sumArray = this.gameParser.toVector(sums);
 
-
-        for (Object myRuleId : rulesArray) {
-            int idRule = ((Long) myRuleId).intValue();
+        for (Object arulesArray : rulesArray) {
+            int idRule = ((Long) arulesArray).intValue();
             grid.loadRulesSet(idRule, sumArray);
         }
         return grid;
     }
 
+    public String getGameName() {
+        return this.gameName;
+    }
 }

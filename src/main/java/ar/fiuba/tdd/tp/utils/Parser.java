@@ -65,12 +65,11 @@ public class Parser {
 
     }
 
-    public Vector toVector(JSONArray array) {
-        Vector<? super Object> vector = new Vector<>(array.size());
+    public Vector<Long> toVector(JSONArray array) {
+        Vector<Long> vector = new Vector<>(array.size());
 
-        int len = array.size();
-        for (int i = 0; i < len; i++) {
-            vector.add(array.get(i));
+        for (Object anArray : array) {
+            vector.add((Long)anArray);
         }
 
         return vector;
