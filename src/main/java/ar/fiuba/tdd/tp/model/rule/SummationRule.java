@@ -4,6 +4,9 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.util.ArrayList;
 
+/**
+ * Checks if values within a set add up to a certain number
+ */
 public class SummationRule implements Rule {
 
     private int summationValue;
