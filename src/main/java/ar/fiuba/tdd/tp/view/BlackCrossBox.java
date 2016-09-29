@@ -7,9 +7,9 @@ import java.util.Vector;
 import javax.swing.*;
 
 
-public class BlackButton extends JButton {
+public class BlackCrossBox extends JButton {
 
-    public BlackButton(Vector<Value> values, int row, int col) {
+    public BlackCrossBox(Vector<Value> values, int row, int col) {
         setBackground(Color.black);
         setForeground(Color.white);
         setContentAreaFilled(false);

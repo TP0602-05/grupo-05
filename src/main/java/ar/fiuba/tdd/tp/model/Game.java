@@ -55,6 +55,7 @@ public class Game extends Observable {
         return cell.getValue();
     }
 
+
     public int getRows() {
         return this.grid.getHeight();
     }
