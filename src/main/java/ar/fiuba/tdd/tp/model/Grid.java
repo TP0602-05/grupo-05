@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
-public class Grid {
+class Grid {
     private Vector<Vector<Cell>> cells;
     private Vector<SetOfValues> sets;
     private Vector<Vector<ArrayList<Integer>>> map;
@@ -41,7 +41,7 @@ public class Grid {
         }
     }
 
-    public Grid(int width, int height, int nsets) {
+    Grid(int width, int height, int nsets) {
         this.width = width;
         this.height = height;
         this.nsets = nsets;
@@ -50,31 +50,15 @@ public class Grid {
         this.initializeVectorMap();
     }
 
-    public int getWidth() {
+    int getWidth() {
         return width;
     }
 
-    public int getHeight() {
+    int getHeight() {
         return height;
     }
 
-    public void printConsoleGrid() {
-        System.out.println("-------------------------------------");
-        for (int row = 0; row < height; ++row) {
-            String fila = "| ";
-            for (int col = 0; col < width; ++col) {
-                String val = this.cells.elementAt(row).elementAt(col).toString();
-                fila = fila.concat(val);
-                fila = fila.concat(" | ");
-            }
-            System.out.println(fila);
-            System.out.println("-------------------------------------");
-
-        }
-
-    }
-
-    public void addCell(Cell cell, int row, int col, ArrayList sets) {
+    void addCell(Cell cell, int row, int col, ArrayList sets) {
         this.cells.elementAt(row).insertElementAt(cell, col);
         for (Iterator iterator = sets.iterator(); iterator.hasNext();) {
             int pos = (int)((Long) iterator.next()).intValue();
@@ -83,7 +67,7 @@ public class Grid {
         }
     }
 
-    public void emptyCell(int row, int col) {
+    void emptyCell(int row, int col) {
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
         this.cells.elementAt(row).elementAt(col).setValue(new Value(0));
