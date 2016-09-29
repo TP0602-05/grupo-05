@@ -41,23 +41,27 @@ class GameBuilder {
             int col = ((Long)cellJson.get("col")).intValue();
             ArrayList val = (JSONArray) cellJson.get("value");
             ArrayList sets = (JSONArray) cellJson.get("sets");
-            if (val.size() == 1) {
-                int intValue = ((Long) val.get(0)).intValue();
-                if (intValue == 0) {
-                    grid.addCell(new Cell(), row - 1, col - 1, sets);
-                } else {
-                    grid.addCell(new Cell(new Value(intValue)), row - 1, col - 1, sets);
-                }
-            } else {
-                Vector<Value> vecAux = new Vector<>(val.size());
-                for (Object values : val) {
-                    vecAux.add(new Value(((Long) values).intValue()));
-                }
-                grid.addCell(new Cell(vecAux),row - 1, col - 1, sets);
-            }
+            this. internalProcessOfValue(grid, val, sets, col, row);
         }
         grid = loadRulesGame(grid);
         return grid;
+    }
+
+    private void internalProcessOfValue(Grid grid, ArrayList val, ArrayList sets, int col, int row) {
+        if (val.size() == 1) {
+            int intValue = ((Long) val.get(0)).intValue();
+            if (intValue == 0) {
+                grid.addCell(new Cell(), row - 1, col - 1, sets);
+            } else {
+                grid.addCell(new Cell(new Value(intValue)), row - 1, col - 1, sets);
+            }
+        } else {
+            Vector<Value> vecAux = new Vector<>(val.size());
+            for (Object values : val) {
+                vecAux.add(new Value(((Long) values).intValue()));
+            }
+            grid.addCell(new Cell(vecAux),row - 1, col - 1, sets);
+        }
     }
 
     private Grid loadRulesGame(Grid grid) {
