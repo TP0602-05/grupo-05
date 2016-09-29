@@ -129,14 +129,14 @@ public class Grid {
     }
 
 
-    public void loadRulesSet(int idRules,  Vector<Integer> values) {
+    public void loadRulesSet(int idRules,  Vector<Long> values) {
         for (int row = 0; row < this.nsets; ++row) {
             SetOfValues set = this.sets.elementAt(row);
             Rule rule = null;
             if (idRules == 1) {
                 rule = new NoRepeatRule();
             } else if (idRules == 2) {
-                rule = new SummationRule(values.elementAt(row));
+                rule = new SummationRule(values.elementAt(row).intValue());
             }
             set.loadRule(rule);
         }

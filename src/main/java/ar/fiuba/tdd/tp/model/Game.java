@@ -10,6 +10,7 @@ public class Game extends Observable {
     private Grid grid;
     private GameBuilder gameBuilder;
     private boolean isFinished;
+    private boolean gridHasBlocks;
 
     private Game(String gameName) {
         gameBuilder = new GameBuilder(gameName);
@@ -19,6 +20,7 @@ public class Game extends Observable {
             e.printStackTrace();
         }
         grid = gameBuilder.createGrid();
+        gridHasBlocks = gameBuilder.gridHasBlocks();
        // grid.printRuleSets();
 
         this.isFinished = false;
@@ -26,6 +28,10 @@ public class Game extends Observable {
         gridView = new GridView(gameName);
         this.addObserver(gridView);
         this.addObserver(new FinishGameListener());
+    }
+
+    public boolean gridHasBlocks() {
+        return gridHasBlocks;
     }
 
     public static Game getInstance() {

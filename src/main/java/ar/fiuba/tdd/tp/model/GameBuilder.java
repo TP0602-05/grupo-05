@@ -14,15 +14,22 @@ class GameBuilder {
 
     private String gameName;
     private Parser gameParser;
+    private boolean gridHasBlocks;
 
     GameBuilder(String gameName) {
         this.gameName = gameName;
+        gridHasBlocks = false;
     }
 
     GameBuilder loadConf() throws Exception {
         String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/" + gameName + ".json" ;
+        gridHasBlocks = gameName.equals("sudoku");
         this.gameParser = new Parser(path);
         return this;
+    }
+
+    public boolean gridHasBlocks() {
+        return gridHasBlocks;
     }
 
     Grid createGrid() {
@@ -35,15 +42,21 @@ class GameBuilder {
             JSONObject cellJson = (JSONObject) cell;
             int row = ((Long)cellJson.get("row")).intValue();
             int col = ((Long)cellJson.get("col")).intValue();
-            JSONArray values = (JSONArray) cellJson.get("value");
+            ArrayList val = (JSONArray) cellJson.get("value");
             ArrayList sets = (JSONArray) cellJson.get("sets");
-            for (Object val : values) {
-                int intValue = ((Long) val).intValue();
+            if (val.size() == 1) {
+                int intValue = ((Long) val.get(0)).intValue();
                 if (intValue == 0) {
                     grid.addCell(new Cell(), row - 1, col - 1, sets);
                 } else {
                     grid.addCell(new Cell(new Value(intValue)), row - 1, col - 1, sets);
                 }
+            } else {
+                Vector<Value> vecAux = new Vector<>(val.size());
+                for (Object values : val) {
+                    vecAux.add(new Value(((Long) values).intValue()));
+                }
+                grid.addCell(new Cell(vecAux),row - 1, col - 1, sets);
             }
         }
         //grid.printSets();
@@ -55,13 +68,12 @@ class GameBuilder {
         JSONArray rules = this.gameParser.getJSONarray("rulesets");
         ArrayList rulesArray = this.gameParser.toArrayList(rules);
         JSONArray sums = this.gameParser.getJSONarray("sum");
-        Vector<Integer> sumArray = this.gameParser.toVector(sums);
+        Vector<Long> sumArray = this.gameParser.toVector(sums);
 
 
         for (Iterator iterator = rulesArray.iterator(); iterator.hasNext();) {
             int idRule = ((Long) iterator.next()).intValue();
             grid.loadRulesSet(idRule, sumArray);
-
         }
         return grid;
     }
