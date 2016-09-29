@@ -20,7 +20,7 @@ public class GameBuilder {
     }
 
     public  GameBuilder loadConf() throws Exception {
-        String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/model/" + gameName + ".json" ;
+        String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/" + gameName + ".json" ;
         this.gameParser = new Parser(path);
         return this;
     }
