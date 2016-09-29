@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.GridView;
+import ar.fiuba.tdd.tp.view.GridView;
 import ar.fiuba.tdd.tp.model.cell.Cell;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
@@ -19,7 +19,7 @@ public class Game extends Observable {
             e.printStackTrace();
         }
         grid = gameBuilder.createGrid();
-        grid.printRuleSets();
+       // grid.printRuleSets();
 
         this.isFinished = false;
 

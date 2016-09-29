@@ -1,4 +1,4 @@
-package ar.fiuba.tdd.tp;
+package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.model.Game;
 import ar.fiuba.tdd.tp.model.Observer;

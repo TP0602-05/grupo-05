@@ -10,22 +10,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
-public class GameBuilder {
+class GameBuilder {
 
     private String gameName;
     private Parser gameParser;
 
-    public GameBuilder(String gameName) {
+    GameBuilder(String gameName) {
         this.gameName = gameName;
     }
 
-    public  GameBuilder loadConf() throws Exception {
+    GameBuilder loadConf() throws Exception {
         String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/" + gameName + ".json" ;
         this.gameParser = new Parser(path);
         return this;
     }
 
-    public Grid createGrid() {
+    Grid createGrid() {
         int height = this.gameParser.getJsonInt("rows");
         int width = this.gameParser.getJsonInt("cols");
         int nsets = this.gameParser.getJsonInt("nsets");
@@ -38,7 +38,7 @@ public class GameBuilder {
             JSONArray values = (JSONArray) cellJson.get("value");
             ArrayList sets = (JSONArray) cellJson.get("sets");
             for (Object val : values) {
-                int intValue = (int)((Long) val).intValue();
+                int intValue = ((Long) val).intValue();
                 if (intValue == 0) {
                     grid.addCell(new Cell(), row - 1, col - 1, sets);
                 } else {
@@ -46,12 +46,12 @@ public class GameBuilder {
                 }
             }
         }
-        grid.printSets();
+        //grid.printSets();
         grid = loadRulesGame(grid);
         return grid;
     }
 
-    public Grid loadRulesGame(Grid grid) {
+    private Grid loadRulesGame(Grid grid) {
         JSONArray rules = this.gameParser.getJSONarray("rulesets");
         ArrayList rulesArray = this.gameParser.toArrayList(rules);
         JSONArray sums = this.gameParser.getJSONarray("sum");

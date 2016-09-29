@@ -1,9 +1,0 @@
-{
-	"name" : "mkyong.com",
-	"age" : 100,
-	"messages" : [
-		"message1",
-		"message2",
-		"message3"
-	]
-}
