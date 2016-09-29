@@ -3,6 +3,9 @@ package ar.fiuba.tdd.tp.view;
 import java.awt.*;
 import javax.swing.*;
 
+/*
+This kind of JButton is all black.
+ */
 public class BlackBox extends JButton {
 
     public BlackBox() {

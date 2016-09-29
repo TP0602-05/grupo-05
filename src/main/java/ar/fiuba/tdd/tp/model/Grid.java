@@ -9,6 +9,10 @@ import ar.fiuba.tdd.tp.model.validation.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
+/*
+This class contains everything related to the grid.
+It is managed by the class Game.
+ */
 class Grid {
     private Vector<Vector<Cell>> cells;
     private Vector<SetOfValues> sets;
@@ -122,23 +126,6 @@ class Grid {
     Cell getCell(int row, int col) {
         return this.cells.elementAt(row).elementAt(col);
     }
-
-    /*
-    public void printSets() {
-        for (int row = 0; row < this.nsets; ++row) {
-            System.out.println("SET :" + row);
-            SetOfValues set = this.sets.elementAt(row);
-        }
-    }
-
-    public void printRuleSets() {
-        for (int row = 0; row < this.nsets; ++row) {
-            System.out.println("SET :" + row);
-            SetOfValues set = this.sets.elementAt(row);
-            set.printRules();
-        }
-    }
-    */
 
     void loadRulesSet(int idRules,  Vector<Long> values) {
         for (int row = 0; row < this.nsets; ++row) {

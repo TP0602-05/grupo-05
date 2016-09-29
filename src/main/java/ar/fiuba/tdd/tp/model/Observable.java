@@ -2,6 +2,9 @@ package ar.fiuba.tdd.tp.model;
 
 import java.util.ArrayList;
 
+/*
+Class created to implement Observer Pattern.
+ */
 abstract class Observable {
 
     private ArrayList<Observer> observers = new ArrayList<>();

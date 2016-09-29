@@ -10,10 +10,13 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
+/*
+This is the panel that contains the grid.
+The constructor loads all the cells of the grid.
+ */
+public class Board extends JPanel {
 
-public class Pane extends JPanel {
-
-    public Pane() {
+    public Board() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
