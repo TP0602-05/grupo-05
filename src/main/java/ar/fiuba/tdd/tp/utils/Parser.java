@@ -10,6 +10,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
+/**
+ * This class is used to parse external JSON files and extract its values
+ */
+
 public class Parser {
     private JSONObject jsonObject;
 
