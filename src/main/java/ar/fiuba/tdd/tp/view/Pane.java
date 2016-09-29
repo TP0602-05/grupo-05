@@ -3,10 +3,11 @@ package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.model.Game;
 
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
-import java.awt.*;
+
 
 public class Pane extends JPanel {
 

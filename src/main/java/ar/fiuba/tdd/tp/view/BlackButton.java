@@ -2,9 +2,10 @@ package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.model.cell.Value;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Vector;
+import javax.swing.*;
+
 
 public class BlackButton extends JButton {
 

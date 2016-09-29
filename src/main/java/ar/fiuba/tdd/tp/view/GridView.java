@@ -3,8 +3,8 @@ package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.model.Observer;
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 public class GridView extends Observer{
 

@@ -32,13 +32,10 @@ class GameBuilder {
         return gridHasBlocks;
     }
 
+    //TODO: NCSS max is 20
     Grid createGrid() {
-        int height = this.gameParser.getJsonInt("rows");
-        int width = this.gameParser.getJsonInt("cols");
-        int nsets = this.gameParser.getJsonInt("nsets");
-        JSONArray cells = this.gameParser.getJSONarray("cells");
-        Grid grid = new Grid(width,height, nsets);
-        for (Object cell : cells) {
+        Grid grid = new Grid(this.gameParser.getJsonInt("cols"),this.gameParser.getJsonInt("rows"), this.gameParser.getJsonInt("nsets"));
+        for (Object cell : this.gameParser.getJSONarray("cells")) {
             JSONObject cellJson = (JSONObject) cell;
             int row = ((Long)cellJson.get("row")).intValue();
             int col = ((Long)cellJson.get("col")).intValue();
@@ -59,7 +56,6 @@ class GameBuilder {
                 grid.addCell(new Cell(vecAux),row - 1, col - 1, sets);
             }
         }
-        //grid.printSets();
         grid = loadRulesGame(grid);
         return grid;
     }
@@ -77,18 +73,6 @@ class GameBuilder {
         }
         return grid;
     }
-    /*public void createSetsOfValues(Grid grid) {
-        JSONArray cells = this.gameParser.getJSONarray("cells");
-        for (Object cell : cells) {
-            JSONObject cellJson = (JSONObject) cell;
-            JSONArray values = (JSONArray) cellJson.get("value");
-            for (Object val : values) {
-                int intValue = (int)((Long) val).intValue();
-                Value valSet = new Value(intValue);
-
-            }
-        }
-    }*/
 
     public String getGameName() {
         return this.gameName;

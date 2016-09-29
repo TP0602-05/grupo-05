@@ -3,15 +3,16 @@ package ar.fiuba.tdd.tp.view;
 import ar.fiuba.tdd.tp.model.Game;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.*;
 
 public class InputButton extends JButton {
 
+    //TODO: Dividir esto, NCSS max es 20
     public InputButton(Value value, int row, int col) {
         addMouseListener(new MouseAdapter() {
             @Override

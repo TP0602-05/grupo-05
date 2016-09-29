@@ -17,6 +17,7 @@ public class Grid {
     private int height;
     private int nsets;
 
+    //TODO: Dividir esto, tiene demasiadas iteraciones y tira error de NPATH
     public Grid(int width, int height, int nsets) {
         this.width = width;
         this.height = height;
@@ -81,6 +82,7 @@ public class Grid {
         }
     }
 
+    //TODO: dividir esto, tiene demasiadas iteraciones y tira error NPATH
     public void setCell(Value value,int row, int col) {
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         boolean canInsert = true;
