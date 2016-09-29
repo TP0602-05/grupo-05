@@ -6,7 +6,6 @@ import ar.fiuba.tdd.tp.model.rule.Rule;
 import ar.fiuba.tdd.tp.model.rule.SummationRule;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Vector;
 
 class Grid {
@@ -60,8 +59,8 @@ class Grid {
 
     void addCell(Cell cell, int row, int col, ArrayList sets) {
         this.cells.elementAt(row).insertElementAt(cell, col);
-        for (Iterator iterator = sets.iterator(); iterator.hasNext();) {
-            int pos = (int)((Long) iterator.next()).intValue();
+        for (Object position:sets) {
+            int pos = ((Long) position).intValue();
             this.sets.elementAt(pos - 1).insertValue( cell.getValue());
             this.map.elementAt(row).elementAt(col).add(pos - 1);
         }
@@ -71,35 +70,32 @@ class Grid {
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
         this.cells.elementAt(row).elementAt(col).setValue(new Value(0));
-        for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
-            int pos = iterator.next();
-            this.sets.elementAt(pos).addValue(new Value(0), prevValue);
+        for (int position : mySets) {
+            this.sets.elementAt(position).addValue(new Value(0), prevValue);
         }
     }
 
     private boolean checkNewValueInSets(ArrayList<Integer> mySets, Value newValue) {
-        for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
-            int pos = iterator.next();
-            if ( !this.sets.elementAt(pos).canInsertValue(newValue) ) {
+        for (int position: mySets) {
+            if ( !this.sets.elementAt(position).canInsertValue(newValue) ) {
                 return false;
             }
         }
         return true;
     }
 
-    public void setCell(Value value,int row, int col) {
+    void setCell(Value value,int row, int col) {
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         if ( checkNewValueInSets(mySets, value) ) {
             Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
             this.cells.elementAt(row).elementAt(col).setValue(value);
-            for (Iterator<Integer> iterator = mySets.iterator(); iterator.hasNext();) {
-                int pos = iterator.next();
-                this.sets.elementAt(pos).addValue(value, prevValue);
+            for (int position:mySets) {
+                this.sets.elementAt(position).addValue(value, prevValue);
             }
         }
     }
 
-    public boolean checkFinish() {
+    boolean checkFinish() {
         for (SetOfValues set : this.sets) {
             if (!set.isSetFinished()) {
                 return false;
@@ -108,10 +104,11 @@ class Grid {
         return true;
     }
 
-    public Cell getCell(int row, int col) {
+    Cell getCell(int row, int col) {
         return this.cells.elementAt(row).elementAt(col);
     }
 
+    /*
     public void printSets() {
         for (int row = 0; row < this.nsets; ++row) {
             System.out.println("SET :" + row);
@@ -126,9 +123,9 @@ class Grid {
             set.printRules();
         }
     }
+    */
 
-
-    public void loadRulesSet(int idRules,  Vector<Long> values) {
+    void loadRulesSet(int idRules,  Vector<Long> values) {
         for (int row = 0; row < this.nsets; ++row) {
             SetOfValues set = this.sets.elementAt(row);
             Rule rule = null;

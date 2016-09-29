@@ -1,7 +1,6 @@
 package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.*;
-import ar.fiuba.tdd.tp.model.rule.NoRepeatRule;
 import ar.fiuba.tdd.tp.model.rule.Rule;
 
 import java.util.ArrayList;
@@ -60,6 +59,7 @@ class SetOfValues {
         return true;
     }
 
+    /*
     void printSet() {
         for (Iterator<Value> iterator = this.values.iterator(); iterator.hasNext();) {
             Value myValue = iterator.next();
@@ -73,6 +73,7 @@ class SetOfValues {
             myValue.printRule();
         }
     }
+    */
 
     void loadRule(Rule rule) {
 

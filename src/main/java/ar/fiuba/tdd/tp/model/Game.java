@@ -42,11 +42,11 @@ public class Game extends Observable {
         instance = new Game(gameName);
     }
 
-    public void update() {
+    private void update() {
         this.isFinished = this.grid.checkFinish();
     }
 
-    public boolean checkFinish() {
+    boolean checkFinish() {
         return this.isFinished;
     }
 

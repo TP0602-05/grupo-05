@@ -7,7 +7,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Vector;
 
 class GameBuilder {
@@ -28,7 +27,7 @@ class GameBuilder {
         return this;
     }
 
-    public boolean gridHasBlocks() {
+    boolean gridHasBlocks() {
         return gridHasBlocks;
     }
 
@@ -71,14 +70,11 @@ class GameBuilder {
         Vector<Long> sumArray = this.gameParser.toVector(sums);
 
 
-        for (Iterator iterator = rulesArray.iterator(); iterator.hasNext();) {
-            int idRule = ((Long) iterator.next()).intValue();
+        for (Object myRuleId : rulesArray) {
+            int idRule = ((Long) myRuleId).intValue();
             grid.loadRulesSet(idRule, sumArray);
         }
         return grid;
     }
 
-    public String getGameName() {
-        return this.gameName;
-    }
 }

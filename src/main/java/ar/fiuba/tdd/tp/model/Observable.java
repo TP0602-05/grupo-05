@@ -10,14 +10,8 @@ abstract class Observable {
         this.observers.add(observer);
     }
 
-    void deleteObserver(Observer observer) {
-        this.observers.remove(observer);
-    }
-
     void notifyObservers() {
-        for (Observer observer: this.observers) {
-            observer.update();
-        }
+        this.observers.forEach(Observer::update);
     }
 
 }

@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-public class FinishGameListener extends Observer {
+class FinishGameListener extends Observer {
 
     @Override
     public void update() {
@@ -19,7 +19,7 @@ public class FinishGameListener extends Observer {
             frame.add(panel, new GridBagConstraints());
             frame.setSize(400, 400);
             frame.setLocationRelativeTo(null);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             frame.setVisible(true);
         }
     }
