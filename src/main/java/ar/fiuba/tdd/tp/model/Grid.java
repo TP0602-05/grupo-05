@@ -4,6 +4,7 @@ import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.model.rule.NoRepeatRule;
 import ar.fiuba.tdd.tp.model.rule.Rule;
 import ar.fiuba.tdd.tp.model.rule.SummationRule;
+import ar.fiuba.tdd.tp.model.validation.*;
 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -12,6 +13,7 @@ class Grid {
     private Vector<Vector<Cell>> cells;
     private Vector<SetOfValues> sets;
     private Vector<Vector<ArrayList<Integer>>> map;
+    private Vector<Validation> validations;
     private int width;
     private int height;
     private int nsets;
@@ -44,6 +46,8 @@ class Grid {
         this.width = width;
         this.height = height;
         this.nsets = nsets;
+        this.validations = new Vector<>();
+        this.validations.add(new XtoYNumberValidation(1,9));
         this.initializeVectorCells();
         this.initializeVectorSets();
         this.initializeVectorMap();
@@ -84,13 +88,24 @@ class Grid {
         return true;
     }
 
+    private boolean checkValidations(Value value) {
+        for (Validation myValidation : this.validations) {
+            if (!myValidation.validate(value)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     void setCell(Value value,int row, int col) {
-        ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-        if ( checkNewValueInSets(mySets, value) ) {
-            Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
-            this.cells.elementAt(row).elementAt(col).setValue(value);
-            for (int position:mySets) {
-                this.sets.elementAt(position).addValue(value, prevValue);
+        if (checkValidations(value)) {
+            ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
+            if (checkNewValueInSets(mySets, value)) {
+                Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
+                this.cells.elementAt(row).elementAt(col).setValue(value);
+                for (int position : mySets) {
+                    this.sets.elementAt(position).addValue(value, prevValue);
+                }
             }
         }
     }
