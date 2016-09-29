@@ -3,7 +3,7 @@ package ar.fiuba.tdd.tp.model.cell;
 import java.util.Vector;
 
 /**
- * Holds an array of values and knows whether it can be blocked or not
+ * Holds an array of values and knows whether it can be blocked or not.
  */
 public class Cell {
     private boolean blocked;

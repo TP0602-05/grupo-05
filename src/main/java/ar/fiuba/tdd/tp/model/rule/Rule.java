@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Checks if values within a set follow a certain rule,
- * either by themselves or considering a new value
+ * either by themselves or considering a new value.
  */
 public interface Rule {
 
