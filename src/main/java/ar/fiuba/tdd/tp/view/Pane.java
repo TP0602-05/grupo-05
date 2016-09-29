@@ -1,9 +1,11 @@
 package ar.fiuba.tdd.tp.view;
 
-
 import ar.fiuba.tdd.tp.model.Game;
+import ar.fiuba.tdd.tp.model.cell.Cell;
+import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.awt.*;
+import java.util.Vector;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
@@ -24,20 +26,31 @@ public class Pane extends JPanel {
                 gbc.gridy = row;
 
                 JButton cellPane;
-                // esto viola Demeter Law, falta refactorizar a.getB().getC()
-                if (Game.getInstance().getCell(row,col).getAmountOfValues() == 1) {
-                    cellPane = new InputButton(Game.getInstance().getValue(row,col), row, col);
-                } else {
-                    //Demeter Law again
-                    cellPane = new BlackButton(Game.getInstance().getCell(row,col).getValues(),row,col);
-                }
+                cellPane = getCellType(row,col);
 
                 if (Game.getInstance().gridHasBlocks()) {
                     cellPane.setBorder(setBlocks(row,col));
                 }
+
                 add(cellPane, gbc);
             }
         }
+    }
+
+    private JButton getCellType(int row, int col) {
+        Cell cell = Game.getInstance().getCell(row,col);
+        JButton cellPane;
+        if (cell.getAmountOfValues() == 1) {
+            cellPane = new InputButton(Game.getInstance().getValue(row,col), row, col);
+        } else {
+            Vector<Value> valuesAux = cell.getValues();
+            if ((valuesAux.elementAt(0).getValue() == 0) && (valuesAux.elementAt(1).getValue() == 0)) {
+                cellPane = new BlackBox();
+            } else {
+                cellPane = new BlackCrossBox(cell.getValues(), row, col);
+            }
+        }
+        return cellPane;
     }
 
     private Border setBlocks(int row, int col) {
