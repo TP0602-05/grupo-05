@@ -6,10 +6,16 @@ import ar.fiuba.tdd.tp.model.Observer;
 import java.awt.*;
 import javax.swing.*;
 
+/*
+This is the main frame, that contains everything related to the grid.
+Instantiates the frame, and loads the main panel.
+Implements the pattern Observer.
+On every update resets the board.
+ */
 public class GridView extends Observer{
 
     private JFrame frame;
-    private Pane pane;
+    private Board board;
 
     public GridView(String gameName) {
         EventQueue.invokeLater(new Runnable() {
@@ -24,8 +30,8 @@ public class GridView extends Observer{
                 frame = new JFrame(gameName);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setLayout(new BorderLayout());
-                pane = new Pane();
-                frame.add(pane);
+                board = new Board();
+                frame.add(board);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
@@ -36,9 +42,9 @@ public class GridView extends Observer{
 
     @Override
     public void update() {
-        frame.remove(pane);
-        pane = new Pane();
-        frame.add(pane);
+        frame.remove(board);
+        board = new Board();
+        frame.add(board);
         frame.pack();
     }
 }

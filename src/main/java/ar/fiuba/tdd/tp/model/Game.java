@@ -21,7 +21,6 @@ public class Game extends Observable {
         }
         grid = gameBuilder.createGrid();
         gridHasBlocks = gameBuilder.gridHasBlocks();
-       // grid.printRuleSets();
 
         this.isFinished = false;
 

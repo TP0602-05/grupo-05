@@ -9,6 +9,10 @@ import org.json.simple.JSONObject;
 import java.util.ArrayList;
 import java.util.Vector;
 
+/*
+This class loads the configuration of the game from a json file
+and loads everything necessary to play.
+ */
 class GameBuilder {
 
     private String gameName;

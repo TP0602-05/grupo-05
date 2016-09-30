@@ -4,6 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+/*
+This is the view that is instantiated when the game is finished.
+ */
 class FinishGameListener extends Observer {
 
     @Override
