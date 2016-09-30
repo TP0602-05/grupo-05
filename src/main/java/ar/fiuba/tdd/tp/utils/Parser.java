@@ -66,7 +66,6 @@ public class Parser {
         }
 
         return list;
-
     }
 
     public Vector<Long> toVector(JSONArray array) {
