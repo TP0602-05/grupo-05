@@ -97,7 +97,7 @@ class Grid {
         return true;
     }
 
-    void setCell(Value value,int row, int col) {
+    boolean setCell(Value value,int row, int col) {
         if (checkValidations(value)) {
             ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
             if (checkNewValueInSets(mySets, value)) {
@@ -106,8 +106,10 @@ class Grid {
                 for (int position : mySets) {
                     this.sets.elementAt(position).addValue(value, prevValue);
                 }
+                return true;
             }
         }
+        return false;
     }
 
     boolean checkFinish() {
