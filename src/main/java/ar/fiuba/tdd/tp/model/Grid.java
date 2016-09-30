@@ -1,6 +1,7 @@
 package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.*;
+import ar.fiuba.tdd.tp.model.rule.MultiplicationRule;
 import ar.fiuba.tdd.tp.model.rule.NoRepeatRule;
 import ar.fiuba.tdd.tp.model.rule.Rule;
 import ar.fiuba.tdd.tp.model.rule.SummationRule;
@@ -148,6 +149,8 @@ class Grid {
                 rule = new NoRepeatRule();
             } else if (idRules == 2) {
                 rule = new SummationRule(values.elementAt(row).intValue());
+            } else if (idRules == 3) {
+                rule = new MultiplicationRule(values.elementAt(row).intValue());
             }
             set.loadRule(rule);
         }

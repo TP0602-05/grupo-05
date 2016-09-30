@@ -7,11 +7,11 @@ import java.util.ArrayList;
 /**
  * Checks if multiplication between the values within a set is a certain number.
  */
-class MultiplicationRule implements Rule {
+public class MultiplicationRule implements Rule {
 
     private int multiplicationValue;
 
-    MultiplicationRule(Integer multiplicationValue) {
+    public MultiplicationRule(Integer multiplicationValue) {
         this.multiplicationValue = multiplicationValue;
     }
 
