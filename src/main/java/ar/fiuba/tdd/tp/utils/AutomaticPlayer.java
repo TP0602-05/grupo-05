@@ -5,6 +5,7 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -14,22 +15,39 @@ import java.util.Vector;
 public class AutomaticPlayer {
     private Parser gamePlays;
     private JSONArray plays;
+    private JsonWriter writer;
+    private Vector<Integer> vnumber;
+    Vector<String> vboardStatus;
 
     public AutomaticPlayer(String path) throws Exception {
         this.gamePlays = new Parser(path);
         this.plays = this.gamePlays.getJSONarray("plays");
+
+        vnumber = new Vector<>(this.plays.size());
+        vboardStatus = new Vector<>(this.plays.size());
+
+        String pathout = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/output.json" ;
+        this.writer = new JsonWriter(pathout);
     }
 
     public void playGame() {
-        for (Object aPlay: this.plays) {
-            JSONObject aPlayJSON = (JSONObject) aPlay;
-            int number = ((Long)aPlayJSON.get("number")).intValue();
-            int value = ((Long)aPlayJSON.get("value")).intValue();
-            JSONArray position = this.gamePlays.getArrayAttribute(aPlayJSON,"position");
+        for (Object arrplayer: this.plays) {
+            JSONObject aplayJson = (JSONObject) arrplayer;
+            int number = ((Long)aplayJson.get("number")).intValue();
+            int value = Integer.parseInt((String)aplayJson.get("value"));
+            JSONArray position = this.gamePlays.getArrayAttribute(aplayJson,"position");
             Vector<Long> array = this.gamePlays.toVector(position);
             int row = ((Long) array.elementAt(0)).intValue();
             int col = ((Long) array.elementAt(1)).intValue();
-            Game.getInstance().setValue(row,col,new Value(value));
+            vnumber.add(number);
+            if (Game.getInstance().setValueInCompilationTime(row - 1,col - 1,new Value(value))) {
+                vboardStatus.add("valid");
+            } else {
+                vboardStatus.add("invalid");
+            }
         }
+        this.writer.writePlays(vnumber,vboardStatus);
+        this.writer.writeGrid();
+        this.writer.printToFile();
     }
 }
