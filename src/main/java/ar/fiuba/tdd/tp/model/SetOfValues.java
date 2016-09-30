@@ -6,6 +6,12 @@ import ar.fiuba.tdd.tp.model.rule.Rule;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/*
+Class created to manage the relation between the sets, the values, and the rules
+Every set, contains values.
+Every set, contains rules.
+Values and rules are loaded in runtime.
+*/
 class SetOfValues {
 
     private ArrayList<Value> values;
@@ -38,15 +44,17 @@ class SetOfValues {
             }
         }
     }
-
-    boolean canInsertValue(Value value) {
+    
+    boolean canInsertValue(Value value, Value prevValue) {
         // TODO: Recibir valor previo, quitarlo del set antes de chequear y volver a agregarlo al final.
         boolean result = true;
+        this.deleteValue(prevValue);
         for (Rule myRule: this.rules) {
             if ( ! myRule.check(this.values, value) ) {
                 result = false;
             }
         }
+        this.values.add(prevValue);
         return result;
     }
 

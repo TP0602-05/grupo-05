@@ -6,7 +6,9 @@ import java.awt.*;
 import java.util.Vector;
 import javax.swing.*;
 
-
+/*
+This kind of JButton is the one that has a crossline, and values in the sides.
+ */
 public class BlackCrossBox extends JButton {
 
     public BlackCrossBox(Vector<Value> values, int row, int col) {

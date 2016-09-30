@@ -10,6 +10,10 @@ import ar.fiuba.tdd.tp.model.validation.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
+/*
+This class contains everything related to the grid.
+It is managed by the class Game.
+ */
 class Grid {
     private Vector<Vector<Cell>> cells;
     private Vector<SetOfValues> sets;
@@ -80,9 +84,9 @@ class Grid {
         }
     }
 
-    private boolean checkNewValueInSets(ArrayList<Integer> mySets, Value newValue) {
+    private boolean checkNewValueInSets(ArrayList<Integer> mySets, Value newValue, Value prevValue) {
         for (int position: mySets) {
-            if ( !this.sets.elementAt(position).canInsertValue(newValue) ) {
+            if ( !this.sets.elementAt(position).canInsertValue(newValue, prevValue) ) {
                 return false;
             }
         }
@@ -98,17 +102,19 @@ class Grid {
         return true;
     }
 
-    void setCell(Value value,int row, int col) {
+    boolean setCell(Value value,int row, int col) {
         if (checkValidations(value)) {
             ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-            if (checkNewValueInSets(mySets, value)) {
+            if (checkNewValueInSets(mySets, value, (this.cells.elementAt(row).elementAt(col).getValue()))) {
                 Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
                 this.cells.elementAt(row).elementAt(col).setValue(value);
                 for (int position : mySets) {
                     this.sets.elementAt(position).addValue(value, prevValue);
                 }
+                return true;
             }
         }
+        return false;
     }
 
     boolean checkFinish() {
@@ -123,23 +129,6 @@ class Grid {
     Cell getCell(int row, int col) {
         return this.cells.elementAt(row).elementAt(col);
     }
-
-    /*
-    public void printSets() {
-        for (int row = 0; row < this.nsets; ++row) {
-            System.out.println("SET :" + row);
-            SetOfValues set = this.sets.elementAt(row);
-        }
-    }
-
-    public void printRuleSets() {
-        for (int row = 0; row < this.nsets; ++row) {
-            System.out.println("SET :" + row);
-            SetOfValues set = this.sets.elementAt(row);
-            set.printRules();
-        }
-    }
-    */
 
     void loadRulesSet(int idRules,  Vector<Long> values) {
         for (int row = 0; row < this.nsets; ++row) {

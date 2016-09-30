@@ -4,6 +4,9 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.util.ArrayList;
 
+/**
+ * Checks if values within a set are repeated or not.
+ */
 public class NoRepeatRule implements Rule{
 
     public boolean check(ArrayList<Value> values, Value value) {
