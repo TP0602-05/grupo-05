@@ -83,9 +83,9 @@ class Grid {
         }
     }
 
-    private boolean checkNewValueInSets(ArrayList<Integer> mySets, Value newValue) {
+    private boolean checkNewValueInSets(ArrayList<Integer> mySets, Value newValue, Value prevValue) {
         for (int position: mySets) {
-            if ( !this.sets.elementAt(position).canInsertValue(newValue) ) {
+            if ( !this.sets.elementAt(position).canInsertValue(newValue, prevValue) ) {
                 return false;
             }
         }
@@ -101,17 +101,19 @@ class Grid {
         return true;
     }
 
-    void setCell(Value value,int row, int col) {
+    boolean setCell(Value value,int row, int col) {
         if (checkValidations(value)) {
             ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-            if (checkNewValueInSets(mySets, value)) {
+            if (checkNewValueInSets(mySets, value, (this.cells.elementAt(row).elementAt(col).getValue()))) {
                 Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
                 this.cells.elementAt(row).elementAt(col).setValue(value);
                 for (int position : mySets) {
                     this.sets.elementAt(position).addValue(value, prevValue);
                 }
+                return true;
             }
         }
+        return false;
     }
 
     boolean checkFinish() {
