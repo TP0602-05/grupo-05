@@ -7,17 +7,16 @@ import org.json.simple.JSONStreamAware;
 import org.json.simple.JSONValue;
 
 import java.io.*;
-import java.util.LinkedHashMap;
-import java.util.Vector;
+import java.util.*;
 
 class JsonWriter {
-    private JSONObject obj;
+    private Map<String, Object> obj;
     private String path;
-    private JSONArray list;
+    private ArrayList<Map> list;
 
     void writePlays(Vector<Integer> number, Vector<String> boardStatus) {
         for (int i = 0; i < number.size(); i++) {
-            JSONObject object = new JSONObject();
+            Map<String, Object> object =  new HashMap<>();
             object.put("number",number.get(i));
             object.put("boardStatus",boardStatus.elementAt(i));
             list.add(object);
@@ -26,20 +25,17 @@ class JsonWriter {
     }
 
     void writeGrid() {
-        JSONObject oboard = new JSONObject();
+        Map<String, Object> oboard =  new HashMap<>();
         String boardState = Game.getInstance().checkFinish() ? "valid" : "invalid";
-        JSONArray valuesList = new JSONArray();
+        ArrayList<Map> valuesList = new ArrayList<>();
         for (int rows = 1; rows <= Game.getInstance().getRows(); rows++) {
             for (int cols = 1; cols <= Game.getInstance().getCols(); cols++) {
-                JSONObject opositionandvalue = new JSONObject();
-
-                JSONArray aposition = new JSONArray();
+                Map<String, Object> opositionandvalue =  new HashMap<>();
+                ArrayList<Integer> aposition = new ArrayList<>();
                 aposition.add(rows);
                 aposition.add(cols);
                 opositionandvalue.put("position", aposition);
-
                 opositionandvalue.put("value", Game.getInstance().getValue(rows - 1, cols - 1).getValue());
-
                 valuesList.add(opositionandvalue);
             }
         }
@@ -53,7 +49,7 @@ class JsonWriter {
             File file = new File(path);
             Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
             PrintWriter pw = new PrintWriter(writer);
-            pw.println(obj.toJSONString());
+            pw.println(((JSONObject) obj).toJSONString());
             pw.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,7 +58,7 @@ class JsonWriter {
 
     JsonWriter(String path) {
         this.path = path;
-        obj = new JSONObject();
-        list = new JSONArray();
+        obj = new HashMap<>();
+        list = new ArrayList<>();
     }
 }
