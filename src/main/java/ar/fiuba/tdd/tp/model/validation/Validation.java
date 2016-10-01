@@ -4,7 +4,7 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 
 /**
  * Checks if entered value verifies a certain condition,
- * specified by the classes implementing this interface
+ * specified by the classes implementing this interface.
  */
 
 public interface Validation {

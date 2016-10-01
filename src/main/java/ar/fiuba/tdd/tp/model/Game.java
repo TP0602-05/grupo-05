@@ -45,7 +45,7 @@ public class Game extends Observable {
         this.isFinished = this.grid.checkFinish();
     }
 
-    boolean checkFinish() {
+    public boolean checkFinish() {
         return this.isFinished;
     }
 
@@ -67,10 +67,17 @@ public class Game extends Observable {
         return this.grid.getCell(row,col);
     }
 
-    public void setValue(int row, int col, Value value) {
-        grid.setCell(value, row, col);
+    public boolean setValue(int row, int col, Value value) {
+        boolean worked = grid.setCell(value, row, col);
         this.update();
         this.notifyObservers();
+        return worked;
+    }
+
+    public boolean setValueInCompilationTime(int row, int col, Value value) {
+        boolean worked = grid.setCell(value, row, col);
+        this.update();
+        return worked;
     }
 
     public void deleteValue(int row, int col) {

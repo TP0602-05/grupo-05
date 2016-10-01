@@ -69,12 +69,22 @@ class GameBuilder {
     private Grid loadRulesGame(Grid grid) {
         JSONArray rules = this.gameParser.getJSONarray("rulesets");
         ArrayList rulesArray = this.gameParser.toArrayList(rules);
-        JSONArray sums = this.gameParser.getJSONarray("sum");
-        Vector<Long> sumArray = this.gameParser.toVector(sums);
-
+        Vector<Long> values = null ;
         for (Object arulesArray : rulesArray) {
             int idRule = ((Long) arulesArray).intValue();
-            grid.loadRulesSet(idRule, sumArray);
+            switch (idRule) {
+                case 2:
+                    JSONArray sums = this.gameParser.getJSONarray("sum");
+                    values = this.gameParser.toVector(sums);
+                    break;
+                case 3:
+                    JSONArray muls = this.gameParser.getJSONarray("mul");
+                    values = this.gameParser.toVector(muls);
+                    break;
+                default:
+                    break;
+            }
+            grid.loadRulesSet(idRule, values);
         }
         return grid;
     }

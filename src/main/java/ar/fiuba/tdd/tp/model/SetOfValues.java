@@ -44,14 +44,17 @@ class SetOfValues {
             }
         }
     }
-
-    boolean canInsertValue(Value value) {
+    
+    boolean canInsertValue(Value value, Value prevValue) {
+        // TODO: Recibir valor previo, quitarlo del set antes de chequear y volver a agregarlo al final.
         boolean result = true;
+        this.deleteValue(prevValue);
         for (Rule myRule: this.rules) {
             if ( ! myRule.check(this.values, value) ) {
                 result = false;
             }
         }
+        this.values.add(prevValue);
         return result;
     }
 

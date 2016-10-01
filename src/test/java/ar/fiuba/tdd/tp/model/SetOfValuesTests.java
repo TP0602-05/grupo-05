@@ -13,7 +13,7 @@ public class SetOfValuesTests {
     public void testEmptySetOfValuesAcceptValues() {
         SetOfValues mySet = new SetOfValues();
         Value myValue = new Value(3);
-        assertTrue(mySet.canInsertValue(myValue));
+        assertTrue("Test testEmptySetOfValuesAcceptValues OK",mySet.canInsertValue(myValue, new Value(2)));
     }
 
     @Test
@@ -35,14 +35,14 @@ public class SetOfValuesTests {
     public void testEmptySetOfValuesWithRuleSummationCanInsertCorrectValue() {
         SetOfValues mySet = new SetOfValues();
         mySet.insertRule(new SummationRule(15));
-        assertTrue(mySet.canInsertValue(new Value(3)));
+        assertTrue(mySet.canInsertValue(new Value(3), new Value(2)));
     }
 
     @Test
     public void testEmptySetOfValuesWithRuleSummationCantInsertIncorrectValue() {
         SetOfValues mySet = new SetOfValues();
         mySet.insertRule(new SummationRule(6));
-        assertFalse(mySet.canInsertValue(new Value(8)));
+        assertFalse(mySet.canInsertValue(new Value(8), new Value(2)));
     }
 
     @Test
@@ -52,9 +52,9 @@ public class SetOfValuesTests {
         Value myValue1 = new Value(10);
         Value myValue2 = new Value(3);
         boolean result = true;
-        if (mySet.canInsertValue(myValue1)) {
+        if (mySet.canInsertValue(myValue1, new Value(2))) {
             mySet.insertValue(myValue1);
-            if (mySet.canInsertValue(myValue2)) {
+            if (mySet.canInsertValue(myValue2, new Value(2))) {
                 mySet.insertValue(myValue2);
             } else {
                 result = false;
@@ -70,22 +70,22 @@ public class SetOfValuesTests {
         SetOfValues mySet = new SetOfValues();
         mySet.insertRule(new SummationRule(15));
         mySet.insertValue(new Value(10));
-        assertFalse(mySet.canInsertValue(new Value(8)));
+        assertFalse(mySet.canInsertValue(new Value(8), new Value(2)));
     }
 
     @Test
     public void testEmptySetOfValuesWithNoRepeatRuleCanInsertValue() {
         SetOfValues mySet = new SetOfValues();
         mySet.insertRule(new NoRepeatRule());
-        assertTrue(mySet.canInsertValue(new Value(3)));
+        assertTrue(mySet.canInsertValue(new Value(3), new Value(2)));
     }
 
     @Test
     public void testSetOfValuesWithNoRepeatRuleCanInsertValueNoRepeated() {
         SetOfValues mySet = new SetOfValues();
         mySet.insertRule(new NoRepeatRule());
-        mySet.canInsertValue(new Value(7));
-        assertTrue(mySet.canInsertValue(new Value(3)));
+        mySet.insertValue(new Value(7));
+        assertTrue(mySet.canInsertValue(new Value(3), new Value(2)));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class SetOfValuesTests {
         SetOfValues mySet = new SetOfValues();
         mySet.insertRule(new NoRepeatRule());
         mySet.insertValue(new Value(7));
-        assertFalse(mySet.canInsertValue(new Value(7)));
+        assertFalse(mySet.canInsertValue(new Value(7), new Value(2)));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class SetOfValuesTests {
         mySet.insertRule(new NoRepeatRule());
         mySet.insertValue(new Value(7));
         mySet.deleteValue(new Value(7));
-        assertTrue(mySet.canInsertValue(new Value(7)));
+        assertTrue(mySet.canInsertValue(new Value(7), new Value(2)));
     }
 
     @Test
@@ -114,6 +114,6 @@ public class SetOfValuesTests {
         mySet.insertValue(new Value(5));
         mySet.insertValue(new Value(4));
         mySet.deleteValue(new Value(5));
-        assertTrue(mySet.canInsertValue(new Value(5)));
+        assertTrue(mySet.canInsertValue(new Value(5), new Value(2)));
     }
 }

@@ -3,7 +3,7 @@ package ar.fiuba.tdd.tp.model.validation;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
 /**
- * Validate if entered value is within the range [x,y]
+ * Validate if entered value is within the range [x,y].
  **/
 
 public class XtoYNumberValidation implements Validation {

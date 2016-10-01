@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 /**
- * This class is used to parse external JSON files and extract its values
+ * This class is used to parse external JSON files and extract its values.
  */
 
 public class Parser {
@@ -66,7 +66,6 @@ public class Parser {
         }
 
         return list;
-
     }
 
     public Vector<Long> toVector(JSONArray array) {
