@@ -13,7 +13,7 @@ public class SetOfValuesTests {
     public void testEmptySetOfValuesAcceptValues() {
         SetOfValues mySet = new SetOfValues();
         Value myValue = new Value(3);
-        assertTrue(mySet.canInsertValue(myValue, new Value(2)));
+        assertTrue("Test testEmptySetOfValuesAcceptValues OK",mySet.canInsertValue(myValue, new Value(2)));
     }
 
     @Test

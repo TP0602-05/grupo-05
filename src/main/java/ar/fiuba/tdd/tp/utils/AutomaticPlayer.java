@@ -37,8 +37,8 @@ public class AutomaticPlayer {
             int value = Integer.parseInt((String)aplayJson.get("value"));
             JSONArray position = this.gamePlays.getArrayAttribute(aplayJson,"position");
             Vector<Long> array = this.gamePlays.toVector(position);
-            int row = ((Long) array.elementAt(0)).intValue();
-            int col = ((Long) array.elementAt(1)).intValue();
+            int row = array.elementAt(0).intValue();
+            int col = array.elementAt(1).intValue();
             vnumber.add(number);
             if (Game.getInstance().setValueInCompilationTime(row - 1,col - 1,new Value(value))) {
                 vboardStatus.add("valid");
