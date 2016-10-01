@@ -49,7 +49,7 @@ class JsonWriter {
             File file = new File(path);
             Writer writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
             PrintWriter pw = new PrintWriter(writer);
-            pw.println(((JSONObject) obj).toJSONString());
+            JSONValue.writeJSONString(obj, pw);
             pw.close();
         } catch (IOException e) {
             e.printStackTrace();
