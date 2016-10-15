@@ -1,0 +1,209 @@
+{ "nsets":12,
+  "rulesets":[],
+  "sum":[2,1,3,3,0,3,3,0,3,3,1,1],
+  "mul":[],
+  "rows":5,
+  "cols":5,
+  "cells":[
+    {
+      "row":1,
+      "col":1,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[1]
+    },
+    {
+      "row":1,
+      "col":2,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[1,2,3]
+    },
+    {
+      "row":1,
+      "col":3,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[2,3,4]
+    },
+    {
+      "row":1,
+      "col":4,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[4]
+    },
+    {
+      "row":1,
+      "col":5,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[5]
+    },
+    {
+      "row":2,
+      "col":1,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[]
+    },
+    {
+      "row":2,
+      "col":2,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[3]
+    },
+    {
+      "row":2,
+      "col":3,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[3,4]
+    },
+    {
+      "row":2,
+      "col":4,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[4]
+    },
+    {
+      "row":2,
+      "col":5,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[5]
+    },
+    {
+      "row":3,
+      "col":1,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[]
+    },
+    {
+      "row":3,
+      "col":2,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[6]
+    },
+    {
+      "row":3,
+      "col":3,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[6,7]
+    },
+    {
+      "row":3,
+      "col":4,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[7]
+    },
+    {
+      "row":3,
+      "col":5,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[]
+    },
+    {
+      "row":4,
+      "col":1,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[8]
+    },
+    {
+      "row":4,
+      "col":2,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[6]
+    },
+    {
+      "row":4,
+      "col":3,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[6,7,9]
+    },
+    {
+      "row":4,
+      "col":4,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[7,9,10]
+    },
+    {
+      "row":4,
+      "col":5,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[10]
+    },
+    {
+      "row":5,
+      "col":1,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[8]
+    },
+    {
+      "row":5,
+      "col":2,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[]
+    },
+    {
+      "row":5,
+      "col":3,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[9]
+    },
+    {
+      "row":5,
+      "col":4,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[9,10,11]
+    },
+    {
+      "row":5,
+      "col":5,
+      "value":[],
+      "type": 4,
+      "borders": [0,0,0,0],
+      "sets":[10,11,12]
+    }
+  ]
+}
