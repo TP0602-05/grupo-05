@@ -24,6 +24,47 @@ public class Position {
                 && (otherPos.getYpos() > (this.ypos - 2)));
     }
 
+    public Boolean isUp(Position otherPos) {
+        return  ((otherPos.getXpos() == this.xpos)
+                && (otherPos.getYpos() == (this.ypos + 1)));
+    }
+
+    public Boolean isDown(Position otherPos) {
+        return  ((otherPos.getXpos() == this.xpos)
+                && (otherPos.getYpos() == (this.ypos - 1)));
+    }
+
+    public Boolean isRight(Position otherPos) {
+        return  ((otherPos.getXpos() == (this.xpos + 1))
+                && (otherPos.getYpos() == this.ypos));
+    }
+
+    public Boolean isLeft(Position otherPos) {
+        return  ((otherPos.getXpos() == (this.xpos - 1))
+                && (otherPos.getYpos() == this.ypos));
+    }
+
+    public Boolean isUpRight(Position otherPos) {
+        return  ((otherPos.getXpos() == (this.xpos + 1))
+                && (otherPos.getYpos() == (this.ypos + 1)));
+    }
+
+    public Boolean isDownRight(Position otherPos) {
+        return  ((otherPos.getXpos() == (this.xpos + 1))
+                && (otherPos.getYpos() == (this.ypos - 1)));
+    }
+
+    public Boolean isDownLeft(Position otherPos) {
+        return  ((otherPos.getXpos() == (this.xpos - 1))
+                && (otherPos.getYpos() == (this.ypos - 1)));
+    }
+
+    public Boolean isUpLeft(Position otherPos) {
+        return  ((otherPos.getXpos() == (this.xpos - 1))
+                && (otherPos.getYpos() == (this.ypos + 1)));
+    }
+
+
     public int getXpos() {
         return xpos;
     }
