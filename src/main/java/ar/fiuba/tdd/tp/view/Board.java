@@ -43,16 +43,7 @@ public class Board extends JPanel {
     private JButton getCellType(int row, int col) {
         Cell cell = Game.getInstance().getCell(row,col);
         JButton cellPane;
-        if (cell.getAmountOfValues() == 1) {
-            cellPane = new InputButton(Game.getInstance().getValue(row,col), row, col);
-        } else {
-            Vector<Value> valuesAux = cell.getValues();
-            if ((valuesAux.elementAt(0).getValue() == 0) && (valuesAux.elementAt(1).getValue() == 0)) {
-                cellPane = new BlackBox();
-            } else {
-                cellPane = new BlackCrossBox(cell.getValues(), row, col);
-            }
-        }
+        cellPane = cell.getView(row,col);
         return cellPane;
     }
 
@@ -71,4 +62,5 @@ public class Board extends JPanel {
         }
         return border;
     }
+
 }

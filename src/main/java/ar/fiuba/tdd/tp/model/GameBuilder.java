@@ -1,7 +1,6 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.model.cell.Cell;
-import ar.fiuba.tdd.tp.model.cell.Value;
+import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.utils.Parser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -43,26 +42,37 @@ class GameBuilder {
             int col = ((Long)cellJson.get("col")).intValue();
             ArrayList val = (JSONArray) cellJson.get("value");
             ArrayList sets = (JSONArray) cellJson.get("sets");
-            this. internalProcessOfValue(grid, val, sets, col, row);
+            int type = ((Long)cellJson.get("type")).intValue();
+            String blocked = (String)cellJson.get("isBlocked");
+            this. internalProcessOfValue(grid, type, blocked, val, sets, col, row);
         }
         grid = loadRulesGame(grid);
         return grid;
     }
 
-    private void internalProcessOfValue(Grid grid, ArrayList val, ArrayList sets, int col, int row) {
-        if (val.size() == 1) {
-            int intValue = ((Long) val.get(0)).intValue();
-            if (intValue == 0) {
-                grid.addCell(new Cell(), row - 1, col - 1, sets);
-            } else {
-                grid.addCell(new Cell(new Value(intValue)), row - 1, col - 1, sets);
-            }
-        } else {
-            Vector<Value> vecAux = new Vector<>(val.size());
-            for (Object values : val) {
-                vecAux.add(new Value(((Long) values).intValue()));
-            }
-            grid.addCell(new Cell(vecAux),row - 1, col - 1, sets);
+    private void internalProcessOfValue(Grid grid, int type, String blocked, ArrayList val, ArrayList sets, int col, int row) {
+
+        switch (type) {
+            case 1:
+                int intValue = ((Long) val.get(0)).intValue();
+                boolean isBlocked = blocked.equals("true");
+                grid.addCell(new CellNumericValues(new Value(intValue), isBlocked), row - 1, col -1, sets);
+                break;
+            case 2:
+                Vector<Value> vecAux = new Vector<>(val.size());
+                for (Object values : val) {
+                    vecAux.add(new Value(((Long) values).intValue()));
+                }
+                grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets);
+                break;
+            case 3:
+                grid.addCell(new CellBlack(),row,col,sets);
+                break;
+            case 4:
+                grid.addCell(new CellFlagsAndNumbers(),row,col,sets);
+                break;
+            default:
+                break;
         }
     }
 
