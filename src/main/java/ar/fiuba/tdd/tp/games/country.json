@@ -11,7 +11,8 @@
       "row":1,
       "col":1,
       "value":[4],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,0],
       "sets":[1,18]
     },
@@ -19,7 +20,8 @@
       "row":1,
       "col":2,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,0,1],
       "sets":[1,18]
     },
@@ -27,7 +29,8 @@
       "row":1,
       "col":3,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,1,0],
       "sets":[2,18]
     },
@@ -35,7 +38,8 @@
       "row":1,
       "col":4,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,1,0],
       "sets":[2,18]
     },
@@ -43,7 +47,8 @@
       "row":1,
       "col":5,
       "value":[0],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,0,0,0],
       "sets":[2,18]
     },
@@ -51,7 +56,8 @@
       "row":1,
       "col":6,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,1,1],
       "sets":[2,18]
     },
@@ -59,7 +65,8 @@
       "row":1,
       "col":7,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,1,1],
       "sets":[3,18]
     },
@@ -67,7 +74,8 @@
       "row":2,
       "col":1,
       "value":[3],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,0],
       "sets":[1,18]
     },
@@ -75,7 +83,8 @@
       "row":2,
       "col":2,
       "value":[3],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,0,1,1],
       "sets":[1,18]
     },
@@ -83,7 +92,8 @@
       "row":2,
       "col":3,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,1,0],
       "sets":[6,18]
     },
@@ -91,7 +101,8 @@
       "row":2,
       "col":4,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,0,1],
       "sets":[6,18]
     },
@@ -99,7 +110,8 @@
       "row":2,
       "col":5,
       "value":[1],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,0,1],
       "sets":[2,18]
     },
@@ -107,7 +119,8 @@
       "row":2,
       "col":6,
       "value":[1],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,1],
       "sets":[7,18]
     },
@@ -115,7 +128,8 @@
       "row":2,
       "col":7,
       "value":[3],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,1],
       "sets":[8,18]
     },
@@ -123,7 +137,8 @@
       "row":3,
       "col":1,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,1,1],
       "sets":[4,18]
     },
@@ -131,7 +146,8 @@
       "row":3,
       "col":2,
       "value":[2],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,0],
       "sets":[5,18]
     },
@@ -139,7 +155,8 @@
       "row":3,
       "col":3,
       "value":[1],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,0,1],
       "sets":[5,18]
     },
@@ -147,7 +164,8 @@
       "row":3,
       "col":4,
       "value":[2],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,1],
       "sets":[6,18]
     },
@@ -155,7 +173,8 @@
       "row":3,
       "col":5,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,1],
       "sets":[2,18]
     },
@@ -163,7 +182,8 @@
       "row":3,
       "col":6,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,1],
       "sets":[7,18]
     },
@@ -171,7 +191,8 @@
       "row":3,
       "col":7,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,0,1],
       "sets":[8,18]
     },
@@ -179,7 +200,8 @@
       "row":4,
       "col":1,
       "value":[1],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,1],
       "sets":[9,18]
     },
@@ -187,7 +209,8 @@
       "row":4,
       "col":2,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,0],
       "sets":[5,18]
     },
@@ -195,7 +218,8 @@
       "row":4,
       "col":3,
       "value":[2],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,0,1,1],
       "sets":[5,18]
     },
@@ -203,7 +227,8 @@
       "row":4,
       "col":4,
       "value":[0],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,1,1],
       "sets":[10,18]
     },
@@ -211,7 +236,8 @@
       "row":4,
       "col":5,
       "value":[5],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,0],
       "sets":[11,18]
     },
@@ -219,7 +245,8 @@
       "row":4,
       "col":6,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,0,1],
       "sets":[11,18]
     },
@@ -227,7 +254,8 @@
       "row":4,
       "col":7,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,1],
       "sets":[8,18]
     },
@@ -235,7 +263,8 @@
       "row":5,
       "col":1,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,0,1],
       "sets":[9,18]
     },
@@ -243,7 +272,8 @@
       "row":5,
       "col":2,
       "value":[1],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,1],
       "sets":[12,18]
     },
@@ -251,7 +281,8 @@
       "row":5,
       "col":3,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,1],
       "sets":[13,18]
     },
@@ -259,7 +290,8 @@
       "row":5,
       "col":4,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,1],
       "sets":[14,18]
     },
@@ -267,7 +299,8 @@
       "row":5,
       "col":5,
       "value":[1],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,0],
       "sets":[11,18]
     },
@@ -275,7 +308,8 @@
       "row":5,
       "col":6,
       "value":[1],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,0,1,1],
       "sets":[11,18]
     },
@@ -283,14 +317,16 @@
       "row":5,
       "col":7,
       "value":[],
-      "type": 4,"borders": [1,1,1,1],
+      "type":4,
+      "isBlocked": "false","borders": [1,1,1,1],
       "sets":[15,18]
     },
     {
       "row":6,
       "col":1,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,1],
       "sets":[9,18]
     },
@@ -298,7 +334,8 @@
       "row":6,
       "col":2,
       "value":[2],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,1],
       "sets":[12,18]
     },
@@ -306,7 +343,8 @@
       "row":6,
       "col":3,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,0,1],
       "sets":[13,18]
     },
@@ -314,7 +352,8 @@
       "row":6,
       "col":4,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,0],
       "sets":[14,18]
     },
@@ -322,7 +361,8 @@
       "row":6,
       "col":5,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,1,1],
       "sets":[14,18]
     },
@@ -330,7 +370,8 @@
       "row":6,
       "col":6,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,0,0],
       "sets":[16,18]
     },
@@ -338,7 +379,8 @@
       "row":6,
       "col":7,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,0,1],
       "sets":[16,18]
     },
@@ -346,7 +388,8 @@
       "row":7,
       "col":1,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,1,1],
       "sets":[17,18]
     },
@@ -354,7 +397,8 @@
       "row":7,
       "col":2,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,1,1,0],
       "sets":[13,18]
     },
@@ -362,7 +406,8 @@
       "row":7,
       "col":3,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,0,1,0],
       "sets":[13,18]
     },
@@ -370,7 +415,8 @@
       "row":7,
       "col":4,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,1,0],
       "sets":[13,18]
     },
@@ -378,7 +424,8 @@
       "row":7,
       "col":5,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [1,0,1,1],
       "sets":[13,18]
     },
@@ -386,7 +433,8 @@
       "row":7,
       "col":6,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,1,1,0],
       "sets":[16,18]
     },
@@ -394,7 +442,8 @@
       "row":7,
       "col":7,
       "value":[],
-      "type": 4,
+      "type":4,
+      "isBlocked": "false",
       "borders": [0,0,1,1],
       "sets":[16,18]
     }
