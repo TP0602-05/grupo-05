@@ -15,8 +15,7 @@ public class InputButton extends JButton {
     public InputButton(Value value, int row, int col) {
         addMouseListener(new MouseController(row,col));
 
-        Value valueAux = Game.getInstance().getValue(row,col);
-        if (valueAux.getValue() != 0) {
+        if (value.getValue() != 0) {
             setText(value.getValue().toString());
         }
     }

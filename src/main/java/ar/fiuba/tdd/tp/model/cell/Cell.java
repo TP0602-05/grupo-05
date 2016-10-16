@@ -1,37 +1,20 @@
 package ar.fiuba.tdd.tp.model.cell;
 
 import java.util.Vector;
+import javax.swing.*;
 
 /**
  * Holds an array of values and knows whether it can be blocked or not.
  */
-public class Cell {
+public abstract class Cell {
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
     private boolean blocked;
-    private Vector<Value> value;
 
-    public Cell() {
-        value = new Vector<>(1);
-        this.blocked = false;
-        this.value.addElement(new Value(0));
-    }
-
-    public Cell(Value value) {
-        this.value = new Vector<>(1);
-        this.blocked = true;
-        this.value.addElement(value);
-    }
-
-    public Cell(Vector<Value> values) {
-        this.blocked = true;
-        this.value = values;
-    }
-
-    public int getAmountOfValues() {
-        return this.value.size();
-    }
-
-    public boolean isBlocked() {
-        return this.blocked;
+    public void setValue(Vector<Value> value) {
+        this.value = value;
     }
 
     public void setValue(Value value) {
@@ -39,6 +22,17 @@ public class Cell {
             this.value.setElementAt(value,0);
         }
     }
+
+    private Vector<Value> value;
+
+    public Cell() {}
+
+    public abstract JButton getView(int row, int col);
+
+    public boolean isBlocked() {
+        return this.blocked;
+    }
+
 
     public Value getValue() {
         return this.value.elementAt(0);
