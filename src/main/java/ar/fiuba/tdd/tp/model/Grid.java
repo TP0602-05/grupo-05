@@ -70,7 +70,7 @@ class Grid {
         this.cells.elementAt(row).insertElementAt(cell, col);
         for (Object position:sets) {
             int pos = ((Long) position).intValue();
-            this.sets.elementAt(pos - 1).insertValue( cell.getValue());
+            this.sets.elementAt(pos - 1).insertValue( new PositionValueDuo(cell.getValue(), new Position(0,0)));
             this.map.elementAt(row).elementAt(col).add(pos - 1);
         }
     }
@@ -80,13 +80,17 @@ class Grid {
         Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
         this.cells.elementAt(row).elementAt(col).setValue(new Value(0));
         for (int position : mySets) {
-            this.sets.elementAt(position).addValue(new Value(0), prevValue);
+            PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(0,0));
+            this.sets.elementAt(position).addValue(new PositionValueDuo(new Value(0), new Position(0,0)), prevPValue);
         }
     }
 
     private boolean checkNewValueInSets(ArrayList<Integer> mySets, Value newValue, Value prevValue) {
         for (int position: mySets) {
-            if ( !this.sets.elementAt(position).canInsertValue(newValue, prevValue) ) {
+            // TODO Correct parameter from Value to PositionValueDuo
+            PositionValueDuo newPValue = new PositionValueDuo(newValue, new Position(0,0));
+            PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(0,0));
+            if ( !this.sets.elementAt(position).canInsertValue(newPValue, prevPValue) ) {
                 return false;
             }
         }
@@ -109,7 +113,9 @@ class Grid {
                 Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
                 this.cells.elementAt(row).elementAt(col).setValue(value);
                 for (int position : mySets) {
-                    this.sets.elementAt(position).addValue(value, prevValue);
+                    PositionValueDuo pvalue = new PositionValueDuo(value, new Position(0,0));
+                    PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(0,0));
+                    this.sets.elementAt(position).addValue(pvalue, prevPValue);
                 }
                 return true;
             }

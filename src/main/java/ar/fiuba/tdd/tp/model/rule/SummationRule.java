@@ -1,5 +1,6 @@
 package ar.fiuba.tdd.tp.model.rule;
 
+import ar.fiuba.tdd.tp.model.cell.PositionValueDuo;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.util.ArrayList;
@@ -15,7 +16,29 @@ public class SummationRule implements Rule {
         this.summationValue = summationValue;
     }
 
-    private Integer calculate(ArrayList<Value> values) {
+    public boolean check(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
+        Integer summation = this.calculate(values) + value.getValue().getValue();
+        return (summation <= this.summationValue);
+    }
+
+
+    public boolean checkFinal(ArrayList<PositionValueDuo> values) {
+
+        Integer summation = this.calculate(values);
+        return summation.equals(this.summationValue);
+    }
+
+
+    private Integer calculate(ArrayList<PositionValueDuo> values) {
+        Integer summation = 0;
+        for (PositionValueDuo myValue: values ) {
+            summation += myValue.getValue().getValue();
+        }
+        return summation;
+    }
+
+
+    /*private Integer calculate(ArrayList<Value> values) {
         Integer summation = 0;
         for (Value myValue: values ) {
             summation += myValue.getValue();
@@ -32,7 +55,7 @@ public class SummationRule implements Rule {
         Integer summation = this.calculate(values);
         return summation.equals(this.summationValue);
     }
-
+    */
     public void printRule() {
         System.out.println("SUM:" + this.summationValue);
     }

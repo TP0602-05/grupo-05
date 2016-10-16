@@ -1,5 +1,6 @@
 package ar.fiuba.tdd.tp.model.rule;
 
+import ar.fiuba.tdd.tp.model.cell.PositionValueDuo;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.util.ArrayList;
@@ -9,11 +10,12 @@ import java.util.ArrayList;
  */
 public class LineContinuityRule implements Rule {
 
-    public boolean check(ArrayList<Value> values, Value value) {
+    public boolean check(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
         return true;
     }
 
-    public boolean checkFinal(ArrayList<Value> values) {
+
+    public boolean checkFinal(ArrayList<PositionValueDuo> values) {
         return true;
     }
 
