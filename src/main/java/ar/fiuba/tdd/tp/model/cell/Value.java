@@ -37,7 +37,7 @@ public class Value {
         return this.value;
     }
 
-    private Vector<Boolean> getDots() {
+    public Vector<Boolean> getDots() {
         return this.dots;
     }
 
