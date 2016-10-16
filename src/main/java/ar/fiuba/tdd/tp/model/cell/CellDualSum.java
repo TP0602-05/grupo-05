@@ -3,8 +3,8 @@ package ar.fiuba.tdd.tp.model.cell;
 import ar.fiuba.tdd.tp.view.BlackBox;
 import ar.fiuba.tdd.tp.view.BlackCrossBox;
 
-import javax.swing.*;
 import java.util.Vector;
+import javax.swing.*;
 
 /*
  Type #2 in json

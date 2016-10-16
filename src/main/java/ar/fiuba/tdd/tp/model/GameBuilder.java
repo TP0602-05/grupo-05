@@ -44,7 +44,7 @@ class GameBuilder {
             ArrayList sets = (JSONArray) cellJson.get("sets");
             int type = ((Long)cellJson.get("type")).intValue();
             String blocked = (String)cellJson.get("isBlocked");
-            this. internalProcessOfValue(grid, type, blocked, val, sets, col, row);
+            this.internalProcessOfValue(grid, type, blocked, val, sets, col, row);
         }
         grid = loadRulesGame(grid);
         return grid;
@@ -56,7 +56,7 @@ class GameBuilder {
             case 1:
                 int intValue = ((Long) val.get(0)).intValue();
                 boolean isBlocked = blocked.equals("true");
-                grid.addCell(new CellNumericValues(new Value(intValue), isBlocked), row - 1, col -1, sets);
+                grid.addCell(new CellNumericValues(new Value(intValue), isBlocked), row - 1, col - 1, sets);
                 break;
             case 2:
                 Vector<Value> vecAux = new Vector<>(val.size());

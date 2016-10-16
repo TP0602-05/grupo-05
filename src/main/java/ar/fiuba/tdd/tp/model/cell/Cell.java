@@ -1,7 +1,7 @@
 package ar.fiuba.tdd.tp.model.cell;
 
-import javax.swing.*;
 import java.util.Vector;
+import javax.swing.*;
 
 /**
  * Holds an array of values and knows whether it can be blocked or not.
@@ -17,6 +17,12 @@ public abstract class Cell {
         this.value = value;
     }
 
+    public void setValue(Value value) {
+        if ( ! this.isBlocked() ) {
+            this.value.setElementAt(value,0);
+        }
+    }
+
     private Vector<Value> value;
 
     public Cell() {}
@@ -27,11 +33,6 @@ public abstract class Cell {
         return this.blocked;
     }
 
-    public void setValue(Value value) {
-        if ( ! this.isBlocked() ) {
-            this.value.setElementAt(value,0);
-        }
-    }
 
     public Value getValue() {
         return this.value.elementAt(0);

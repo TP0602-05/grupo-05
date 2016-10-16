@@ -2,8 +2,8 @@ package ar.fiuba.tdd.tp.model.cell;
 
 import ar.fiuba.tdd.tp.view.InputButton;
 
-import javax.swing.*;
 import java.util.Vector;
+import javax.swing.*;
 
 /*
  Type #1 in json
