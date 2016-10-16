@@ -10,386 +10,514 @@
       "row":1,
       "col":1,
       "value":[0,0],
+      "isBlocked": "true",
+      "type": 3,
       "sets":[]
     },
     {
       "row":1,
       "col":2,
       "value":[0,23],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":1,
       "col":3,
       "value":[0,30],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":1,
       "col":4,
       "value":[0,0],
+      "isBlocked": "true",
+      "type": 3,
       "sets":[]
     },
     {
       "row":1,
       "col":5,
       "value":[0,0],
+      "isBlocked": "true",
+      "type": 3,
       "sets":[]
     },
     {
       "row":1,
       "col":6,
       "value":[0,27],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":1,
       "col":7,
       "value":[0,12],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":1,
       "col":8,
       "value":[0,16],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":2,
       "col":1,
       "value":[16,0],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":2,
       "col":2,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[1,13]
     },
     {
       "row":2,
       "col":3,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[1,15]
     },
     {
       "row":2,
       "col":4,
       "value":[0,0],
+      "isBlocked": "true",
+      "type": 3,
       "sets":[]
     },
     {
       "row":2,
       "col":5,
       "value":[24,17],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":2,
       "col":6,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[2,20]
     },
     {
       "row":2,
       "col":7,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[2,21]
     },
     {
       "row":2,
       "col":8,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[2,23]
     },
     {
       "row":3,
       "col":1,
       "value":[17,0],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":3,
       "col":2,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[3,13]
     },
     {
       "row":3,
       "col":3,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[3,15]
     },
     {
       "row":3,
       "col":4,
       "value":[29,15],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":3,
       "col":5,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[4,18]
     },
     {
       "row":3,
       "col":6,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[4,20]
     },
     {
       "row":3,
       "col":7,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[4,21]
     },
     {
       "row":3,
       "col":8,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[4,23]
     },
     {
       "row":4,
       "col":1,
       "value":[35,0],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":4,
       "col":2,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[5,13]
     },
     {
       "row":4,
       "col":3,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[5,15]
     },
     {
       "row":4,
       "col":4,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[5,17]
     },
     {
       "row":4,
       "col":5,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[5,18]
     },
     {
       "row":4,
       "col":6,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[5,20]
     },
     {
       "row":4,
       "col":7,
       "value":[0,12],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":4,
       "col":8,
       "value":[0,0],
+      "isBlocked": "true",
+      "type": 3,
       "sets":[]
     },
     {
       "row":5,
       "col":1,
       "value":[0,0],
+      "isBlocked": "true",
+      "type": 3,
       "sets":[]
     },
     {
       "row":5,
       "col":2,
       "value":[7,0],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":5,
       "col":3,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[6,15]
     },
     {
       "row":5,
       "col":4,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[6,17]
     },
     {
       "row":5,
       "col":5,
       "value":[8,7],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":5,
       "col":6,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[7,20]
     },
     {
       "row":5,
       "col":7,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[7,22]
     },
     {
       "row":5,
       "col":8,
       "value":[0,7],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":6,
       "col":1,
       "value":[0,0],
+      "isBlocked": "true",
+      "type": 3,
       "sets":[]
     },
     {
       "row":6,
       "col":2,
       "value":[0,11],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":6,
       "col":3,
       "value":[16,10],
+      "isBlocked": "true",
+      "type": 2,
       "sets":[]
     },
     {
       "row":6,
       "col":4,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[8,17]
     },
     {
       "row":6,
       "col":5,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[8,19]
     },
     {
       "row":6,
       "col":6,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[8,20]
     },
     {
       "row":6,
       "col":7,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[8,22]
     },
     {
       "row":6,
       "col":8,
       "value":[0],
+      "isBlocked": "false",
+      "type": 1,
       "sets":[8,24]
     },
-     {
-     "row":7,
-     "col":1,
-     "value":[21,0],
-     "sets":[]
-   },
-   {
-     "row":7,
-     "col":2,
-     "value":[0],
-     "sets":[9,14]
-   },
-   {
-     "row":7,
-     "col":3,
-     "value":[0],
-     "sets":[9,16]
-   },
-   {
-     "row":7,
-     "col":4,
-     "value":[0],
-     "sets":[9,17]
-   },
-   {
-     "row":7,
-     "col":5,
-     "value":[0],
-     "sets":[9,19]
-   },
-   {
-     "row":7,
-     "col":6,
-     "value":[5,0],
-     "sets":[]
-   },
-   {
-     "row":7,
-     "col":7,
-     "value":[0],
-     "sets":[10,22]
-   },
-   {
-     "row":7,
-     "col":8,
-     "value":[0],
-     "sets":[10,24]
-   },
-   {
-     "row":8,
-     "col":1,
-     "value":[6,0],
-     "sets":[]
-   },
-   {
-     "row":8,
-     "col":2,
-     "value":[0],
-     "sets":[11,14]
-   },
-   {
-     "row":8,
-     "col":3,
-     "value":[0],
-     "sets":[11,16]
-   },
-   {
-     "row":8,
-     "col":4,
-     "value":[0],
-     "sets":[11,17]
-   },
-   {
-     "row":8,
-     "col":5,
-     "value":[0,0],
-     "sets":[]
-   },
-   {
-     "row":8,
-     "col":6,
-     "value":[3,0],
-     "sets":[]
-   },
-   {
-     "row":8,
-     "col":7,
-     "value":[0],
-     "sets":[12,22]
-   },
-   {
-     "row":8,
-     "col":8,
-     "value":[0],
-     "sets":[12,24]
-   }
-  
+    {
+      "row":7,
+      "col":1,
+      "value":[21,0],
+      "isBlocked": "true",
+      "type": 2,
+      "sets":[]
+    },
+    {
+      "row":7,
+      "col":2,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[9,14]
+    },
+    {
+      "row":7,
+      "col":3,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[9,16]
+    },
+    {
+      "row":7,
+      "col":4,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[9,17]
+    },
+    {
+      "row":7,
+      "col":5,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[9,19]
+    },
+    {
+      "row":7,
+      "col":6,
+      "value":[5,0],
+      "isBlocked": "true",
+      "type": 2,
+      "sets":[]
+    },
+    {
+      "row":7,
+      "col":7,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[10,22]
+    },
+    {
+      "row":7,
+      "col":8,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[10,24]
+    },
+    {
+      "row":8,
+      "col":1,
+      "value":[6,0],
+      "isBlocked": "true",
+      "type": 2,
+      "sets":[]
+    },
+    {
+      "row":8,
+      "col":2,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[11,14]
+    },
+    {
+      "row":8,
+      "col":3,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[11,16]
+    },
+    {
+      "row":8,
+      "col":4,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[11,17]
+    },
+    {
+      "row":8,
+      "col":5,
+      "value":[0,0],
+      "isBlocked": "true",
+      "type": 3,
+      "sets":[]
+    },
+    {
+      "row":8,
+      "col":6,
+      "value":[3,0],
+      "isBlocked": "true",
+      "type": 2,
+      "sets":[]
+    },
+    {
+      "row":8,
+      "col":7,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[12,22]
+    },
+    {
+      "row":8,
+      "col":8,
+      "value":[0],
+      "isBlocked": "false",
+      "type": 1,
+      "sets":[12,24]
+    }
+
   ]
 }
