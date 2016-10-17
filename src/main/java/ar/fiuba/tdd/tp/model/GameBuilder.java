@@ -66,10 +66,10 @@ class GameBuilder {
                 grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets);
                 break;
             case 3:
-                grid.addCell(new CellBlack(),row,col,sets);
+                grid.addCell(new CellBlack(),row -1 ,col - 1,sets);
                 break;
             case 4:
-                grid.addCell(new CellFlagsAndNumbers(),row,col,sets);
+                grid.addCell(new CellFlagsAndNumbers(),row - 1,col - 1,sets);
                 break;
             default:
                 break;
