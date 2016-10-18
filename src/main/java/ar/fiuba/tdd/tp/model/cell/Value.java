@@ -12,7 +12,7 @@ public class Value {
     private static final int NUM_DOTS = 9;
 
     private void initializeEmptyDots() {
-        this.dots = new Vector<>();
+        this.dots = new Vector<>(NUM_DOTS);
         for (int i = 0; i < NUM_DOTS; i++) {
             this.dots.add(false);
         }
@@ -68,6 +68,15 @@ public class Value {
 
     public String toString() {
         return this.value.toString();
+    }
+
+    public int getNumDots() {
+        return this.NUM_DOTS;
+    }
+
+    public Value setDots(Vector<Boolean> dots1) {
+        this.dots = dots1;
+        return this;
     }
 }
 

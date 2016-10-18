@@ -67,14 +67,14 @@ class SetOfValues {
         return true;
     }
 
-    /*
+
     void printSet() {
-        for (Iterator<Value> iterator = this.values.iterator(); iterator.hasNext();) {
-            Value myValue = iterator.next();
-            myValue.printValue();
+        for (Iterator<PositionValueDuo> iterator = this.values.iterator(); iterator.hasNext();) {
+            PositionValueDuo myValue = iterator.next();
+            myValue.print();
         }
     }
-
+        /*
     void printRules() {
         for (Iterator<Rule> iterator = this.rules.iterator(); iterator.hasNext();) {
             Rule myValue = iterator.next();

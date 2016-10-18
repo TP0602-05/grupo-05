@@ -22,4 +22,8 @@ public class PositionValueDuo {
     public Position getPos() {
         return pos;
     }
+
+    public void print() {
+        System.out.println("POS X:" + this.pos.getXpos() + " POS Y:" + this.pos.getYpos() + " VALUE:" + this.val.toString());
+    }
 }

@@ -44,9 +44,11 @@ class GameBuilder {
             ArrayList sets = (JSONArray) cellJson.get("sets");
             int type = ((Long)cellJson.get("type")).intValue();
             String blocked = (String)cellJson.get("isBlocked");
+            //System.out.println("TYPE:" + type + " VAL: " + val + " ROW: " + row + " COL: " + col +  " SETS:" + sets);
             this.internalProcessOfValue(grid, type, blocked, val, sets, col, row);
         }
         grid = loadRulesGame(grid);
+        grid.printSets();
         return grid;
     }
 
@@ -66,19 +68,18 @@ class GameBuilder {
                 grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets);
                 break;
             case 3:
-                grid.addCell(new CellBlack(),row -1 ,col - 1,sets);
+                grid.addCell(new CellBlack(),row - 1 ,col - 1,sets);
                 break;
             case 4:
-                grid.addCell(new CellFlagsAndNumbers(),row - 1,col - 1,sets);
+                intValue = ((Long) val.get(0)).intValue();
+                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)),row - 1,col - 1,sets);
                 break;
             default:
                 break;
         }
     }
 
-    private Grid loadRulesGame(Grid grid) {
-        JSONArray rules = this.gameParser.getJSONarray("rulesets");
-        ArrayList rulesArray = this.gameParser.toArrayList(rules);
+    private void parseRules(Grid grid, ArrayList rulesArray) {
         Vector<Long> values = null ;
         for (Object arulesArray : rulesArray) {
             int idRule = ((Long) arulesArray).intValue();
@@ -91,11 +92,21 @@ class GameBuilder {
                     JSONArray muls = this.gameParser.getJSONarray("mul");
                     values = this.gameParser.toVector(muls);
                     break;
+                case 4:
+                    JSONArray count = this.gameParser.getJSONarray("count");
+                    values = this.gameParser.toVector(count);
+                    break;
                 default:
                     break;
             }
             grid.loadRulesSet(idRule, values);
         }
+    }
+
+    private Grid loadRulesGame(Grid grid) {
+        JSONArray rules = this.gameParser.getJSONarray("rulesets");
+        ArrayList rulesArray = this.gameParser.toArrayList(rules);
+        this.parseRules(grid, rulesArray);
         return grid;
     }
 
