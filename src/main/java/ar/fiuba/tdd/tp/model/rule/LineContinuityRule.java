@@ -131,11 +131,20 @@ public class LineContinuityRule implements Rule {
 
     public boolean checkFinal(ArrayList<PositionValueDuo> values) {
         if (ruleType > 0) {
+            this.replaceInitValue(values);
             Vector<Value> vecValues = getTransversalValues(values,initValue);
             int middleDots = countMiddleDotsFinal(vecValues);
             return ((middleDots > 1) || ((countCornerDotsFinal(vecValues) - middleDots) > 1));
         } else {
             return true;
+        }
+    }
+
+    private void replaceInitValue(ArrayList<PositionValueDuo> values) {
+        for (PositionValueDuo temp: values) {
+            if (initValue.getPos().isEqual(temp.getPos())) {
+                initValue = temp;
+            }
         }
     }
 
