@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp.model.cell;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import static org.junit.Assert.*;
@@ -77,5 +78,27 @@ public class ValueTests {
         myValue1.combineDots(myValue2);
 
         assertTrue(myValue1.isDotsEqualTo(myValue3));
+    }
+
+    @Test
+    public void testIsEqualDots() {
+        Boolean[] boollist1 = {true,true,true,false,false,false,false,false,false};
+        Vector<Boolean> boolvec1 = new Vector<>(Arrays.asList(boollist1));
+        Value value1 = new Value(0,boolvec1);
+        Boolean[] boollist2 = {true,true,true,false,false,false,false,false,false};
+        Vector<Boolean> boolvec2 = new Vector<>(Arrays.asList(boollist2));
+        Value value2 = new Value(3,boolvec2);
+        assertTrue(value1.areDotsEqualTo(value2));
+    }
+
+    @Test
+    public void testIsNotEqualDots() {
+        Boolean[] boollist1 = {true,true,true,false,false,false,false,false,true};
+        Vector<Boolean> boolvec1 = new Vector<>(Arrays.asList(boollist1));
+        Value value1 = new Value(0,boolvec1);
+        Boolean[] boollist2 = {true,true,true,false,false,false,false,false,false};
+        Vector<Boolean> boolvec2 = new Vector<>(Arrays.asList(boollist2));
+        Value value2 = new Value(3,boolvec2);
+        assertFalse(value1.areDotsEqualTo(value2));
     }
 }

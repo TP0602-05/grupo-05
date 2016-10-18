@@ -54,11 +54,11 @@ public class PositionTests {
 
     @Test
     public void testIntAdjacentPositions() {
-        Position posInit = new Position(5,5);
-        assertTrue((posInit.isAdjacent(new Position(5,6))) == 0);
-        assertTrue((posInit.isAdjacent(new Position(6,5))) == 1);
-        assertTrue((posInit.isAdjacent(new Position(5,4))) == 2);
-        assertTrue((posInit.isAdjacent(new Position(4,5))) == 3);
+        Position posInit = new Position(1,1);
+        assertTrue((posInit.isAdjacent(new Position(1,2))) == 0);
+        assertTrue((posInit.isAdjacent(new Position(2,1))) == 1);
+        assertTrue((posInit.isAdjacent(new Position(1,0))) == 2);
+        assertTrue((posInit.isAdjacent(new Position(0,1))) == 3);
     }
 
     @Test
