@@ -9,8 +9,7 @@ import javax.swing.*;
 class ButtonFrame extends JFrame {
 
     // constructor for ButtonFrame
-    ButtonFrame(String title)
-    {
+    ButtonFrame(String title) {
         super( title );                     // invoke the JFrame constructor
         setLayout( new FlowLayout() );      // set the layout manager
 
