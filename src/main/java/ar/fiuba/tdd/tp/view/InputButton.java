@@ -1,7 +1,6 @@
 package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.controller.MouseController;
-import ar.fiuba.tdd.tp.model.Game;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.awt.*;
