@@ -51,7 +51,23 @@ public class AmountOfLinesCornerRule implements Rule{
     }
 
     private Vector<PositionValueDuo> transformValues(Vector<PositionValueDuo> vecVal) {
+        /*switch(vecVal.elementAt(0).getValue().getValue()) {
+            case 1 :
+                // Statements
+                break; // optional
 
+            case 2 :
+                // Statements
+                break; // optional
+
+            case 2 :
+                // Statements
+                break; // optional
+
+            // You can have any number of case statements.
+            default : // Optional
+                // Statements
+        }*/
         return vecVal;
     }
 
@@ -61,7 +77,10 @@ public class AmountOfLinesCornerRule implements Rule{
     }
 
     public boolean checkFinal(ArrayList<PositionValueDuo> values) {
-        return true;
+
+        int countFinal = countLines(values);
+        return (countFinal == this.amountOfLines);
+
     }
 
     public void printRule() {
