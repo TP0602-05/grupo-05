@@ -54,6 +54,14 @@ public class Value {
         return true;
     }
 
+    public boolean areDotsEqualTo(Value otherValue) {
+        boolean equal = true;
+        for (int i = 0; i < NUM_DOTS; i++) {
+            equal = (equal && (this.dots.elementAt(i) == otherValue.getDots().elementAt(i)));
+        }
+        return equal;
+    }
+
     void combineDots(Value otherValue) {
         Vector<Boolean> newDots = new Vector<>();
         for ( int i = 0; i < NUM_DOTS; i++ ) {

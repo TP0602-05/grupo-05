@@ -52,36 +52,36 @@ public class Paintor {
 
         //7
         if (dots.get(4) && dots.get(5) && dots.get(7)) {
-            g2.draw(new Line2D.Float(width/2, height/2, width, height/2));
-            g2.draw(new Line2D.Float(width/2, height/2, width/2, height));
+            g2.draw(new Line2D.Float(width / (float) 2, height / (float) 2, width, height / (float) 2));
+            g2.draw(new Line2D.Float(width / (float) 2, height / (float) 2, width / (float) 2, height));
         }
 
         //8
         if (dots.get(3) && dots.get(4) && dots.get(7)) {
-            g2.draw(new Line2D.Float(0, height/2, width/2, height/2));
-            g2.draw(new Line2D.Float(width/2, height/2, width/2, height));
+            g2.draw(new Line2D.Float(0, height / (float) 2, width / (float) 2, height / (float) 2));
+            g2.draw(new Line2D.Float(width / (float) 2, height / (float) 2, width / (float) 2, height));
         }
 
         //9
         if (dots.get(1) && dots.get(4) && dots.get(5)) {
-            g2.draw(new Line2D.Float(width/2, height/2, width/2, 0));
-            g2.draw(new Line2D.Float(width/2, height/2, width, height/2));
+            g2.draw(new Line2D.Float(width / (float) 2, height / (float) 2, width / (float) 2, 0));
+            g2.draw(new Line2D.Float(width / (float) 2, height / (float) 2, width, height / (float) 2));
         }
 
         //10
         if (dots.get(1) && dots.get(3) && dots.get(4)) {
-            g2.draw(new Line2D.Float(width/2, height/2, 0, height/2));
-            g2.draw(new Line2D.Float(width/2, height/2, width/2, 0));
+            g2.draw(new Line2D.Float(width / (float) 2, height / (float) 2, 0, height / (float) 2));
+            g2.draw(new Line2D.Float(width / (float) 2, height / (float) 2, width / (float) 2, 0));
         }
 
         //11
         if (dots.get(1) && dots.get(4) && dots.get(7)) {
-            g2.draw(new Line2D.Float(width/2, 0, width/2, height));
+            g2.draw(new Line2D.Float(width / (float) 2, 0, width / (float) 2, height));
         }
 
         //12
         if (dots.get(3) && dots.get(4) && dots.get(5)) {
-            g2.draw(new Line2D.Float(0, height/2, width, height/2));
+            g2.draw(new Line2D.Float(0, height / (float) 2, width, height / (float) 2));
         }
 
     }
