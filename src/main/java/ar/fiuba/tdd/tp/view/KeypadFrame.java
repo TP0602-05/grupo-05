@@ -19,12 +19,13 @@ public class KeypadFrame extends JFrame {
 
     public KeypadFrame(){
         setTitle("Keypad");
-        setSize(200,200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
+        setLocationRelativeTo(null);
         gbc = new GridBagConstraints();
-        gbc.insets = new Insets(15,15,15,15);
+        gbc.insets = new Insets(5,5,5,5);
         gbc.gridy = 0;
-        maxItemsInRow = 2;
+        maxItemsInRow = 3;
         itemsInRow = 0;
     }
 
