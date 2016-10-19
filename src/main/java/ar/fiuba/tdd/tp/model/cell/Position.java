@@ -121,11 +121,11 @@ public class Position {
     }
 
 
-    int getXpos() {
+    public int getXpos() {
         return xpos;
     }
 
-    int getYpos() {
+    public int getYpos() {
         return ypos;
     }
 }

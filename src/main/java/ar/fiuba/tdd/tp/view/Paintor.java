@@ -18,7 +18,7 @@ public class Paintor {
     public void paint(Graphics graphics, int width, int height) {
         Vector<Boolean> dots = value.getDots();
         Graphics2D g2 = (Graphics2D) graphics;
-        g2.setStroke(new BasicStroke(5));
+        g2.setStroke(new BasicStroke(15));
 
         //1
         if (dots.get(0) && dots.get(3) && dots.get(6)) {
@@ -84,6 +84,5 @@ public class Paintor {
             g2.draw(new Line2D.Float(0, height/2, width, height/2));
         }
 
-        g2.dispose();
     }
 }

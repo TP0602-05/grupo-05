@@ -36,10 +36,8 @@ public class MouseController extends MouseAdapter {
     public void mouseClicked(MouseEvent event) {
         if (!Game.getInstance().getCell(row, col).isBlocked()) {
             if (event.getButton() == MouseEvent.BUTTON1) {
-                JFrame frameInput = setFrameInput();
-                JPanel jp = new JPanel();
-                JTextField textField = new JTextField();
-                textField.setColumns(5);
+                JFrame frameInput = Game.getInstance().getKeypad(row,col);
+                /*
                 textField.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
@@ -47,9 +45,7 @@ public class MouseController extends MouseAdapter {
                         Value value = new Value(Integer.parseInt(textField.getText()));
                         Game.getInstance().setValue(row, col, value);
                     }
-                });
-                jp.add(textField);
-                frameInput.add(jp);
+                });*/
                 frameInput.setLocationRelativeTo(null);
                 frameInput.setVisible(true);
             } else if (event.getButton() == MouseEvent.BUTTON3) {

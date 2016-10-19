@@ -159,4 +159,27 @@ class Grid {
             this.sets.elementAt(i).printSet();
         }
     }
+
+    public boolean addKeypadValue(Value value, int row, int col) {
+        // ARREGLAR ESTOOOOOOOOOO!
+        // ARREGLAR ESTOOOOOOOOOO!
+        // ARREGLAR ESTOOOOOOOOOO!
+        // ARREGLAR ESTOOOOOOOOOO!
+        if (checkValidations(value)) {
+            ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
+            if (checkNewValueInSets(mySets, value, (this.cells.elementAt(row).elementAt(col).getValue()))) {
+                Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
+                this.cells.elementAt(row).elementAt(col).setValue(value);
+                for (int position : mySets) {
+                    //System.out.println(" ROW: "+row+"COL: "+col+"VAL: ");
+
+                    PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row - 1,col - 1));
+                    PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
+                    this.sets.elementAt(position).addValue(pvalue, prevPValue);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
 }

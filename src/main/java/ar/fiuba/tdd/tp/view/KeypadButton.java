@@ -1,23 +1,28 @@
 package ar.fiuba.tdd.tp.view;
 
-import ar.fiuba.tdd.tp.controller.MouseController;
+import ar.fiuba.tdd.tp.model.Game;
 import ar.fiuba.tdd.tp.model.cell.Value;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 
-public class FlagsButton extends JButton {
+public class KeypadButton extends JButton{
 
+    private Value value;
     private Paintor painter;
 
-    public FlagsButton(Value value, int row, int col) {
+    public KeypadButton(Value value) {
+        this.value = value;
         painter = new Paintor(value);
-        addMouseListener(new MouseController(row,col));
 
         if(value.getValue() != 0) {
             setText(value.getValue().toString());
         }
+    }
+
+    public void addKeypadValue(int currentRow, int currentCol) {
+        Game.getInstance().addKeypadValue(value,currentRow,currentCol);
     }
 
     @Override
