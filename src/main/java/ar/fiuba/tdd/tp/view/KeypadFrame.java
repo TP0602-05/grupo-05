@@ -2,10 +2,10 @@ package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.model.cell.Position;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 
 public class KeypadFrame extends JFrame {
@@ -17,7 +17,7 @@ public class KeypadFrame extends JFrame {
     private int maxItemsInRow;
 
 
-    public KeypadFrame(){
+    public KeypadFrame() {
         setTitle("Keypad");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
@@ -38,7 +38,7 @@ public class KeypadFrame extends JFrame {
             }
         });
         add(button,gbc);
-        if(itemsInRow == maxItemsInRow) {
+        if (itemsInRow == maxItemsInRow) {
             gbc.gridy += 1 ;
             itemsInRow = 0;
         }

@@ -32,6 +32,7 @@ public class Game extends Observable {
         gridView = new GridView(gameName);
         this.addObserver(gridView);
         this.addObserver(new FinishGameListener());
+        this.keypadFrame = this.gameBuilder.createKeypadFrame();
     }
 
     public boolean gridHasBlocks() {
@@ -97,7 +98,8 @@ public class Game extends Observable {
     }
 
     public boolean addKeypadValue(Value value, int row, int col) {
-        boolean worked = grid.addKeypadValue(value, row, col);
+        //boolean worked = grid.addKeypadValue(value, row, col);
+        boolean worked = grid.setCell(value, row, col);
         this.update();
         this.notifyObservers();
         return worked;

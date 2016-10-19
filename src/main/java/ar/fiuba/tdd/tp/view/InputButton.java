@@ -9,7 +9,7 @@ import javax.swing.*;
 /*
 This kind of JButton is the one for the data input in the grid.
  */
-public class InputButton extends JButton {
+public class InputButton extends Button {
 
     public InputButton(Value value, int row, int col) {
         addMouseListener(new MouseController(row,col));
@@ -19,8 +19,4 @@ public class InputButton extends JButton {
         }
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(70, 70);
-    }
 }

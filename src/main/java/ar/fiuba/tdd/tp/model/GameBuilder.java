@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.utils.Parser;
+import ar.fiuba.tdd.tp.view.KeypadFrame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -44,7 +45,7 @@ class GameBuilder {
             ArrayList sets = (JSONArray) cellJson.get("sets");
             int type = ((Long)cellJson.get("type")).intValue();
             String blocked = (String)cellJson.get("isBlocked");
-            //System.out.println("TYPE:" + type + " VAL: " + val + " ROW: " + row + " COL: " + col +  " SETS:" + sets);
+            System.out.println("TYPE:" + type + " VAL: " + val + " ROW: " + row + " COL: " + col +  " SETS:" + sets);
             this.internalProcessOfValue(grid, type, blocked, val, sets, col, row);
         }
         grid = loadRulesGame(grid);
@@ -112,5 +113,9 @@ class GameBuilder {
 
     public String getGameName() {
         return this.gameName;
+    }
+
+    public KeypadFrame createKeypadFrame() {
+        return new KeypadFrame();
     }
 }
