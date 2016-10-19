@@ -160,7 +160,7 @@ class Grid {
         }
     }
 
-    public boolean addKeypadValue(Value value, int row, int col) {
+    /*public boolean addKeypadValue(Value value, int row, int col) {
         // ARREGLAR ESTOOOOOOOOOO!
         // ARREGLAR ESTOOOOOOOOOO!
         // ARREGLAR ESTOOOOOOOOOO!
@@ -181,5 +181,5 @@ class Grid {
             }
         }
         return false;
-    }
+    }*/
 }
