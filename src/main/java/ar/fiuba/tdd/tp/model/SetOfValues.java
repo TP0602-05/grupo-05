@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.model.cell.*;
+import ar.fiuba.tdd.tp.model.cell.data.PositionValueDuo;
 import ar.fiuba.tdd.tp.model.rule.Rule;
 
 import java.util.ArrayList;
@@ -12,21 +12,21 @@ Every set, contains values.
 Every set, contains rules.
 Values and rules are loaded in runtime.
 */
-class SetOfValues {
+public class SetOfValues {
 
     private ArrayList<PositionValueDuo> values;
     private ArrayList<Rule> rules;
 
-    SetOfValues() {
+    public SetOfValues() {
         this.values = new ArrayList<>();
         this.rules  = new ArrayList<>();
     }
 
-    void insertValue(PositionValueDuo value) {
+    public void insertValue(PositionValueDuo value) {
         this.values.add(value);
     }
 
-    void addValue(PositionValueDuo value, PositionValueDuo prevValue) {
+    public void addValue(PositionValueDuo value, PositionValueDuo prevValue) {
         this.values.add(value);
         this.deleteValue(prevValue);
     }
@@ -45,7 +45,7 @@ class SetOfValues {
         }
     }
     
-    boolean canInsertValue(PositionValueDuo value, PositionValueDuo prevValue) {
+    public boolean canInsertValue(PositionValueDuo value, PositionValueDuo prevValue) {
         // TODO: Recibir valor previo, quitarlo del set antes de chequear y volver a agregarlo al final.
         boolean result = true;
         this.deleteValue(prevValue);
@@ -58,7 +58,7 @@ class SetOfValues {
         return result;
     }
 
-    boolean isSetFinished() {
+    public boolean isSetFinished() {
         for (Rule myRule: this.rules) {
             if ( ! myRule.checkFinal(this.values) ) {
                 return false;
@@ -68,7 +68,7 @@ class SetOfValues {
     }
 
 
-    void printSet() {
+    public void printSet() {
         for (Iterator<PositionValueDuo> iterator = this.values.iterator(); iterator.hasNext();) {
             PositionValueDuo myValue = iterator.next();
             myValue.print();
@@ -83,7 +83,7 @@ class SetOfValues {
     }
     */
 
-    void loadRule(Rule rule) {
+    public void loadRule(Rule rule) {
 
         this.rules.add(rule);
 

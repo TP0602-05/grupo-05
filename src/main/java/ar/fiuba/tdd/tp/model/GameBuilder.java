@@ -1,6 +1,8 @@
 package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.*;
+import ar.fiuba.tdd.tp.model.cell.data.Value;
+import ar.fiuba.tdd.tp.model.grid.Grid;
 import ar.fiuba.tdd.tp.utils.Parser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -12,18 +14,18 @@ import java.util.Vector;
 This class loads the configuration of the game from a json file
 and loads everything necessary to play.
  */
-class GameBuilder {
+public class GameBuilder {
 
     private String gameName;
     private Parser gameParser;
     private boolean gridHasBlocks;
 
-    GameBuilder(String gameName) {
+    public GameBuilder(String gameName) {
         this.gameName = gameName;
         gridHasBlocks = false;
     }
 
-    GameBuilder loadConf() throws Exception {
+    public GameBuilder loadConf() throws Exception {
         String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/" + gameName + ".json" ;
         gridHasBlocks = gameName.equals("sudoku");
         this.gameParser = new Parser(path);
@@ -34,9 +36,9 @@ class GameBuilder {
         return gridHasBlocks;
     }
 
-    Grid createGrid() {
+    public Grid createGrid() {
         Grid grid = new Grid(this.gameParser.getJsonInt("cols"),this.gameParser.getJsonInt("rows"), this.gameParser.getJsonInt("nsets"));
-        for (Object cell : this.gameParser.getJSONarray("cells")) {
+        for (Object cell : this.gameParser.getJSONarray("cell")) {
             JSONObject cellJson = (JSONObject) cell;
             int row = ((Long)cellJson.get("row")).intValue();
             int col = ((Long)cellJson.get("col")).intValue();

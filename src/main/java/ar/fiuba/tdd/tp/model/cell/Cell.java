@@ -1,5 +1,7 @@
 package ar.fiuba.tdd.tp.model.cell;
 
+import ar.fiuba.tdd.tp.model.cell.data.Value;
+
 import java.util.Vector;
 import javax.swing.*;
 

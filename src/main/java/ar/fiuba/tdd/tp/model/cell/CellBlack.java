@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.tp.model.cell;
 
-import ar.fiuba.tdd.tp.view.BlackBox;
+import ar.fiuba.tdd.tp.view.cell.BlackBox;
 
 import javax.swing.*;
 

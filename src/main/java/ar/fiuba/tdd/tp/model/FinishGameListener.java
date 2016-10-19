@@ -1,5 +1,8 @@
 package ar.fiuba.tdd.tp.model;
 
+import ar.fiuba.tdd.tp.model.observables.Game;
+import ar.fiuba.tdd.tp.view.observer.Observer;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -7,7 +10,7 @@ import javax.swing.border.LineBorder;
 /*
 This is the view that is instantiated when the game is finished.
  */
-class FinishGameListener extends Observer {
+public class FinishGameListener extends Observer {
 
     @Override
     public void update() {

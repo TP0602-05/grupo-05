@@ -1,6 +1,6 @@
 package ar.fiuba.tdd.tp.model.validation;
 
-import ar.fiuba.tdd.tp.model.cell.Value;
+import ar.fiuba.tdd.tp.model.cell.data.Value;
 
 /**
  * Checks if entered value verifies a certain condition,

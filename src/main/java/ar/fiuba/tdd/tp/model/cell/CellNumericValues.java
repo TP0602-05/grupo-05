@@ -1,6 +1,7 @@
 package ar.fiuba.tdd.tp.model.cell;
 
-import ar.fiuba.tdd.tp.view.InputButton;
+import ar.fiuba.tdd.tp.model.cell.data.Value;
+import ar.fiuba.tdd.tp.view.cell.InputButton;
 
 import java.util.Vector;
 import javax.swing.*;

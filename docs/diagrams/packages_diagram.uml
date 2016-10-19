@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ar.fiuba.tdd.tp</OriginalElement>
+  <nodes>
+    <node x="31.80000000000001" y="81.0">ar.fiuba.tdd.tp.view</node>
+    <node x="13.800000000000011" y="0.0">ar.fiuba.tdd.tp.controller</node>
+    <node x="205.8" y="81.0">ar.fiuba.tdd.tp.utils</node>
+    <node x="81.73" y="192.0">ar.fiuba.tdd.tp.model</node>
+    <node x="0.0" y="308.0">ar.fiuba.tdd.tp.games</node>
+    <node x="282.6" y="192.0">ar.fiuba.tdd.tp.Main</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ar.fiuba.tdd.tp.model" target="ar.fiuba.tdd.tp.utils">
+      <point x="54.0" y="-15.5" />
+      <point x="203.23000000000002" y="172.0" />
+      <point x="291.20000000000005" y="172.0" />
+      <point x="24.400000000000034" y="15.5" />
+    </edge>
+    <edge source="ar.fiuba.tdd.tp.view" target="ar.fiuba.tdd.tp.model">
+      <point x="49.599999999999994" y="15.5" />
+      <point x="143.4" y="172.0" />
+      <point x="149.23000000000002" y="172.0" />
+      <point x="0.0" y="-15.5" />
+    </edge>
+    <edge source="ar.fiuba.tdd.tp.model" target="ar.fiuba.tdd.tp.model">
+      <point x="45.0" y="15.5" />
+      <point x="194.23000000000002" y="263.0" />
+      <point x="41.73000000000002" y="263.0" />
+      <point x="41.73000000000002" y="197.16666666666666" />
+      <point x="-67.5" y="-10.333333333333336" />
+    </edge>
+    <edge source="ar.fiuba.tdd.tp.Main" target="ar.fiuba.tdd.tp.utils">
+      <point x="0.0" y="-15.5" />
+      <point x="48.80000000000001" y="15.5" />
+    </edge>
+    <edge source="ar.fiuba.tdd.tp.view" target="ar.fiuba.tdd.tp.view">
+      <point x="-24.799999999999997" y="15.5" />
+      <point x="69.00000000000001" y="142.0" />
+      <point x="1.8000000000000114" y="142.0" />
+      <point x="1.8000000000000114" y="88.75" />
+      <point x="-62.0" y="-7.75" />
+    </edge>
+    <edge source="ar.fiuba.tdd.tp.model" target="ar.fiuba.tdd.tp.view">
+      <point x="-27.0" y="-15.5" />
+      <point x="122.23" y="172.0" />
+      <point x="118.60000000000001" y="172.0" />
+      <point x="24.799999999999997" y="15.5" />
+    </edge>
+    <edge source="ar.fiuba.tdd.tp.utils" target="ar.fiuba.tdd.tp.utils">
+      <point x="-48.8" y="15.5" />
+      <point x="218.0" y="132.0" />
+      <point x="185.8" y="132.0" />
+      <point x="185.8" y="104.25" />
+      <point x="-61.0" y="7.75" />
+    </edge>
+    <edge source="ar.fiuba.tdd.tp.view" target="ar.fiuba.tdd.tp.controller">
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="174.5" y="169.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

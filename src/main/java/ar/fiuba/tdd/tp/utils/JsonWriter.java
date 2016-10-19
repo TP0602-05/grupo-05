@@ -1,9 +1,6 @@
 package ar.fiuba.tdd.tp.utils;
 
-import ar.fiuba.tdd.tp.model.Game;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONStreamAware;
+import ar.fiuba.tdd.tp.model.observables.Game;
 import org.json.simple.JSONValue;
 
 import java.io.*;

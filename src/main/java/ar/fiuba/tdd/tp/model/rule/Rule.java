@@ -1,8 +1,6 @@
 package ar.fiuba.tdd.tp.model.rule;
 
-import ar.fiuba.tdd.tp.model.cell.PositionValueDuo;
-
-import ar.fiuba.tdd.tp.model.cell.Value;
+import ar.fiuba.tdd.tp.model.cell.data.PositionValueDuo;
 
 import java.util.ArrayList;
 

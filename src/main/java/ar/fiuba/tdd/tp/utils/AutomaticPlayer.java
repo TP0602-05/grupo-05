@@ -1,12 +1,10 @@
 package ar.fiuba.tdd.tp.utils;
 
-import ar.fiuba.tdd.tp.model.Game;
-import ar.fiuba.tdd.tp.model.cell.Value;
+import ar.fiuba.tdd.tp.model.observables.Game;
+import ar.fiuba.tdd.tp.model.cell.data.Value;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Vector;
 
 /**

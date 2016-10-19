@@ -1,12 +1,7 @@
 package ar.fiuba.tdd.tp;
 
-import ar.fiuba.tdd.tp.model.Game;
+import ar.fiuba.tdd.tp.model.observables.Game;
 import ar.fiuba.tdd.tp.utils.AutomaticPlayer;
-import ar.fiuba.tdd.tp.utils.Parser;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) {

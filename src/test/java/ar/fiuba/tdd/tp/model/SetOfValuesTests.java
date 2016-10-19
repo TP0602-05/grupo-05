@@ -1,10 +1,11 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.model.cell.Position;
-import ar.fiuba.tdd.tp.model.cell.PositionValueDuo;
-import ar.fiuba.tdd.tp.model.cell.Value;
-import ar.fiuba.tdd.tp.model.rule.*;
+import ar.fiuba.tdd.tp.model.cell.data.Position;
+import ar.fiuba.tdd.tp.model.cell.data.PositionValueDuo;
+import ar.fiuba.tdd.tp.model.cell.data.Value;
 
+import ar.fiuba.tdd.tp.model.rule.math.SummationRule;
+import ar.fiuba.tdd.tp.model.rule.sets.NoRepeatRule;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

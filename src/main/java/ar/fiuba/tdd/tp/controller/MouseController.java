@@ -1,7 +1,7 @@
 package ar.fiuba.tdd.tp.controller;
 
-import ar.fiuba.tdd.tp.model.Game;
-import ar.fiuba.tdd.tp.model.cell.Value;
+import ar.fiuba.tdd.tp.model.observables.Game;
+import ar.fiuba.tdd.tp.model.cell.data.Value;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
