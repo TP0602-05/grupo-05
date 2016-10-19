@@ -2,8 +2,8 @@ package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.model.cell.Value;
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
 
 public class FlagsButton extends JButton {

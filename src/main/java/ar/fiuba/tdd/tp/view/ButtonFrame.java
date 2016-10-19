@@ -6,9 +6,7 @@ import java.awt.*;
 import java.util.Vector;
 import javax.swing.*;
 
-class ButtonFrame extends JFrame
-{
-    JButton bChange ; // reference to the button object
+class ButtonFrame extends JFrame {
 
     // constructor for ButtonFrame
     ButtonFrame(String title)
@@ -18,27 +16,31 @@ class ButtonFrame extends JFrame
 
 
         Vector<Boolean> dots = new Vector<>(9);
-        dots.add(true);dots.add(true);dots.add(true);
-        dots.add(true);dots.add(true);dots.add(true);
-        dots.add(true);dots.add(true);dots.add(true);
+        dots.add(true);
+        dots.add(true);
+        dots.add(true);
+        dots.add(true);
+        dots.add(true);
+        dots.add(true);
+        dots.add(true);
+        dots.add(true);
+        dots.add(true);
 
         Value value = new Value(0,dots);
         FlagsButton button = new FlagsButton(value,0,0);
 
 
-        add( button );                     // add the button to the JFrame
+        add(button);                     // add the button to the JFrame
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     }
 }
 
-class ButtonDemo
-{
-    public static void main ( String[] args )
-    {
+class ButtonDemo {
+    public static void main(String[] args) {
         ButtonFrame frm = new ButtonFrame("Button Demo");
 
-        frm.setSize( 150, 150 );
-        frm.setVisible( true );
+        frm.setSize(300, 150);
+        frm.setVisible(true);
         frm.setLocationRelativeTo(null);
     }
 }
