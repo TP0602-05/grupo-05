@@ -71,7 +71,7 @@ class SetOfValues {
     void printSet() {
         for (Iterator<PositionValueDuo> iterator = this.values.iterator(); iterator.hasNext();) {
             PositionValueDuo myValue = iterator.next();
-            myValue.print();
+            //myValue.print();
         }
     }
         /*

@@ -4,6 +4,7 @@
   "mul":[],
   "rows":5,
   "cols":5,
+  "buttons" : [14,15],
   "cells":[
     {
       "row":1,

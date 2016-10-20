@@ -4,24 +4,24 @@ package ar.fiuba.tdd.tp.model.cell;
  * It contains the x y position of a cell and understands adyacency.
  */
 public class Position {
-    private int xpos;
-    private int ypos;
+    private int fil;
+    private int col;
 
     public Position(int xnum, int ynum) {
-        this.xpos = xnum;
-        this.ypos = ynum;
+        this.fil = xnum;
+        this.col = ynum;
     }
 
     public Boolean isEqual(Position otherPos) {
-        return  ((otherPos.getXpos() == this.xpos)
-                && (otherPos.getYpos() == this.ypos));
+        return  ((otherPos.getFil() == this.fil)
+                && (otherPos.getCol() == this.col));
     }
 
     public Boolean isNext(Position otherPos) {
-        return  ((otherPos.getXpos() < (this.xpos + 2))
-                && (otherPos.getXpos() > (this.xpos - 2))
-                && (otherPos.getYpos() < (this.ypos + 2))
-                && (otherPos.getYpos() > (this.ypos - 2)));
+        return  ((otherPos.getFil() < (this.fil + 2))
+                && (otherPos.getFil() > (this.fil - 2))
+                && (otherPos.getCol() < (this.col + 2))
+                && (otherPos.getCol() > (this.col - 2)));
     }
 
     public int isCorner(Position otherPos) {
@@ -81,51 +81,51 @@ public class Position {
     }
 
     Boolean isUp(Position otherPos) {
-        return  ((otherPos.getXpos() == this.xpos)
-                && (otherPos.getYpos() == (this.ypos + 1)));
+        return  ((otherPos.getFil() == this.fil - 1)
+                && (otherPos.getCol() == (this.col)));
     }
 
     Boolean isDown(Position otherPos) {
-        return  ((otherPos.getXpos() == this.xpos)
-                && (otherPos.getYpos() == (this.ypos - 1)));
+        return  ((otherPos.getFil() == this.fil + 1)
+                && (otherPos.getCol() == (this.col)));
     }
 
     Boolean isRight(Position otherPos) {
-        return  ((otherPos.getXpos() == (this.xpos + 1))
-                && (otherPos.getYpos() == this.ypos));
+        return  ((otherPos.getFil() == (this.fil))
+                && (otherPos.getCol() == this.col + 1));
     }
 
     Boolean isLeft(Position otherPos) {
-        return  ((otherPos.getXpos() == (this.xpos - 1))
-                && (otherPos.getYpos() == this.ypos));
+        return  ((otherPos.getFil() == (this.fil))
+                && (otherPos.getCol() == this.col - 1));
     }
 
     Boolean isUpRight(Position otherPos) {
-        return  ((otherPos.getXpos() == (this.xpos + 1))
-                && (otherPos.getYpos() == (this.ypos + 1)));
+        return  ((otherPos.getFil() == (this.fil - 1))
+                && (otherPos.getCol() == (this.col + 1)));
     }
 
     Boolean isDownRight(Position otherPos) {
-        return  ((otherPos.getXpos() == (this.xpos + 1))
-                && (otherPos.getYpos() == (this.ypos - 1)));
+        return  ((otherPos.getFil() == (this.fil + 1))
+                && (otherPos.getCol() == (this.col + 1)));
     }
 
     Boolean isDownLeft(Position otherPos) {
-        return  ((otherPos.getXpos() == (this.xpos - 1))
-                && (otherPos.getYpos() == (this.ypos - 1)));
+        return  ((otherPos.getFil() == (this.fil + 1))
+                && (otherPos.getCol() == (this.col - 1)));
     }
 
     Boolean isUpLeft(Position otherPos) {
-        return  ((otherPos.getXpos() == (this.xpos - 1))
-                && (otherPos.getYpos() == (this.ypos + 1)));
+        return  ((otherPos.getFil() == (this.fil - 1))
+                && (otherPos.getCol() == (this.col - 1)));
     }
 
 
-    int getXpos() {
-        return xpos;
+    public int getFil() {
+        return fil;
     }
 
-    int getYpos() {
-        return ypos;
+    public int getCol() {
+        return col;
     }
 }

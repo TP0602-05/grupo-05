@@ -2,6 +2,8 @@ package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.utils.Parser;
+import ar.fiuba.tdd.tp.view.ButtonHashing;
+import ar.fiuba.tdd.tp.view.KeypadFrame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -16,22 +18,15 @@ class GameBuilder {
 
     private String gameName;
     private Parser gameParser;
-    private boolean gridHasBlocks;
 
     GameBuilder(String gameName) {
         this.gameName = gameName;
-        gridHasBlocks = false;
     }
 
     GameBuilder loadConf() throws Exception {
         String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/" + gameName + ".json" ;
-        gridHasBlocks = gameName.equals("sudoku");
         this.gameParser = new Parser(path);
         return this;
-    }
-
-    public boolean gridHasBlocks() {
-        return gridHasBlocks;
     }
 
     Grid createGrid() {
@@ -44,11 +39,9 @@ class GameBuilder {
             ArrayList sets = (JSONArray) cellJson.get("sets");
             int type = ((Long)cellJson.get("type")).intValue();
             String blocked = (String)cellJson.get("isBlocked");
-            //System.out.println("TYPE:" + type + " VAL: " + val + " ROW: " + row + " COL: " + col +  " SETS:" + sets);
             this.internalProcessOfValue(grid, type, blocked, val, sets, col, row);
         }
         grid = loadRulesGame(grid);
-        grid.printSets();
         return grid;
     }
 
@@ -111,5 +104,18 @@ class GameBuilder {
 
     public String getGameName() {
         return this.gameName;
+    }
+
+    public Vector<Value> getAllowedValues() {
+        Vector<Value> valueAux = new Vector<>();
+        ButtonHashing hashing = new ButtonHashing();
+
+        JSONArray buttonsJson = this.gameParser.getJSONarray("buttons");
+        ArrayList buttons = this.gameParser.toArrayList(buttonsJson);
+        for (Object id: buttons) {
+            int idButton = ((Long) id).intValue();
+            valueAux.add(hashing.getMapAt(idButton));
+        }
+        return valueAux;
     }
 }
