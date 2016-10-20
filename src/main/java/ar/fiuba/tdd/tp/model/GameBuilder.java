@@ -49,26 +49,33 @@ class GameBuilder {
 
         switch (type) {
             case 1:
-                int intValue = ((Long) val.get(0)).intValue();
-                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets);
+                addCellFlagsAndNumbers(grid, val, row, col, sets);
                 break;
             case 2:
-                Vector<Value> vecAux = new Vector<>(val.size());
-                for (Object values : val) {
-                    vecAux.add(new Value(((Long) values).intValue()));
-                }
-                grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets);
+                addCellDualSum(grid, val, row, col, sets);
                 break;
             case 3:
                 grid.addCell(new CellBlack(),row - 1 ,col - 1,sets);
                 break;
             case 4:
-                intValue = ((Long) val.get(0)).intValue();
-                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)),row - 1,col - 1,sets);
+                addCellFlagsAndNumbers(grid, val, row, col, sets);
                 break;
             default:
                 break;
         }
+    }
+
+    private void addCellDualSum(Grid grid, ArrayList val, int row, int col, ArrayList sets) {
+        Vector<Value> vecAux = new Vector<>(val.size());
+        for (Object values : val) {
+            vecAux.add(new Value(((Long) values).intValue()));
+        }
+        grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets);
+    }
+
+    private void addCellFlagsAndNumbers(Grid grid, ArrayList val, int row, int col, ArrayList sets) {
+        int intValue = ((Long) val.get(0)).intValue();
+        grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets);
     }
 
     private void parseRules(Grid grid, ArrayList rulesArray) {
