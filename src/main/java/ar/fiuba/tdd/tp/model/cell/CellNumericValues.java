@@ -1,5 +1,6 @@
 package ar.fiuba.tdd.tp.model.cell;
 
+import ar.fiuba.tdd.tp.view.Button;
 import ar.fiuba.tdd.tp.view.InputButton;
 
 import java.util.Vector;
@@ -17,8 +18,8 @@ public class CellNumericValues extends Cell {
     }
 
     @Override
-    public JButton getView(int row, int col) {
-        JButton button = new InputButton(getValue(),row,col);
+    public Button getView(int row, int col) {
+        Button button = new InputButton(getValue(),row,col);
         return button;
     }
 }

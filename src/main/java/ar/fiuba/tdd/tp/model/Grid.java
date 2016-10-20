@@ -64,8 +64,14 @@ class Grid {
         return height;
     }
 
-    void addCell(Cell cell, int row, int col, ArrayList sets) {
+    void addCell(Cell cell, int row, int col, ArrayList sets, ArrayList borders) {
         this.cells.elementAt(row).insertElementAt(cell, col);
+        Vector<Integer> bordersAux = new Vector<Integer>();
+        for (Object border:borders) {
+            int borderAux = ((Long) border).intValue();
+            bordersAux.add(borderAux);
+        }
+        this.cells.elementAt(row).elementAt(col).setBorders(bordersAux);
         for (Object position:sets) {
             int pos = ((Long) position).intValue();
             this.sets.elementAt(pos - 1).insertValue( new PositionValueDuo(cell.getValue(), new Position(row, col)));

@@ -6,7 +6,7 @@ import javax.swing.*;
 /*
 This kind of JButton is all black.
  */
-public class BlackBox extends JButton {
+public class BlackBox extends Button {
 
     public BlackBox() {
         setBackground(Color.black);

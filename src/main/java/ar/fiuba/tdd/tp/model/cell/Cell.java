@@ -1,5 +1,7 @@
 package ar.fiuba.tdd.tp.model.cell;
 
+import ar.fiuba.tdd.tp.view.Button;
+
 import java.util.Vector;
 import javax.swing.*;
 
@@ -23,11 +25,21 @@ public abstract class Cell {
         }
     }
 
+    public void setBorders(Vector<Integer> borders) {
+        this.borders = borders;
+    }
+
+    public Vector<Integer> getBorders() {
+        return borders;
+    }
+
+    private Vector<Integer> borders;
+
     private Vector<Value> value;
 
     public Cell() {}
 
-    public abstract JButton getView(int row, int col);
+    public abstract Button getView(int row, int col);
 
     public boolean isBlocked() {
         return this.blocked;

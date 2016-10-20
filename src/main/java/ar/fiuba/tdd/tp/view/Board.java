@@ -28,7 +28,7 @@ public class Board extends JPanel {
                 gbc.gridx = col;
                 gbc.gridy = row;
 
-                JButton cellPane;
+                Button cellPane;
                 cellPane = getCellType(row,col);
 
                 add(cellPane, gbc);
@@ -36,10 +36,13 @@ public class Board extends JPanel {
         }
     }
 
-    private JButton getCellType(int row, int col) {
+    private Button getCellType(int row, int col) {
         Cell cell = Game.getInstance().getCell(row,col);
-        JButton cellPane;
+        Button cellPane;
         cellPane = cell.getView(row,col);
+        Vector<Integer> bordersCell = Game.getInstance().getCell(row,col).getBorders();
+        Border border = new MatteBorder(bordersCell.get(0)*4,bordersCell.get(1)*4,bordersCell.get(2)*4,bordersCell.get(3)*4,Color.yellow);
+        cellPane.setBorders(border);
         return cellPane;
     }
 

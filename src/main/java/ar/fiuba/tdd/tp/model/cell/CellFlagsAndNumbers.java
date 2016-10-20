@@ -1,6 +1,7 @@
 package ar.fiuba.tdd.tp.model.cell;
 
 import ar.fiuba.tdd.tp.view.BlackBox;
+import ar.fiuba.tdd.tp.view.Button;
 import ar.fiuba.tdd.tp.view.FlagsButton;
 import ar.fiuba.tdd.tp.view.InputButton;
 
@@ -18,8 +19,8 @@ public class CellFlagsAndNumbers extends Cell {
     }
 
     @Override
-    public JButton getView(int row, int col) {
-        JButton button = new FlagsButton(this.getValue(),row,col);
+    public Button getView(int row, int col) {
+        Button button = new FlagsButton(this.getValue(),row,col);
         return button;
     }
 }

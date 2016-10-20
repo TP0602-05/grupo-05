@@ -5,6 +5,7 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 
 public class KeypadButton extends Button {

@@ -37,34 +37,35 @@ class GameBuilder {
             int col = ((Long)cellJson.get("col")).intValue();
             ArrayList val = (JSONArray) cellJson.get("value");
             ArrayList sets = (JSONArray) cellJson.get("sets");
+            ArrayList borders = (JSONArray) cellJson.get("borders");
             int type = ((Long)cellJson.get("type")).intValue();
             String blocked = (String)cellJson.get("isBlocked");
-            this.internalProcessOfValue(grid, type, blocked, val, sets, col, row);
+            this.internalProcessOfValue(grid, type, blocked, val, sets, col, row, borders);
         }
         grid = loadRulesGame(grid);
         return grid;
     }
 
-    private void internalProcessOfValue(Grid grid, int type, String blocked, ArrayList val, ArrayList sets, int col, int row) {
+    private void internalProcessOfValue(Grid grid, int type, String blocked, ArrayList val, ArrayList sets, int col, int row, ArrayList borders) {
 
         switch (type) {
             case 1:
                 int intValue = ((Long) val.get(0)).intValue();
-                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets);
+                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets, borders);
                 break;
             case 2:
                 Vector<Value> vecAux = new Vector<>(val.size());
                 for (Object values : val) {
                     vecAux.add(new Value(((Long) values).intValue()));
                 }
-                grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets);
+                grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets, borders);
                 break;
             case 3:
-                grid.addCell(new CellBlack(),row - 1 ,col - 1,sets);
+                grid.addCell(new CellBlack(),row - 1 ,col - 1,sets, borders);
                 break;
             case 4:
                 intValue = ((Long) val.get(0)).intValue();
-                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)),row - 1,col - 1,sets);
+                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)),row - 1,col - 1,sets, borders);
                 break;
             default:
                 break;

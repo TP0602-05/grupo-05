@@ -1,6 +1,7 @@
 package ar.fiuba.tdd.tp.model.cell;
 
 import ar.fiuba.tdd.tp.view.BlackBox;
+import ar.fiuba.tdd.tp.view.Button;
 
 import javax.swing.*;
 
@@ -9,8 +10,8 @@ import javax.swing.*;
  */
 public class CellBlack extends Cell {
     @Override
-    public JButton getView(int row, int col) {
-        JButton button = new BlackBox();
+    public Button getView(int row, int col) {
+        Button button = new BlackBox();
         return button;
     }
 }

@@ -5,6 +5,7 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /*
 This kind of JButton is the one for the data input in the grid.
@@ -19,5 +20,4 @@ public class InputButton extends Button {
             setText(value.getValue().toString());
         }
     }
-
 }
