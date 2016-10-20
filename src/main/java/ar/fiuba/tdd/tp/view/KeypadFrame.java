@@ -1,6 +1,7 @@
 package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.model.cell.Position;
+import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,8 +11,8 @@ import javax.swing.*;
 
 public class KeypadFrame extends JFrame {
 
-    private int currentRow;
-    private int currentCol;
+    //private int currentRow;
+    //private int currentCol;
     private GridBagConstraints gbc;
     private int itemsInRow;
     private int maxItemsInRow;
@@ -29,24 +30,27 @@ public class KeypadFrame extends JFrame {
         itemsInRow = 0;
     }
 
-    public void addButon(KeypadButton button) {
+    public void addButon(Value value) {
         itemsInRow++;
+        KeypadButton button = new KeypadButton(value);
+        /*
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 button.addKeypadValue(currentRow,currentCol);
             }
         });
+        */
         add(button,gbc);
         if (itemsInRow == maxItemsInRow) {
             gbc.gridy += 1 ;
             itemsInRow = 0;
         }
     }
-
+/*
     public void setCurrentPosition(Position position) {
         currentRow = position.getYpos();
         currentCol = position.getYpos();
     }
-
+*/
 }

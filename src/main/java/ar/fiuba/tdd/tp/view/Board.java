@@ -31,10 +31,6 @@ public class Board extends JPanel {
                 JButton cellPane;
                 cellPane = getCellType(row,col);
 
-                if (Game.getInstance().gridHasBlocks()) {
-                    cellPane.setBorder(setBlocks(row,col));
-                }
-
                 add(cellPane, gbc);
             }
         }
@@ -45,22 +41,6 @@ public class Board extends JPanel {
         JButton cellPane;
         cellPane = cell.getView(row,col);
         return cellPane;
-    }
-
-    private Border setBlocks(int row, int col) {
-        Border border = null;
-        if ((row % 3) == 0 && (col % 3) == 0) {
-            border = new MatteBorder(4, 4, 0, 0, Color.pink);
-        } else {
-            if ((row % 3) == 0) {
-                border = new MatteBorder(4, 0, 0, 0, Color.pink);
-            } else {
-                if ((col % 3) == 0) {
-                    border = new MatteBorder(0, 4, 0, 0, Color.pink);
-                }
-            }
-        }
-        return border;
     }
 
 }

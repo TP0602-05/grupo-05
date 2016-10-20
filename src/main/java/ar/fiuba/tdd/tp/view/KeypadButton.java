@@ -20,6 +20,13 @@ public class KeypadButton extends Button {
         }
     }
 
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        painter.paint(graphics,getWidth(),getHeight());
+        graphics.dispose();
+    }
+
     public void addKeypadValue(int currentRow, int currentCol) {
         Game.getInstance().addKeypadValue(value,currentRow,currentCol);
     }

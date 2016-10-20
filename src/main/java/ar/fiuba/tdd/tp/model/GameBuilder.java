@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.utils.Parser;
+import ar.fiuba.tdd.tp.view.ButtonHashing;
 import ar.fiuba.tdd.tp.view.KeypadFrame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,22 +18,15 @@ class GameBuilder {
 
     private String gameName;
     private Parser gameParser;
-    private boolean gridHasBlocks;
 
     GameBuilder(String gameName) {
         this.gameName = gameName;
-        gridHasBlocks = false;
     }
 
     GameBuilder loadConf() throws Exception {
         String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/" + gameName + ".json" ;
-        gridHasBlocks = gameName.equals("sudoku");
         this.gameParser = new Parser(path);
         return this;
-    }
-
-    public boolean gridHasBlocks() {
-        return gridHasBlocks;
     }
 
     Grid createGrid() {
@@ -115,7 +109,16 @@ class GameBuilder {
         return this.gameName;
     }
 
-    public KeypadFrame createKeypadFrame() {
-        return new KeypadFrame();
+    public Vector<Value> getAllowedValues() {
+        Vector<Value> valueAux = new Vector<>();
+        ButtonHashing hashing = new ButtonHashing();
+
+        JSONArray buttonsJson = this.gameParser.getJSONarray("buttons");
+        ArrayList buttons = this.gameParser.toArrayList(buttonsJson);
+        for (Object id: buttons) {
+            int idButton = ((Long) id).intValue();
+            valueAux.add(hashing.getMapAt(idButton));
+        }
+        return valueAux;
     }
 }

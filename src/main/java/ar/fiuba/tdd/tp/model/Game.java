@@ -1,21 +1,22 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.model.cell.Cell;
-import ar.fiuba.tdd.tp.model.cell.Position;
-import ar.fiuba.tdd.tp.model.cell.Value;
 import ar.fiuba.tdd.tp.view.GridView;
-import ar.fiuba.tdd.tp.view.KeypadFrame;
+import ar.fiuba.tdd.tp.model.cell.Cell;
+import ar.fiuba.tdd.tp.model.cell.Value;
 
-import javax.swing.*;
+import java.util.Vector;
 
 public class Game extends Observable {
     private static Game instance = null;
     private GridView gridView;
     private Grid grid;
     private GameBuilder gameBuilder;
-    private KeypadFrame keypadFrame;
+    private Vector<Value> allowedValues;
     private boolean isFinished;
-    private boolean gridHasBlocks;
+
+    public Vector<Value> getAllowedValues() {
+        return allowedValues;
+    }
 
     private Game(String gameName) {
         gameBuilder = new GameBuilder(gameName);
@@ -25,27 +26,17 @@ public class Game extends Observable {
             e.printStackTrace();
         }
         grid = gameBuilder.createGrid();
-        gridHasBlocks = gameBuilder.gridHasBlocks();
 
         this.isFinished = false;
 
         gridView = new GridView(gameName);
         this.addObserver(gridView);
         this.addObserver(new FinishGameListener());
-        this.keypadFrame = this.gameBuilder.createKeypadFrame();
-    }
-
-    public boolean gridHasBlocks() {
-        return gridHasBlocks;
+        this.allowedValues = this.gameBuilder.getAllowedValues();
     }
 
     public static Game getInstance() {
         return instance;
-    }
-
-    public JFrame getKeypad(int row,int col) {
-        keypadFrame.setCurrentPosition(new Position(col,row));
-        return keypadFrame;
     }
 
     public static void init(String gameName) {
