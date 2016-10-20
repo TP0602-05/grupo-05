@@ -19,7 +19,7 @@ public class AmountOfLinesRule implements Rule {
 
 
     public boolean checkFinal(ArrayList<PositionValueDuo> values) {
-        if (this.amountOfLines == 0) {
+        if (this.amountOfLines < 0) {
             return true;
         }
         int cantLines = 0;
@@ -31,13 +31,19 @@ public class AmountOfLinesRule implements Rule {
 
 
     public boolean check(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
-        if (this.amountOfLines == 0) {
+        System.out.println("let's see");
+        if (this.amountOfLines < 0) {
             return true;
         }
         int cantLines = this.countLinesOfOne(value.getValue().getDots());
         for (PositionValueDuo valueToCount: values
              ) {
             cantLines += this.countLinesOfOne(valueToCount.getValue().getDots());
+        }
+        if (cantLines <= amountOfLines) {
+            System.out.println("good");
+        } else {
+            System.out.println("fuuu");
         }
         return (cantLines <= amountOfLines);
     }
