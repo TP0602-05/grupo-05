@@ -92,13 +92,11 @@ class Grid {
         }
     }
 
-    private boolean checkNewValueInSets(ArrayList<Integer> mySets, Value newValue, Value prevValue) {
+    private boolean checkNewValueInSets(ArrayList<Integer> mySets, PositionValueDuo newValue, PositionValueDuo prevValue) {
         for (int position: mySets) {
             // TODO Correct parameter from Value to PositionValueDuo
-            PositionValueDuo newPValue = new PositionValueDuo(newValue, new Position(0,0));
-            PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(0,0));
             System.out.println("POS: "+position);
-            if ( !this.sets.elementAt(position).canInsertValue(newPValue, prevPValue) ) {
+            if ( !this.sets.elementAt(position).canInsertValue(newValue, prevValue) ) {
                 System.out.println("FALSE CHECK NEW");
                 return false;
             }
@@ -121,7 +119,11 @@ class Grid {
         System.out.println("TO STRING: "+value.toString());
 
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-        if (checkNewValueInSets(mySets, value, (this.cells.elementAt(row).elementAt(col).getValue()))) {
+        PositionValueDuo newPosValue  =
+                new PositionValueDuo(value, new Position(row,col));
+        PositionValueDuo prevPosValue =
+                new PositionValueDuo(this.cells.elementAt(row).elementAt(col).getValue(), new Position(row,col));
+        if (checkNewValueInSets(mySets, newPosValue, prevPosValue)) {
             System.out.println("C");
             Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
             this.cells.elementAt(row).elementAt(col).setValue(value);

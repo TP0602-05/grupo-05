@@ -141,8 +141,8 @@ public class LineContinuityRule implements Rule {
     }
 
     boolean checkOneContinuousValue(Value value1, Value value2, int pos1, int pos2) {
-        return ((value1.getDots().elementAt(pos1))
-                && (value2.getDots().elementAt(pos2)));
+        return ((value1.getDotsWithBorders().elementAt(pos1))
+                && (value2.getDotsWithBorders().elementAt(pos2)));
     }
 
     public boolean checkFinal(ArrayList<PositionValueDuo> values) {

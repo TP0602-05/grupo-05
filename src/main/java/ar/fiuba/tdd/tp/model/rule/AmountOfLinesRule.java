@@ -24,7 +24,7 @@ public class AmountOfLinesRule implements Rule {
         }
         int cantLines = 0;
         for (PositionValueDuo valueToCount: values) {
-            cantLines += this.countLinesOfOne(valueToCount.getValue().getDots());
+            cantLines += this.countLinesOfOne(valueToCount.getValue().getDotsWithBorders());
         }
         return (cantLines == amountOfLines);
     }
@@ -36,11 +36,11 @@ public class AmountOfLinesRule implements Rule {
         if (this.amountOfLines < 0) {
             return true;
         }
-        int cantLines = this.countLinesOfOne(value.getValue().getDots());
+        int cantLines = this.countLinesOfOne(value.getValue().getDotsWithBorders());
         System.out.println("let's see");
         for (PositionValueDuo valueToCount: values
              ) {
-            cantLines += this.countLinesOfOne(valueToCount.getValue().getDots());
+            cantLines += this.countLinesOfOne(valueToCount.getValue().getDotsWithBorders());
         }
         if (cantLines <= amountOfLines) {
             System.out.println("good");
