@@ -40,52 +40,43 @@ class GameBuilder {
             ArrayList borders = (JSONArray) cellJson.get("borders");
             int type = ((Long)cellJson.get("type")).intValue();
             String blocked = (String)cellJson.get("isBlocked");
-            this.internalProcessOfValue(grid, type, blocked, val, sets, col, row, borders);
+            this.internalProcessOfValue(grid, type, val, sets, col, row, borders);
         }
         grid = loadRulesGame(grid);
         return grid;
     }
 
-    private void internalProcessOfValue(Grid grid, int type, String blocked, ArrayList val, ArrayList sets, int col, int row, ArrayList borders) {
+    private void internalProcessOfValue(Grid grid, int type, ArrayList val, ArrayList sets, int col, int row, ArrayList borders) {
 
         switch (type) {
             case 1:
-                int intValue = ((Long) val.get(0)).intValue();
-                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets, borders);
-                addCellFlagsAndNumbers(grid, val, row, col, sets);
+                addCellFlagsAndNumbers(grid, val, row, col, sets, borders);
                 break;
             case 2:
-                Vector<Value> vecAux = new Vector<>(val.size());
-                for (Object values : val) {
-                    vecAux.add(new Value(((Long) values).intValue()));
-                }
-                grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets, borders);
-                addCellDualSum(grid, val, row, col, sets);
+                addCellDualSum(grid, val, row, col, sets, borders);
                 break;
             case 3:
                 grid.addCell(new CellBlack(),row - 1 ,col - 1,sets, borders);
                 break;
             case 4:
-                addCellFlagsAndNumbers(grid, val, row, col, sets);
-                intValue = ((Long) val.get(0)).intValue();
-                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)),row - 1,col - 1,sets, borders);
+                addCellFlagsAndNumbers(grid, val, row, col, sets, borders);
                 break;
             default:
                 break;
         }
     }
 
-    private void addCellDualSum(Grid grid, ArrayList val, int row, int col, ArrayList sets) {
+    private void addCellDualSum(Grid grid, ArrayList val, int row, int col, ArrayList sets, ArrayList borders) {
         Vector<Value> vecAux = new Vector<>(val.size());
         for (Object values : val) {
             vecAux.add(new Value(((Long) values).intValue()));
         }
-        grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets);
+        grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets, borders);
     }
 
-    private void addCellFlagsAndNumbers(Grid grid, ArrayList val, int row, int col, ArrayList sets) {
+    private void addCellFlagsAndNumbers(Grid grid, ArrayList val, int row, int col, ArrayList sets, ArrayList borders) {
         int intValue = ((Long) val.get(0)).intValue();
-        grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets);
+        grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets, borders);
     }
 
     private void parseRules(Grid grid, ArrayList rulesArray) {
