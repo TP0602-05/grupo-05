@@ -57,8 +57,7 @@ class GameBuilder {
         switch (type) {
             case 1:
                 int intValue = ((Long) val.get(0)).intValue();
-                boolean isBlocked = blocked.equals("true");
-                grid.addCell(new CellNumericValues(new Value(intValue), isBlocked), row - 1, col - 1, sets);
+                grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets);
                 break;
             case 2:
                 Vector<Value> vecAux = new Vector<>(val.size());

@@ -45,8 +45,4 @@ public abstract class Cell {
     public String toString() {
         return this.value.toString();
     }
-
-   /* public void printCell() {
-        this.value.elementAt(0).printValue();
-    }*/
 }
