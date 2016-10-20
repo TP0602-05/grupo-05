@@ -139,15 +139,6 @@ public class Value {
         return ( this.value.equals(otherValue.getValue()) );
     }
 
-    boolean isDotsEqualTo(Value otherValue) {
-        for ( int i = 0; i < NUM_DOTS; i++ ) {
-            if ( this.dots.elementAt(i) != otherValue.getDots().elementAt(i) ) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public boolean areDotsEqualTo(Value otherValue) {
         boolean equal = true;
         for (int i = 0; i < NUM_DOTS; i++) {

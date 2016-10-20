@@ -43,7 +43,7 @@ public class ValueTests {
         Vector<Boolean> dots2 = new Vector<>();
         this.addNBooleansTo(dots2, false, 9);
         Value myValue2 = new Value(dots2);
-        assertTrue(myValue1.isDotsEqualTo(myValue2));
+        assertTrue(myValue1.areDotsEqualTo(myValue2));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class ValueTests {
         this.addNBooleansTo(dots2, false, 5);
         this.addNBooleansTo(dots2, true, 4);
         Value myValue2 = new Value(dots2);
-        assertFalse(myValue1.isDotsEqualTo(myValue2));
+        assertFalse(myValue1.areDotsEqualTo(myValue2));
     }
 
     @Test
@@ -77,7 +77,7 @@ public class ValueTests {
         Value myValue1 = new Value(dots1);
         myValue1.combineDots(myValue2);
 
-        assertTrue(myValue1.isDotsEqualTo(myValue3));
+        assertTrue(myValue1.areDotsEqualTo(myValue3));
     }
 
     @Test
@@ -101,4 +101,9 @@ public class ValueTests {
         Value value2 = new Value(3,boolvec2);
         assertFalse(value1.areDotsEqualTo(value2));
     }
+
+    /*
+    @Test
+    public void test
+    */
 }
