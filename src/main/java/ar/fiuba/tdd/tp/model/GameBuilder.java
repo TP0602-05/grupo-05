@@ -39,11 +39,9 @@ class GameBuilder {
             ArrayList sets = (JSONArray) cellJson.get("sets");
             int type = ((Long)cellJson.get("type")).intValue();
             String blocked = (String)cellJson.get("isBlocked");
-            System.out.println("TYPE:" + type + " VAL: " + val + " ROW: " + row + " COL: " + col +  " SETS:" + sets);
             this.internalProcessOfValue(grid, type, blocked, val, sets, col, row);
         }
         grid = loadRulesGame(grid);
-        grid.printSets();
         return grid;
     }
 

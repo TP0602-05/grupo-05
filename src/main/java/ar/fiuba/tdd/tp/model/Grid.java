@@ -68,7 +68,6 @@ class Grid {
         this.cells.elementAt(row).insertElementAt(cell, col);
         for (Object position:sets) {
             int pos = ((Long) position).intValue();
-            //System.out.println("POS: "+pos+" ROW: "+row+"COL: "+col+"VAL: "+cell.getValue().toString());
             this.sets.elementAt(pos - 1).insertValue( new PositionValueDuo(cell.getValue(), new Position(row, col)));
             this.map.elementAt(row).elementAt(col).add(pos - 1);
         }
@@ -79,7 +78,6 @@ class Grid {
         Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
         this.cells.elementAt(row).elementAt(col).setValue(new Value(0));
         for (int position : mySets) {
-            //System.out.println(" ROW: "+row+"COL: "+col);
             PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
             this.sets.elementAt(position).addValue(new PositionValueDuo(new Value(0), new Position(row - 1,col - 1)), prevPValue);
         }
@@ -113,8 +111,6 @@ class Grid {
                 Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
                 this.cells.elementAt(row).elementAt(col).setValue(value);
                 for (int position : mySets) {
-                    //System.out.println(" ROW: "+row+"COL: "+col+"VAL: ");
-
                     PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row - 1,col - 1));
                     PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
                     this.sets.elementAt(position).addValue(pvalue, prevPValue);
