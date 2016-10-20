@@ -19,6 +19,7 @@ class Grid {
     private int width;
     private int height;
     private int nsets;
+    private static final int NUM_BORDERS = 8;
 
     private void initializeVectorCells() {
         this.cells = new Vector<>(height);
@@ -124,6 +125,48 @@ class Grid {
         return false;
     }
 
+    private boolean isValidPosition(int row, int col) {
+        return (row >= 0 && row < this.width) && (col >= 0 && col < this.height);
+    }
+
+    Cell getCell(int row, int col) {
+        if ( this.isValidPosition(row,col) ) {
+            return this.cells.elementAt(row).elementAt(col);
+        }
+        return null;
+    }
+
+    private Vector<Cell> borderCells(int row, int col) {
+        Vector<Cell> borders = new Vector<>();
+        borders.add(this.getCell(row - 1, col - 1));
+        borders.add(this.getCell(row - 1, col));
+        borders.add(this.getCell(row - 1, col + 1));
+        borders.add(this.getCell(row, col - 1));
+        borders.add(this.getCell(row, col + 1));
+        borders.add(this.getCell(row + 1, col - 1));
+        borders.add(this.getCell(row + 1, col));
+        borders.add(this.getCell(row + 1, col + 1));
+        return borders;
+    }
+
+
+
+    private Vector<Value> borderValuesToCombine(Value value) {
+        Vector<Value> borderValues = new Vector<>();
+        for ( int i = 0; i < NUM_BORDERS; i++) {
+            borderValues.add(value.getBorderValueAt(i));
+        }
+        return borderValues;
+    }
+
+    void updateBorderCells(Value value, int row, int col) {
+        Vector<Cell> borders = this.borderCells(row, col);
+        Vector<Value> borderValues = this.borderValuesToCombine(value);
+        for (int i = 0; i < NUM_BORDERS; i++) {
+            borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i));
+        }
+    }
+
     boolean checkFinish() {
         for (SetOfValues set : this.sets) {
             if (!set.isSetFinished()) {
@@ -131,10 +174,6 @@ class Grid {
             }
         }
         return true;
-    }
-
-    Cell getCell(int row, int col) {
-        return this.cells.elementAt(row).elementAt(col);
     }
 
     void loadRulesSet(int idRules,  Vector<Long> values) {

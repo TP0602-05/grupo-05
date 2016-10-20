@@ -9,9 +9,9 @@ import java.util.Vector;
 
 /**
  * Checks if within a set of values a line is continuous.
- * If initialized in-1 it always returns true.
- * If 0 it doesn't checkfinal.
- * If 1 it works fully.
+ * If initialized in 0 it always returns true.
+ * If 1 it doesn't checkfinal.
+ * If 2 it works fully.
  */
 public class LineContinuityRule implements Rule {
 
@@ -24,18 +24,27 @@ public class LineContinuityRule implements Rule {
     }
 
     public boolean check(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
-        if (ruleType < 0) {
+        if (ruleType == 0) {
             return true;
         } else {
             ArrayList<PositionValueDuo> valuesNext = getListOfNext(values,value);
-            if (!isEmpty(valuesNext)) {
-                return (checkAdjacentCells(valuesNext, value)
-                        || (checkCornerCells(valuesNext, value))
-                /*|| (checkCornerAdjacentDots(valuesNext,value))*/);
+            if (ruleType > 0) {
+                if (!isEmpty(values)) {
+                    return (checkAdjacentCells(valuesNext, value)
+                            || (checkCornerCells(valuesNext, value))
+                    /*|| (checkCornerAdjacentDots(valuesNext,value))*/);
+                }
+                initValue = value;
+                return true;
+            } else {
+                return checkNotCircuit(valuesNext,value);
             }
-            initValue = value;
-            return true;
         }
+    }
+
+    private boolean checkNotCircuit(ArrayList<PositionValueDuo> valuesNext, PositionValueDuo value) {
+        Vector<Value> vecValues = getTransversalValues(valuesNext,value);
+        return ((countCornerDotsFinal(vecValues,value.getValue()) - countMiddleDotsFinal(vecValues,value.getValue())) <= 1);
     }
 
     private boolean isEmpty(ArrayList<PositionValueDuo> values) {
@@ -130,11 +139,11 @@ public class LineContinuityRule implements Rule {
     }
 
     public boolean checkFinal(ArrayList<PositionValueDuo> values) {
-        if (ruleType > 0) {
+        if (ruleType > 1) {
             this.replaceInitValue(values);
             Vector<Value> vecValues = getTransversalValues(values,initValue);
-            int middleDots = countMiddleDotsFinal(vecValues);
-            return ((middleDots > 1) || ((countCornerDotsFinal(vecValues) - middleDots) > 1));
+            int middleDots = countMiddleDotsFinal(vecValues,initValue.getValue());
+            return ((middleDots > 1) || ((countCornerDotsFinal(vecValues,initValue.getValue()) - middleDots) > 1));
         } else {
             return true;
         }
@@ -148,12 +157,12 @@ public class LineContinuityRule implements Rule {
         }
     }
 
-    private int countMiddleDotsFinal(Vector<Value> vecValues) {
+    private int countMiddleDotsFinal(Vector<Value> vecValues,Value value) {
         int counter = 0;
-        counter += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(0),1,7));
-        counter += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(1),5,3));
-        counter += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(2),7,1));
-        counter += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(3),3,5));
+        counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(0),1,7));
+        counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(1),5,3));
+        counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(2),7,1));
+        counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(3),3,5));
         return counter;
         /*return (boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(0),1,7))
                 + boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(1),5,3))
@@ -161,16 +170,16 @@ public class LineContinuityRule implements Rule {
                 + boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(3),3,5)));*/
     }
 
-    private int countCornerDotsFinal(Vector<Value> vecValues) {
+    private int countCornerDotsFinal(Vector<Value> vecValues,Value value) {
         int cpdQuant = 0;
-        cpdQuant += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(0),0,6));
-        cpdQuant += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(0),2,8));
-        cpdQuant += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(1),2,0));
-        cpdQuant += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(1),8,6));
-        cpdQuant += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(2),8,2));
-        cpdQuant += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(2),6,0));
-        cpdQuant += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(3),0,2));
-        cpdQuant += boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(3),6,8));
+        cpdQuant += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(0),0,6));
+        cpdQuant += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(0),2,8));
+        cpdQuant += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(1),2,0));
+        cpdQuant += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(1),8,6));
+        cpdQuant += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(2),8,2));
+        cpdQuant += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(2),6,0));
+        cpdQuant += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(3),0,2));
+        cpdQuant += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(3),6,8));
         return cpdQuant;
     }
 
