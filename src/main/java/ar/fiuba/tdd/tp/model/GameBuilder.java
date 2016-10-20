@@ -50,7 +50,7 @@ class GameBuilder {
 
         switch (type) {
             case 1:
-                addCellFlagsAndNumbers(grid, val, row, col, sets, borders);
+                addCellFlagsAndNumbers(grid, val, row  , col, sets, borders);
                 break;
             case 2:
                 addCellDualSum(grid, val, row, col, sets, borders);
@@ -71,6 +71,7 @@ class GameBuilder {
         for (Object values : val) {
             vecAux.add(new Value(((Long) values).intValue()));
         }
+
         grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets, borders);
     }
 
@@ -95,6 +96,14 @@ class GameBuilder {
                 case 4:
                     JSONArray count = this.gameParser.getJSONarray("count");
                     values = this.gameParser.toVector(count);
+                    break;
+                case 5:
+                    JSONArray continuity = this.gameParser.getJSONarray("continuity");
+                    values = this.gameParser.toVector(continuity);
+                    break;
+                case 6:
+                    JSONArray corner = this.gameParser.getJSONarray("corner");
+                    values = this.gameParser.toVector(corner);
                     break;
                 default:
                     break;

@@ -41,7 +41,7 @@ public class Board extends JPanel {
         Button cellPane;
         cellPane = cell.getView(row,col);
         Vector<Integer> bordersCell = Game.getInstance().getCell(row,col).getBorders();
-        Border border = new MatteBorder(bordersCell.get(0)*4,bordersCell.get(1)*4,bordersCell.get(2)*4,bordersCell.get(3)*4,Color.yellow);
+        Border border = new MatteBorder(bordersCell.get(0) * 4,bordersCell.get(1) * 4,bordersCell.get(2) * 4,bordersCell.get(3) * 4,Color.yellow);
         cellPane.setBorders(border);
         return cellPane;
     }

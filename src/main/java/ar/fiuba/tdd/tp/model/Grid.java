@@ -74,6 +74,9 @@ class Grid {
         this.cells.elementAt(row).elementAt(col).setBorders(bordersAux);
         for (Object position:sets) {
             int pos = ((Long) position).intValue();
+            if(pos == 0) {
+                continue;
+            }
             this.sets.elementAt(pos - 1).insertValue( new PositionValueDuo(cell.getValue(), new Position(row, col)));
             this.map.elementAt(row).elementAt(col).add(pos - 1);
         }
@@ -190,6 +193,10 @@ class Grid {
                 rule = new MultiplicationRule(values.elementAt(row).intValue());
             } else if (idRules == 4) {
                 rule = new AmountOfLinesRule(values.elementAt(row).intValue());
+            } else if (idRules == 5) {
+                rule = new LineContinuityRule(values.elementAt(row).intValue());
+            } else if (idRules == 6) {
+                rule = new AmountOfLinesCornerRule(values.elementAt(row).intValue());
             }
             set.loadRule(rule);
         }
