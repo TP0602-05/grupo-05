@@ -64,12 +64,6 @@ public class Value {
         return this.dots;
     }
 
-    private void addNFalsesTo(Vector<Boolean> dots, int cant) {
-        for ( int i = 0; i <= cant; i++ ) {
-            dots.add(false);
-        }
-    }
-
     public Value getBorderValueAt(int border) {
         Boolean[] valueDots;
         switch (border) {
@@ -133,6 +127,10 @@ public class Value {
                 this.borderDots.set(i, newValue);
             }
         }
+    }
+
+    Vector<Integer> getBorderDots() {
+        return this.borderDots;
     }
 
     public boolean isEqualTo(Value otherValue) {
