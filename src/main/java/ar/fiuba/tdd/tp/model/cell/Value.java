@@ -64,6 +64,14 @@ public class Value {
         return this.dots;
     }
 
+    public Vector<Boolean> getDotsWithBorders() {
+        Vector<Boolean> dotsBorders = new Vector<>();
+        for (int i = 0; i < NUM_DOTS; i++) {
+            dotsBorders.add( this.dots.elementAt(i) || (this.borderDots.elementAt(i) > 0) );
+        }
+        return dotsBorders;
+    }
+
     public Value getBorderValueAt(int border) {
         Boolean[] valueDots;
         switch (border) {

@@ -174,7 +174,7 @@ public class AmountOfLinesCornerRule implements Rule{
     }
 
     private int checkOddDiagonal(PositionValueDuo val) {
-        Vector<Boolean> vec = val.getValue().getDots();
+        Vector<Boolean> vec = val.getValue().getDotsWithBorders();
         if (vec.elementAt(0) && vec.elementAt(4) && vec.elementAt(8)) {
             return 1;
         } else {
@@ -183,7 +183,7 @@ public class AmountOfLinesCornerRule implements Rule{
     }
 
     private int checkEvenDiagonal(PositionValueDuo val) {
-        Vector<Boolean> vec = val.getValue().getDots();
+        Vector<Boolean> vec = val.getValue().getDotsWithBorders();
         if (vec.elementAt(2) && vec.elementAt(4) && vec.elementAt(6)) {
             return 1;
         } else {
