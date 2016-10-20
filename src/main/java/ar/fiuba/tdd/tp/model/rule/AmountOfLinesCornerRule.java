@@ -41,33 +41,75 @@ public class AmountOfLinesCornerRule implements Rule{
     }
 
     private Vector<PositionValueDuo> getOrderedList(ArrayList<PositionValueDuo> values) {
-        Vector<PositionValueDuo> vecVal = new Vector<>();
-        vecVal.add(0,new PositionValueDuo(new Value(values.size()),new Position(0,0)));
-        for (int cp = 1; cp < 5; cp++) {
-            vecVal.add(cp,new PositionValueDuo(new Value(0),new Position(0,0)));
-        }
-        vecVal = transformValues(vecVal);
+        Vector<PositionValueDuo> vecVal = transformValues(values,values.size());
         return vecVal;
     }
 
-    private Vector<PositionValueDuo> transformValues(Vector<PositionValueDuo> vecVal) {
-        /*switch(vecVal.elementAt(0).getValue().getValue()) {
+    private Vector<PositionValueDuo> transformValues(ArrayList<PositionValueDuo> values, int size) {
+        Vector<PositionValueDuo> vecVal = new Vector<>();
+        switch (size) {
             case 1 :
-                // Statements
-                break; // optional
-
+                vecVal = transformValuesForOne(values);
+                break;
             case 2 :
-                // Statements
-                break; // optional
+                vecVal = transformValuesForTwo(values);
+                break;
+            case 4 :
+                vecVal = transformValuesForFour(values);
+                break;
+            default :
+                vecVal = transformValuesForFour(values);
+                break;
+        }
+        return vecVal;
+    }
 
-            case 2 :
-                // Statements
-                break; // optional
+    private Vector<PositionValueDuo> transformValuesForFour(ArrayList<PositionValueDuo> values) {
+        Vector<PositionValueDuo> vecVal = new Vector<>();
+        return vecVal;
+    }
 
-            // You can have any number of case statements.
-            default : // Optional
-                // Statements
-        }*/
+    private Vector<PositionValueDuo> transformValuesForTwo(ArrayList<PositionValueDuo> values) {
+        Vector<PositionValueDuo> vecVal = new Vector<>();
+        PositionValueDuo val1 =  values.get(0);
+        PositionValueDuo val2 =  values.get(1);
+        int pos1;
+        int pos2;
+        //Agarrate Catalina que se viene alto if.
+        if ((val1.getPos().getFil() == val2.getPos().getFil())
+                && ((((val1.getPos().getFil() == 0) && (val1.getPos().getCol() < val2.getPos().getCol()))   //Que Dios te ayude
+                || ((val1.getPos().getFil() != 0) && (val1.getPos().getCol() > val2.getPos().getCol())))    //si queres entender
+                || (((val1.getPos().getFil() < val2.getPos().getFil()) && (val1.getPos().getCol() == 0))    //este quilombo
+                || ((val1.getPos().getCol() != 0) && (val1.getPos().getFil() > val2.getPos().getFil()))))) {
+            pos1 = 1;
+            pos2 = 0;
+        } else {
+            pos1 = 0;
+            pos2 = 1;
+        }
+
+        return vecVal;
+    }
+
+    Vector<PositionValueDuo> transformValuesForOne(ArrayList<PositionValueDuo> values) {
+        Vector<PositionValueDuo> vecVal = new Vector<>();
+        PositionValueDuo val =  values.get(0);
+        int col = val.getPos().getCol();
+        int fil = val.getPos().getFil();
+        int pos;
+        if (((fil == 0) && (col != 0)) || ((fil != 0) && col == 0)) {
+            pos = 1;
+        } else {
+            pos = 0;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (i != pos) {
+                vecVal.add(i,new PositionValueDuo(new Value(0),new Position(0,0)));
+            } else {
+                vecVal.add(pos,val);
+            }
+        }
+        vecVal.add(0,new PositionValueDuo(new Value(0),new Position(0,0)));
         return vecVal;
     }
 

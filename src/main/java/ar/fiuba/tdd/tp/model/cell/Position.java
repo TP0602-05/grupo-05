@@ -121,11 +121,11 @@ public class Position {
     }
 
 
-    int getFil() {
+    public int getFil() {
         return fil;
     }
 
-    int getCol() {
+    public int getCol() {
         return col;
     }
 }
