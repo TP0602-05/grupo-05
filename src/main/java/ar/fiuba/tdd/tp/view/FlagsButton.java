@@ -19,4 +19,10 @@ public class FlagsButton extends Button {
         }
     }
 
+    @Override
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        painter.paint(graphics,getWidth(),getHeight());
+        setBorder(painter.getBorders());
+    }
 }
