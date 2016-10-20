@@ -30,10 +30,16 @@ public class LineContinuityRule implements Rule {
             ArrayList<PositionValueDuo> valuesNext = getListOfNext(values,value);
             if (ruleType > 0) {
                 if (!isEmpty(values)) {
+                    System.out.println("not empty");
+                    if(checkAdjacentCells(valuesNext, value)
+                            || (checkCornerCells(valuesNext, value))) {
+                        System.out.println("true continue");
+                    }
                     return (checkAdjacentCells(valuesNext, value)
                             || (checkCornerCells(valuesNext, value))
                     /*|| (checkCornerAdjacentDots(valuesNext,value))*/);
                 }
+                System.out.println("VaCIO");
                 initValue = value;
                 return true;
             } else {

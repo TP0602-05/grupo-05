@@ -15,7 +15,7 @@ class Grid {
     private Vector<Vector<Cell>> cells;
     private Vector<SetOfValues> sets;
     private Vector<Vector<ArrayList<Integer>>> map;
-    private Vector<Validation> validations;
+   // private Vector<Validation> validations;
     private int width;
     private int height;
     private int nsets;
@@ -49,8 +49,8 @@ class Grid {
         this.width = width;
         this.height = height;
         this.nsets = nsets;
-        this.validations = new Vector<>();
-        this.validations.add(new XtoYNumberValidation(1,9));
+        //this.validations = new Vector<>();
+        //this.validations.add(new XtoYNumberValidation(1,9));
         this.initializeVectorCells();
         this.initializeVectorSets();
         this.initializeVectorMap();
@@ -97,14 +97,17 @@ class Grid {
             // TODO Correct parameter from Value to PositionValueDuo
             PositionValueDuo newPValue = new PositionValueDuo(newValue, new Position(0,0));
             PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(0,0));
+            System.out.println("POS: "+position);
             if ( !this.sets.elementAt(position).canInsertValue(newPValue, prevPValue) ) {
+                System.out.println("FALSE CHECK NEW");
                 return false;
             }
         }
         return true;
     }
 
-    private boolean checkValidations(Value value) {
+   /* private boolean checkValidations(Value value) {
+        System.out.println("1");
         for (Validation myValidation : this.validations) {
             if (!myValidation.validate(value)) {
                 return false;
@@ -112,22 +115,26 @@ class Grid {
         }
         return true;
     }
+    */
 
     boolean setCell(Value value,int row, int col) {
-        if (checkValidations(value)) {
-            ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-            if (checkNewValueInSets(mySets, value, (this.cells.elementAt(row).elementAt(col).getValue()))) {
-                Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
-                this.cells.elementAt(row).elementAt(col).setValue(value);
-                for (int position : mySets) {
-                    PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row - 1,col - 1));
-                    PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
-                    this.sets.elementAt(position).addValue(pvalue, prevPValue);
-                }
-                this.updateBorderCells(value, row, col);
-                return true;
+        System.out.println("TO STRING: "+value.toString());
+
+        ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
+        if (checkNewValueInSets(mySets, value, (this.cells.elementAt(row).elementAt(col).getValue()))) {
+            System.out.println("C");
+            Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
+            this.cells.elementAt(row).elementAt(col).setValue(value);
+            for (int position : mySets) {
+                PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row - 1,col - 1));
+                PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
+                this.sets.elementAt(position).addValue(pvalue, prevPValue);
             }
+            this.updateBorderCells(value, row, col);
+            return true;
         }
+
+
         return false;
     }
 

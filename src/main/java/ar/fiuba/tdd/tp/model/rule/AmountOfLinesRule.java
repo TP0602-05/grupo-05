@@ -31,11 +31,13 @@ public class AmountOfLinesRule implements Rule {
 
 
     public boolean check(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
-        System.out.println("let's see");
+        System.out.println("LINES"+   this.amountOfLines);
+
         if (this.amountOfLines < 0) {
             return true;
         }
         int cantLines = this.countLinesOfOne(value.getValue().getDots());
+        System.out.println("let's see");
         for (PositionValueDuo valueToCount: values
              ) {
             cantLines += this.countLinesOfOne(valueToCount.getValue().getDots());
