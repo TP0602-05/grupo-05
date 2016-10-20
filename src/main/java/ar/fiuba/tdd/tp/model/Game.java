@@ -1,8 +1,8 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.view.GridView;
 import ar.fiuba.tdd.tp.model.cell.Cell;
 import ar.fiuba.tdd.tp.model.cell.Value;
+import ar.fiuba.tdd.tp.view.GridView;
 
 import java.util.Vector;
 
