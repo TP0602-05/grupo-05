@@ -66,7 +66,7 @@ class Grid {
 
     void addCell(Cell cell, int row, int col, ArrayList sets, ArrayList borders) {
         this.cells.elementAt(row).insertElementAt(cell, col);
-        Vector<Integer> bordersAux = new Vector<Integer>();
+        Vector<Integer> bordersAux = new Vector<>();
         for (Object border:borders) {
             int borderAux = ((Long) border).intValue();
             bordersAux.add(borderAux);
@@ -121,10 +121,30 @@ class Grid {
                     PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
                     this.sets.elementAt(position).addValue(pvalue, prevPValue);
                 }
+                this.updateBorderCells(value, row, col);
                 return true;
             }
         }
         return false;
+    }
+
+    private void setValuesInSets(Vector<Cell> newCells, Vector<Position> cellPositions, int len) {
+        int actualRow;
+        int actualCol;
+        for ( int i = 0; i < len; i++ ) {
+            if ( newCells.elementAt(i) != null ) {
+                Value prevValue = newCells.elementAt(i).getValue();
+                actualRow = cellPositions.elementAt(i).getFil();
+                actualCol = cellPositions.elementAt(i).getCol();
+                for (int position : this.map.elementAt(actualRow).elementAt(actualCol)) {
+                    PositionValueDuo posValue =
+                            new PositionValueDuo(newCells.elementAt(i).getValue(), new Position(actualRow, actualCol));
+                    PositionValueDuo prevPosValue =
+                            new PositionValueDuo(prevValue, new Position(actualRow, actualCol));
+                    this.sets.elementAt(position).addValue(posValue, prevPosValue);
+                }
+            }
+        }
     }
 
     private boolean isValidPosition(int row, int col) {
@@ -151,8 +171,6 @@ class Grid {
         return borders;
     }
 
-
-
     private Vector<Value> borderValuesToCombine(Value value) {
         Vector<Value> borderValues = new Vector<>();
         for ( int i = 0; i < NUM_BORDERS; i++) {
@@ -161,12 +179,34 @@ class Grid {
         return borderValues;
     }
 
-    void updateBorderCells(Value value, int row, int col) {
+    private Vector<Position> borderPositionValues(Position centerPosition) {
+        Vector<Position> borderPositions = new Vector<>();
+        borderPositions.add(new Position(centerPosition.getFil() - 1, centerPosition.getCol() - 1));
+        borderPositions.add(new Position(centerPosition.getFil() - 1, centerPosition.getCol()));
+        borderPositions.add(new Position(centerPosition.getFil() - 1, centerPosition.getCol() + 1));
+        borderPositions.add(new Position(centerPosition.getFil(), centerPosition.getCol() - 1));
+        borderPositions.add(new Position(centerPosition.getFil(), centerPosition.getCol() + 1));
+        borderPositions.add(new Position(centerPosition.getFil() + 1, centerPosition.getCol() - 1));
+        borderPositions.add(new Position(centerPosition.getFil() + 1, centerPosition.getCol()));
+        borderPositions.add(new Position(centerPosition.getFil() + 1, centerPosition.getCol() + 1));
+        return borderPositions;
+    }
+
+    private void updateBorderCells(Value value, int row, int col) {
         Vector<Cell> borders = this.borderCells(row, col);
         Vector<Value> borderValues = this.borderValuesToCombine(value);
+        Vector<Position> borderPositionValues = this.borderPositionValues(new Position(row,col));
+        int actualRow;
+        int actualCol;
         for (int i = 0; i < NUM_BORDERS; i++) {
-            borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i));
+            if ( borders.elementAt(i) != null ) {
+                borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i));
+                actualRow = borderPositionValues.elementAt(i).getFil();
+                actualCol = borderPositionValues.elementAt(i).getCol();
+                this.cells.elementAt(actualRow).elementAt(actualCol).setValue(borders.elementAt(i).getValue());
+            }
         }
+        this.setValuesInSets(borders,borderPositionValues,NUM_BORDERS);
     }
 
     boolean checkFinish() {
