@@ -18,6 +18,7 @@ public class LineContinuityRuleTests {
     public void testAddEmptyValueToEmptySet() {
         LineContinuityRule contRule = new LineContinuityRule(2);
         ArrayList<PositionValueDuo> values = new ArrayList<>();
+        values.add(new PositionValueDuo(new Value(0),new Position(0,0)));
         PositionValueDuo value = new PositionValueDuo(new Value(0),new Position(0,0));
         assertTrue(contRule.check(values,value));
     }
@@ -28,6 +29,8 @@ public class LineContinuityRuleTests {
         ArrayList<PositionValueDuo> values = new ArrayList<>();
         Boolean[] boollist = {true,true,true,false,false,false,false,false,false};
         Vector<Boolean> boolvec = new Vector<>(Arrays.asList(boollist));
+        values.add(new PositionValueDuo(new Value(0),new Position(0,0)));
+        values.add(new PositionValueDuo(new Value(0),new Position(0,0)));
         PositionValueDuo value = new PositionValueDuo(new Value(0,boolvec),new Position(1,0));
         assertTrue(contRule.check(values,value));
     }
@@ -40,6 +43,7 @@ public class LineContinuityRuleTests {
         Vector<Boolean> boolvec = new Vector<>(Arrays.asList(boollist));
         PositionValueDuo value1 = new PositionValueDuo(new Value(0,boolvec),new Position(1,0));
         values.add(value1);
+        values.add(new PositionValueDuo(new Value(0),new Position(0,0)));
         PositionValueDuo value2 = new PositionValueDuo(new Value(0),new Position(1,1));
         assertFalse(contRule.check(values,value2));
     }
@@ -52,6 +56,7 @@ public class LineContinuityRuleTests {
         Vector<Boolean> boolvec1 = new Vector<>(Arrays.asList(boollist1));
         PositionValueDuo value1 = new PositionValueDuo(new Value(0,boolvec1),new Position(2,1));
         values.add(value1);
+        values.add(new PositionValueDuo(new Value(0),new Position(0,0)));
         Boolean[] boollist2 = {false,true,false,false,true,false,false,true,false};
         Vector<Boolean> boolvec2 = new Vector<>(Arrays.asList(boollist2));
         PositionValueDuo value2 = new PositionValueDuo(new Value(0,boolvec2),new Position(1,1));
@@ -66,6 +71,7 @@ public class LineContinuityRuleTests {
         Vector<Boolean> boolvec1 = new Vector<>(Arrays.asList(boollist1));
         PositionValueDuo value1 = new PositionValueDuo(new Value(0,boolvec1),new Position(2,2));
         values.add(value1);
+        values.add(new PositionValueDuo(new Value(0),new Position(0,0)));
         Boolean[] boollist2 = {false,false,true,false,false,true,false,false,true};
         Vector<Boolean> boolvec2 = new Vector<>(Arrays.asList(boollist2));
         PositionValueDuo value2 = new PositionValueDuo(new Value(0,boolvec2),new Position(1,1));
@@ -313,6 +319,28 @@ public class LineContinuityRuleTests {
 
     @Test
     public void testTransversalValues() {
+        LineContinuityRule contRule = new LineContinuityRule(1);
+        ArrayList<PositionValueDuo> values = new ArrayList<>();
+        Boolean[] boollist = {false,true,false,false,true,true,false,false,false};
+        Vector<Boolean> boolvec = new Vector<>(Arrays.asList(boollist));
+        PositionValueDuo valueIn = new PositionValueDuo(new Value(0,boolvec),new Position(1,1));
+        PositionValueDuo value0 = new PositionValueDuo(new Value(1,boolvec),new Position(0,1));
+        values.add(value0);
+        PositionValueDuo value2 = new PositionValueDuo(new Value(3,boolvec),new Position(2,1));
+        values.add(value2);
+        PositionValueDuo value3 = new PositionValueDuo(new Value(4,boolvec),new Position(1,0));
+        PositionValueDuo value1 = new PositionValueDuo(new Value(2,boolvec),new Position(1,2));
+        values.add(value1);
+        values.add(value3);
+        Vector<Value> valuesNext = contRule.getTransversalValues(values,valueIn);
+        assertTrue(value0.getValue().isEqualTo(valuesNext.elementAt(0)));
+        assertTrue(value1.getValue().isEqualTo(valuesNext.elementAt(1)));
+        assertTrue(value2.getValue().isEqualTo(valuesNext.elementAt(2)));
+        assertTrue(value3.getValue().isEqualTo(valuesNext.elementAt(3)));
+    }
+
+    @Test
+    public void testCornerValues() {
         LineContinuityRule contRule = new LineContinuityRule(1);
         ArrayList<PositionValueDuo> values = new ArrayList<>();
         Boolean[] boollist = {false,true,false,false,true,true,false,false,false};

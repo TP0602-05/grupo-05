@@ -127,6 +127,7 @@ public class LineContinuityRule implements Rule {
         for (PositionValueDuo val: valuesNext) {
             int anything = value.getPos().isCorner(val.getPos());
             if (anything > -1) {
+                veccorn.remove(anything);
                 veccorn.add(anything, val.getValue());
             }
         }
