@@ -3,10 +3,10 @@ package ar.fiuba.tdd.tp.view;
 
 import ar.fiuba.tdd.tp.model.cell.Value;
 
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.geom.Line2D;
+import javax.swing.border.Border;
+import javax.swing.border.MatteBorder;
 import java.util.Vector;
 
 public class Paintor {
@@ -16,7 +16,7 @@ public class Paintor {
 
     public Paintor(Value value) {
         this.value = value;
-        borders = new MatteBorder(0,9,0,0,Color.yellow);
+        borders = new MatteBorder(0,0,0,0,Color.black);
     }
 
     public void paint(Graphics graphics, int width, int height) {
