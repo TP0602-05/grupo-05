@@ -28,8 +28,4 @@ public class KeypadButton extends Button {
         graphics.dispose();
     }
 
-    public void addKeypadValue(int currentRow, int currentCol) {
-        Game.getInstance().addKeypadValue(value,currentRow,currentCol);
-    }
-
 }
