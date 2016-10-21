@@ -120,6 +120,10 @@ public class Position {
                 && (otherPos.getCol() == (this.col - 1)));
     }
 
+    public String toString() {
+        String pos = "Fila: " + getFil() + " - Col:" + getCol();
+        return pos;
+    }
 
     public int getFil() {
         return fil;

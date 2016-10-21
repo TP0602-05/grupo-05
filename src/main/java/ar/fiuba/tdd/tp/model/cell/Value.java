@@ -165,6 +165,10 @@ public class Value {
         System.out.println(this.value);
     }
 
+    public void printBorders() {
+        System.out.println(this.borderDots.toString());
+    }
+
     public String toString() {
         return this.value.toString();
     }

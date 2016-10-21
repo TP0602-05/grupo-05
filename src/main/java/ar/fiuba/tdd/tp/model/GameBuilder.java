@@ -43,6 +43,7 @@ class GameBuilder {
             this.internalProcessOfValue(grid, type, val, sets, col, row, borders);
         }
         grid = loadRulesGame(grid);
+        //grid.printSets();
         return grid;
     }
 

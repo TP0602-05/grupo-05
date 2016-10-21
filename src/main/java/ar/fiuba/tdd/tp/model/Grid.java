@@ -74,7 +74,7 @@ class Grid {
         this.cells.elementAt(row).elementAt(col).setBorders(bordersAux);
         for (Object position:sets) {
             int pos = ((Long) position).intValue();
-            if(pos == 0) {
+            if (pos == 0) {
                 continue;
             }
             this.sets.elementAt(pos - 1).insertValue( new PositionValueDuo(cell.getValue(), new Position(row, col)));
@@ -95,9 +95,8 @@ class Grid {
     private boolean checkNewValueInSets(ArrayList<Integer> mySets, PositionValueDuo newValue, PositionValueDuo prevValue) {
         for (int position: mySets) {
             // TODO Correct parameter from Value to PositionValueDuo
-            System.out.println("POS: "+position);
+            //System.out.println("POS: "+position);
             if ( !this.sets.elementAt(position).canInsertValue(newValue, prevValue) ) {
-                System.out.println("FALSE CHECK NEW");
                 return false;
             }
         }
@@ -116,20 +115,19 @@ class Grid {
     */
 
     boolean setCell(Value value,int row, int col) {
-        System.out.println("TO STRING: "+value.toString());
+        //System.out.println("TO STRING: "+value.toString());
 
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         PositionValueDuo newPosValue  =
-                new PositionValueDuo(value, new Position(row,col));
+                new PositionValueDuo(value, new Position(row, col));
         PositionValueDuo prevPosValue =
-                new PositionValueDuo(this.cells.elementAt(row).elementAt(col).getValue(), new Position(row,col));
+                new PositionValueDuo(this.cells.elementAt(row).elementAt(col).getValue(), new Position(row, col));
         if (checkNewValueInSets(mySets, newPosValue, prevPosValue)) {
-            System.out.println("C");
             Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
             this.cells.elementAt(row).elementAt(col).setValue(value);
             for (int position : mySets) {
-                PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row - 1,col - 1));
-                PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
+                PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row, col));
+                PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row, col));
                 this.sets.elementAt(position).addValue(pvalue, prevPValue);
             }
             this.updateBorderCells(value, row, col);
@@ -212,10 +210,18 @@ class Grid {
         int actualCol;
         for (int i = 0; i < NUM_BORDERS; i++) {
             if ( borders.elementAt(i) != null ) {
-                borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i));
+
                 actualRow = borderPositionValues.elementAt(i).getFil();
                 actualCol = borderPositionValues.elementAt(i).getCol();
+
+                //this.cells.elementAt(actualRow).elementAt(actualCol).getValue().printBorders();
+                //System.out.println("=====================================");
+
+                borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i));
                 this.cells.elementAt(actualRow).elementAt(actualCol).setValue(borders.elementAt(i).getValue());
+
+                // PRINT VALUE
+                //this.cells.elementAt(actualRow).elementAt(actualCol).getValue().printBorders();
             }
         }
         this.setValuesInSets(borders,borderPositionValues,NUM_BORDERS);
@@ -253,6 +259,7 @@ class Grid {
 
     void printSets() {
         for (int i = 0; i < sets.size(); i++) {
+            System.out.println("SET: " + i);
             this.sets.elementAt(i).printSet();
         }
     }

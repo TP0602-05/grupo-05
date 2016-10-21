@@ -46,7 +46,6 @@ class SetOfValues {
     }
     
     boolean canInsertValue(PositionValueDuo value, PositionValueDuo prevValue) {
-        // TODO: Recibir valor previo, quitarlo del set antes de chequear y volver a agregarlo al final.
         boolean result = true;
         this.deleteValue(prevValue);
         for (Rule myRule: this.rules) {
@@ -71,7 +70,7 @@ class SetOfValues {
     void printSet() {
         for (Iterator<PositionValueDuo> iterator = this.values.iterator(); iterator.hasNext();) {
             PositionValueDuo myValue = iterator.next();
-            //myValue.print();
+            System.out.println(myValue.getPos().toString() + " : " + myValue.getValue().getDots().toString());
         }
     }
         /*
