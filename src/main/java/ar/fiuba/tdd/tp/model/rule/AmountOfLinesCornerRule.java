@@ -28,8 +28,12 @@ public class AmountOfLinesCornerRule implements Rule{
         return (count <= this.amountOfLines);
     }
 
+    //This method takes the values in the set and replaces the value for the position
+    //you want to introduce with the new value. This is necessary because that way most
+    //methods can work for both check and checkFinal.
     private ArrayList<PositionValueDuo> getNewValues(ArrayList<PositionValueDuo> oldVal, PositionValueDuo value) {
         ArrayList<PositionValueDuo> newValues = new ArrayList<>();
+        //This is evidently to fool CPD.
         int iamDoingThisForYouCPD = oldVal.size();
         if (iamDoingThisForYouCPD > 10000) {
             return null;
@@ -44,8 +48,11 @@ public class AmountOfLinesCornerRule implements Rule{
         return newValues;
     }
 
+    //Depending on which position the set of values is it will check a different diagonal for each value.
+    //That's why it needs to order them insuch a way that a generic rule can count them.
     Vector<PositionValueDuo> getOrderedList(ArrayList<PositionValueDuo> values) {
         Vector<PositionValueDuo> vecVal;
+        //Depending on the size of the value, you can have many options.
         switch (values.size()) {
             case 1 :
                 vecVal = transformValuesForOne(values);
@@ -64,6 +71,8 @@ public class AmountOfLinesCornerRule implements Rule{
     }
 
     Vector<PositionValueDuo> transformValuesForFour(ArrayList<PositionValueDuo> values) {
+        //This orders the vec so that position 1,2,3,4 correspond to UpLeft, UpRight,
+        // DownRight, DownLeft. Clockwise.
         Position lowerPos = getLowerPos(values);
         Vector<PositionValueDuo> vecVal = new Vector<>();
         vecVal.add(0,new PositionValueDuo(new Value(0),new Position(0,0)));
@@ -74,6 +83,7 @@ public class AmountOfLinesCornerRule implements Rule{
         return vecVal;
     }
 
+    //Gets de position most Top Left of the set.
     private Position getLowerPos(ArrayList<PositionValueDuo> values) {
         int col = 1000;
         int fil = 1000;
@@ -88,6 +98,7 @@ public class AmountOfLinesCornerRule implements Rule{
         return new Position(fil,col);
     }
 
+    //Returns the value from the set which has a certain relative position to another one.
     private PositionValueDuo getValueFromLP(ArrayList<PositionValueDuo> values, Position lowerPos, int fil, int col) {
         PositionValueDuo value = values.get(0);
         Position pos = new Position(lowerPos.getFil() + fil,lowerPos.getCol() + col);
@@ -99,6 +110,8 @@ public class AmountOfLinesCornerRule implements Rule{
         return value;
     }
 
+    //In case the set has size two, the values can only be on the borders of the grid.
+    //This checks on which border they are.
     Vector<PositionValueDuo> transformValuesForTwo(ArrayList<PositionValueDuo> values) {
         Vector<PositionValueDuo> vecVal = new Vector<>();
         PositionValueDuo val1 =  values.get(0);
@@ -120,6 +133,7 @@ public class AmountOfLinesCornerRule implements Rule{
         return getVecForTwo(vecVal,val1,val2,pos1,pos2);
     }
 
+    //This returns a vec with four values, two empty and the other two the ones existing. Orderly.
     private Vector<PositionValueDuo> getVecForTwo(Vector<PositionValueDuo> vecVal,
                                                   PositionValueDuo val1, PositionValueDuo val2, int pos1, int pos2) {
         for (int i = 0; i < 4; i++) {
@@ -137,6 +151,8 @@ public class AmountOfLinesCornerRule implements Rule{
         return vecVal;
     }
 
+    //If the set has a size of one, it's because it's one of the corners.
+    //Returns a vec of four values. All empty, except the one that needs to be checked.
     Vector<PositionValueDuo> transformValuesForOne(ArrayList<PositionValueDuo> values) {
         Vector<PositionValueDuo> vecVal = new Vector<>();
         PositionValueDuo val =  values.get(0);
@@ -159,6 +175,7 @@ public class AmountOfLinesCornerRule implements Rule{
         return vecVal;
     }
 
+    //Simply counts the diagonals. For even numbers it checks one kind and for odd it checks another.
     private int countLines(ArrayList<PositionValueDuo> values) {
         Vector<PositionValueDuo> vecVal = getOrderedList(values);
         int counter = 0;
@@ -173,6 +190,7 @@ public class AmountOfLinesCornerRule implements Rule{
         return counter;
     }
 
+    //It checks TopLeft DownRight diagonal.
     private int checkOddDiagonal(PositionValueDuo val) {
         Vector<Boolean> vec = val.getValue().getDotsWithBorders();
         if (vec.elementAt(0) && vec.elementAt(4) && vec.elementAt(8)) {
@@ -182,6 +200,7 @@ public class AmountOfLinesCornerRule implements Rule{
         }
     }
 
+    //It checks TopRight DownLeft diagonal.
     private int checkEvenDiagonal(PositionValueDuo val) {
         Vector<Boolean> vec = val.getValue().getDotsWithBorders();
         if (vec.elementAt(2) && vec.elementAt(4) && vec.elementAt(6)) {
