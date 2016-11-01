@@ -65,7 +65,9 @@ public class AmountOfLinesRule implements Rule {
         if ( booleans.elementAt(CENTER) ) {
             return 1;
         } else {
-            if (booleans.elementAt(UP)) {
+            return (boolToInt(booleans.elementAt(UP)) + boolToInt(booleans.elementAt(LEFT))
+                    + boolToInt(booleans.elementAt(RIGTH)) + boolToInt(booleans.elementAt(DOWN)));
+            /*if (booleans.elementAt(UP)) {
                 counter++;
             }
             if (booleans.elementAt(LEFT)) {
@@ -76,13 +78,13 @@ public class AmountOfLinesRule implements Rule {
             }
             if (booleans.elementAt(DOWN)) {
                 counter++;
-            }
+            }*/
         }
-       /* System.out.println(" booleans: "+booleans.toString());
+        /* System.out.println(" booleans: "+booleans.toString());
         System.out.println("Counter lines: "+counter);
 
         */
-       return counter;
+        //return counter;
 
         /*
         for (Boolean mybool : booleans) {
@@ -99,6 +101,13 @@ public class AmountOfLinesRule implements Rule {
                 return finalCont;
         }
         */
+    }
+
+    private int boolToInt(Boolean boo) {
+        if (boo) {
+            return 1;
+        }
+        return 0;
     }
 
     public void printRule() {

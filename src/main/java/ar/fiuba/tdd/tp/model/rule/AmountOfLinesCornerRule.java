@@ -39,12 +39,13 @@ public class AmountOfLinesCornerRule implements Rule{
             return null;
         }
         for (PositionValueDuo whatev: oldVal) {
-            if (whatev.getPos().isEqual(value.getPos())) {
-                newValues.add(value);
-            } else {
-                newValues.add(whatev);
-            }
+            //if (whatev.getPos().isEqual(value.getPos())) {
+            //   newValues.add(value);
+            //} else {
+            newValues.add(whatev);
+            //}
         }
+        newValues.add(value);
         return newValues;
     }
 
