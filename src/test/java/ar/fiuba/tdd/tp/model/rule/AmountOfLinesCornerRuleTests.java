@@ -106,7 +106,6 @@ public class AmountOfLinesCornerRuleTests {
         Boolean[] boollist2 = {false,false,true,false,true,false,true,false,false};
         Vector<Boolean> boolvec2 = new Vector<>(Arrays.asList(boollist2));
         PositionValueDuo value1 = new PositionValueDuo(new Value(0,boolvec1),new Position(0,0));
-        PositionValueDuo value2 = new PositionValueDuo(new Value(0,boolvec2),new Position(0,1));
         PositionValueDuo value3 = new PositionValueDuo(new Value(0,boolvec1),new Position(1,1));
         PositionValueDuo value4 = new PositionValueDuo(new Value(0,boolvec1),new Position(1,0));
         ArrayList<PositionValueDuo> values = new ArrayList<>();
@@ -114,6 +113,7 @@ public class AmountOfLinesCornerRuleTests {
         values.add(value3);
         values.add(value4);
         AmountOfLinesCornerRule linesRule = new AmountOfLinesCornerRule(3);
+        PositionValueDuo value2 = new PositionValueDuo(new Value(0,boolvec2),new Position(0,1));
         assertTrue(linesRule.check(values,value2));
     }
 

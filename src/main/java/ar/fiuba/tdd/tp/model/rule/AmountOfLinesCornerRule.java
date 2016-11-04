@@ -32,8 +32,8 @@ public class AmountOfLinesCornerRule implements Rule {
     private ArrayList<PositionValueDuo> getNewValues(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
 
         ArrayList<PositionValueDuo> newValues = new ArrayList<>();
-        for (PositionValueDuo aValue : values) {
-            newValues.add(aValue);
+        for (PositionValueDuo tempValue : values) {
+            newValues.add(tempValue);
         }
         newValues.add(value);
         return this.getOrdenatedValues(newValues);
@@ -66,16 +66,16 @@ public class AmountOfLinesCornerRule implements Rule {
                 col2 = values.get(1).getPos().getCol();
             }
         } else if ( values.get(0).getPos().getCol() == values.get(1).getPos().getCol() ) {
-            if ( values.get(0).getPos().getCol() == 0 ) {
-                // Case two cells in same column left
-                fil1 = values.get(0).getPos().getFil();
-                fil2 = values.get(1).getPos().getFil();
-            } else {
+            if ( values.get(0).getPos().getCol() != 0 ) {
                 // Case two cells in same column right
                 fil1 = values.get(0).getPos().getFil();
                 col1 = values.get(0).getPos().getCol() + 1;
                 fil2 = values.get(1).getPos().getFil();
                 col2 = col1;
+            } else {
+                // Case two cells in same column left
+                fil1 = values.get(0).getPos().getFil();
+                fil2 = values.get(1).getPos().getFil();
             }
         }
         values.add(new PositionValueDuo(new Value(0), new Position(fil1, col1)));
@@ -101,9 +101,10 @@ public class AmountOfLinesCornerRule implements Rule {
                 cols.add(values.get(0).getPos().getCol() + 1);
             }
         } else {
-            rows.add(values.get(0).getPos().getFil());
-            rows.add(values.get(0).getPos().getFil() + 1);
-            rows.add(values.get(0).getPos().getFil() + 1);
+            int fil = values.get(0).getPos().getFil();
+            rows.add(fil);
+            rows.add(fil + 1);
+            rows.add(fil + 1);
             if ( values.get(0).getPos().getCol() == 0 ) {
                 cols.add(-1);
                 cols.add(-1);
@@ -118,7 +119,7 @@ public class AmountOfLinesCornerRule implements Rule {
         return values;
     }
 
-    private void addValues(ArrayList<PositionValueDuo> values, Vector<Integer> rows, Vector<Integer> cols){
+    private void addValues(ArrayList<PositionValueDuo> values, Vector<Integer> rows, Vector<Integer> cols) {
         for (int i = 0; i < rows.size(); i++) {
             values.add(new PositionValueDuo(new Value(0), new Position(rows.elementAt(i), cols.elementAt(i))));
         }
@@ -127,13 +128,13 @@ public class AmountOfLinesCornerRule implements Rule {
     private ArrayList<PositionValueDuo> getOrderedValuesForPosition(ArrayList<PositionValueDuo> values) {
         int filMin = 99;
         int colMin = 99;
-        for (PositionValueDuo aValue : values) {
-            if (aValue.getPos().getFil() < filMin) {
-                filMin = aValue.getPos().getFil();
+        for (PositionValueDuo tempValue : values) {
+            if (tempValue.getPos().getFil() < filMin) {
+                filMin = tempValue.getPos().getFil();
             }
 
-            if (aValue.getPos().getCol() < colMin) {
-                colMin = aValue.getPos().getCol();
+            if (tempValue.getPos().getCol() < colMin) {
+                colMin = tempValue.getPos().getCol();
             }
         }
         ArrayList<PositionValueDuo> orderValues = new ArrayList<>();
@@ -144,10 +145,10 @@ public class AmountOfLinesCornerRule implements Rule {
         return orderValues;
     }
 
-    private PositionValueDuo getPosition(ArrayList<PositionValueDuo> values, Position aPos) {
-        for (PositionValueDuo aValue : values) {
-            if (aValue.getPos().isEqual(aPos)) {
-                return aValue;
+    private PositionValueDuo getPosition(ArrayList<PositionValueDuo> values, Position tempPos) {
+        for (PositionValueDuo tempValue : values) {
+            if (tempValue.getPos().isEqual(tempPos)) {
+                return tempValue;
             }
         }
         return null;
