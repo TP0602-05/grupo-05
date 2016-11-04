@@ -2,7 +2,6 @@ package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.model.rule.*;
-import ar.fiuba.tdd.tp.model.validation.*;
 
 import java.util.ArrayList;
 import java.util.Vector;
