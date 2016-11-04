@@ -81,16 +81,6 @@ class Grid {
         }
     }
 
-    void emptyCell(int row, int col) {
-        ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-        Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
-        this.cells.elementAt(row).elementAt(col).setValue(new Value(0));
-        for (int position : mySets) {
-            PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
-            this.sets.elementAt(position).addValue(new PositionValueDuo(new Value(0), new Position(row - 1,col - 1)), prevPValue);
-        }
-    }
-
     private boolean checkNewValueInSets(ArrayList<Integer> mySets, PositionValueDuo newValue, PositionValueDuo prevValue) {
         for (int position: mySets) {
             // TODO Correct parameter from Value to PositionValueDuo
@@ -113,6 +103,28 @@ class Grid {
     }
     */
 
+    void emptyCell(int row, int col) {
+        /* Vaciar el valor en la celda:
+        *       1 - Modificar las celdas limitrofes, restando uno de los correspondientes arrays.
+        *       2 - Borrar el numero que posee para el caso de Sudoku, etc.
+        *       3 - Vaciar los puntos booleanos internos.
+        *       4 - Reemplazar este nuevo valor en los sets que corresponda.
+        * */
+
+        Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
+        this.updateBorderCells(prevValue, row, col, -1);
+        Value prevValueNew = prevValue.emptyValue();
+
+        this.cells.elementAt(row).elementAt(col).setValue(prevValueNew);
+
+
+        PositionValueDuo prevPValue = new PositionValueDuo(prevValueNew, new Position(row, col));
+        ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
+        for (int position : mySets) {
+            this.sets.elementAt(position).addValue(prevPValue, prevPValue);
+        }
+    }
+
     boolean setCell(Value value,int row, int col) {
         //System.out.println("TO STRING: "+value.toString());
 
@@ -129,7 +141,7 @@ class Grid {
                 PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row, col));
                 this.sets.elementAt(position).addValue(pvalue, prevPValue);
             }
-            this.updateBorderCells(value, row, col);
+            this.updateBorderCells(value, row, col, 1);
             return true;
         }
 
@@ -201,7 +213,7 @@ class Grid {
         return borderPositions;
     }
 
-    private void updateBorderCells(Value value, int row, int col) {
+    private void updateBorderCells(Value value, int row, int col, int sumValue) {
         Vector<Cell> borders = this.borderCells(row, col);
         Vector<Value> borderValues = this.borderValuesToCombine(value);
         Vector<Position> borderPositionValues = this.borderPositionValues(new Position(row,col));
@@ -216,7 +228,7 @@ class Grid {
                 //this.cells.elementAt(actualRow).elementAt(actualCol).getValue().printBorders();
                 //System.out.println("=====================================");
 
-                borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i));
+                borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i),sumValue);
                 this.cells.elementAt(actualRow).elementAt(actualCol).setValue(borders.elementAt(i).getValue());
 
                 // PRINT VALUE

@@ -127,11 +127,11 @@ public class Value {
         return new Value(myDots);
     }
 
-    public void updateBorders(Value newBorders) {
+    public void updateBorders(Value newBorders, int sumValue) {
         Integer newValue;
         for (int i = 0; i < NUM_DOTS; i++) {
             if ( newBorders.getDots().elementAt(i) ) {
-                newValue = this.borderDots.elementAt(i) + 1;
+                newValue = this.borderDots.elementAt(i) + sumValue;
                 this.borderDots.set(i, newValue);
             }
         }
@@ -180,6 +180,13 @@ public class Value {
     public Value setDots(Vector<Boolean> dots1) {
         this.dots = dots1;
         return this;
+    }
+
+    public Value emptyValue() {
+        Boolean[] valueDots = new Boolean[] {false, false, false, false, false, false, false, false, false};
+        Value newValue = new Value(0, new Vector<>(Arrays.asList(valueDots)));
+        newValue.borderDots = this.borderDots;
+        return newValue;
     }
 }
 

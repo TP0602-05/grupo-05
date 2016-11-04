@@ -217,7 +217,7 @@ public class ValueTests {
         Vector<Boolean> boolvec2 = new Vector<>(Arrays.asList(boollist2));
         Value value2 = new Value(0,boolvec2);
 
-        value1.updateBorders(value2);
+        value1.updateBorders(value2,1);
 
         assertTrue( value1.getBorderDots().elementAt(0) == 1
                     && value1.getBorderDots().elementAt(1) == 1
@@ -252,9 +252,9 @@ public class ValueTests {
         Vector<Boolean> boolvec4 = new Vector<>(Arrays.asList(boollist4));
         Value value4 = new Value(0,boolvec4);
 
-        value1.updateBorders(value2);
-        value1.updateBorders(value3);
-        value1.updateBorders(value4);
+        value1.updateBorders(value2,1);
+        value1.updateBorders(value3,1);
+        value1.updateBorders(value4,1);
 
         assertTrue( value1.getBorderDots().elementAt(0) == 1
                 && value1.getBorderDots().elementAt(1) == 0
