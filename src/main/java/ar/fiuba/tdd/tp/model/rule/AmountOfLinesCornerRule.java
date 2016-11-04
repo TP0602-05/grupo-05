@@ -49,37 +49,48 @@ public class AmountOfLinesCornerRule implements Rule {
     }
 
     private ArrayList<PositionValueDuo> addTwoRespectiveValues(ArrayList<PositionValueDuo> values) {
-        int fil1 = -1;
+        Vector<Integer> rows = new Vector<>();
+        int cpdKillYourself = -200;
+        Vector<Integer> cols = new Vector<>();
+        /* int fil1 = -1;
         int col1 = -1;
         int fil2 = -1;
-        int col2 = -1;
+        int col2 = -1; */
         if ( values.get(0).getPos().getFil() == values.get(1).getPos().getFil() ) {
+            addIntegerValuesToVector(cols,values.get(0).getPos().getCol(),values.get(1).getPos().getCol(),-200);
             if ( values.get(0).getPos().getFil() == 0 ) {
                 // Case two cells in same row up
-                col1 = values.get(0).getPos().getCol();
-                col2 = values.get(1).getPos().getCol();
+                addIntegerValuesToVector(rows,-1,-1,cpdKillYourself);
+                /*col1 = values.get(0).getPos().getCol();
+                col2 = values.get(1).getPos().getCol(); */
             } else {
                 // Case two cells in same row down
-                fil1 = values.get(0).getPos().getFil() + 1;
-                col1 = values.get(0).getPos().getCol();
+                addIntegerValuesToVector(rows,values.get(0).getPos().getFil() + 1,values.get(0).getPos().getFil() + 1,-200);
+                /* fil1 = values.get(0).getPos().getFil() + 1;
                 fil2 = fil1;
-                col2 = values.get(1).getPos().getCol();
+                col1 = values.get(0).getPos().getCol();
+                col2 = values.get(1).getPos().getCol(); */
             }
         } else if ( values.get(0).getPos().getCol() == values.get(1).getPos().getCol() ) {
+            int row = values.get(0).getPos().getFil();
+            addIntegerValuesToVector(rows,row,values.get(1).getPos().getFil(),cpdKillYourself);
             if ( values.get(0).getPos().getCol() != 0 ) {
                 // Case two cells in same column right
-                fil1 = values.get(0).getPos().getFil();
-                col1 = values.get(0).getPos().getCol() + 1;
+                addIntegerValuesToVector(cols,values.get(0).getPos().getCol() + 1,values.get(1).getPos().getCol() + 1,-200);
+                /* fil1 = values.get(0).getPos().getFil();
                 fil2 = values.get(1).getPos().getFil();
-                col2 = col1;
+                col1 = values.get(0).getPos().getCol() + 1;
+                col2 = col1; */
             } else {
                 // Case two cells in same column left
-                fil1 = values.get(0).getPos().getFil();
-                fil2 = values.get(1).getPos().getFil();
+                addIntegerValuesToVector(cols,-1,-1,cpdKillYourself);
+                /* fil1 = values.get(0).getPos().getFil();
+                fil2 = values.get(1).getPos().getFil(); */
             }
         }
-        values.add(new PositionValueDuo(new Value(0), new Position(fil1, col1)));
-        values.add(new PositionValueDuo(new Value(0), new Position(fil2, col2)));
+        /* values.add(new PositionValueDuo(new Value(0), new Position(fil1, col1)));
+        values.add(new PositionValueDuo(new Value(0), new Position(fil2, col2))); */
+        this.addValues(values, rows, cols);
         return values;
     }
 
@@ -88,41 +99,59 @@ public class AmountOfLinesCornerRule implements Rule {
         Vector<Integer> cols = new Vector<>();
 
         if ( values.get(0).getPos().getFil() == 0 ) {
+            addIntegerValuesToVector(rows,-1,-1,0);
+            /* rows.add(-1);
             rows.add(-1);
-            rows.add(-1);
-            rows.add(0);
+            rows.add(0); */
             if ( values.get(0).getPos().getCol() == 0 ) {
-                cols.add(-1);
+                addIntegerValuesToVector(cols,-1,0,-1);
+                /* cols.add(-1);
                 cols.add(0);
-                cols.add(-1);
+                cols.add(-1); */
             } else {
-                cols.add(values.get(0).getPos().getCol());
+                int col = values.get(0).getPos().getCol();
+                addIntegerValuesToVector(cols,col,col + 1,col + 1);
+                /* cols.add(values.get(0).getPos().getCol());
                 cols.add(values.get(0).getPos().getCol() + 1);
-                cols.add(values.get(0).getPos().getCol() + 1);
+                cols.add(values.get(0).getPos().getCol() + 1); */
             }
         } else {
-            int fil = values.get(0).getPos().getFil();
-            rows.add(fil);
-            rows.add(fil + 1);
-            rows.add(fil + 1);
+            int row = values.get(0).getPos().getFil();
+            addIntegerValuesToVector(rows,row,row + 1,row + 1);
+            /* rows.add(row);
+            rows.add(row + 1);
+            rows.add(row + 1); */
             if ( values.get(0).getPos().getCol() == 0 ) {
+                addIntegerValuesToVector(cols,-1,-1,0);
+                /* cols.add(-1);
                 cols.add(-1);
-                cols.add(-1);
-                cols.add(0);
+                cols.add(0); */
             } else {
-                cols.add(values.get(0).getPos().getCol() + 1);
+                int col = values.get(0).getPos().getCol();
+                addIntegerValuesToVector(cols,col + 1,col,col + 1);
+                /* cols.add(values.get(0).getPos().getCol() + 1);
                 cols.add(values.get(0).getPos().getCol());
-                cols.add(values.get(0).getPos().getCol() + 1);
+                cols.add(values.get(0).getPos().getCol() + 1); */
             }
         }
         this.addValues(values, rows, cols);
         return values;
     }
 
+    private void addIntegerValuesToVector(Vector<Integer> vec, Integer aaa, Integer bbb, Integer ccc) {
+        vec.add(aaa);
+        vec.add(bbb);
+        if (ccc > -100) {
+            vec.add(ccc);
+        }
+        //System.out.println(vec.size());
+    }
+
     private void addValues(ArrayList<PositionValueDuo> values, Vector<Integer> rows, Vector<Integer> cols) {
         for (int i = 0; i < rows.size(); i++) {
             values.add(new PositionValueDuo(new Value(0), new Position(rows.elementAt(i), cols.elementAt(i))));
         }
+        //System.out.println("Final size :" +values.size());
     }
 
     private ArrayList<PositionValueDuo> getOrderedValuesForPosition(ArrayList<PositionValueDuo> values) {
@@ -155,6 +184,7 @@ public class AmountOfLinesCornerRule implements Rule {
     }
 
     private int countLines(ArrayList<PositionValueDuo> values) {
+        //System.out.println("Size before count :" +values.size());
         int counter = 0;
         for (int i = 0; i < 4; i++) {
             if ((i % 2) == 0) {
@@ -162,7 +192,6 @@ public class AmountOfLinesCornerRule implements Rule {
             } else {
                 counter += checkEvenDiagonal(values.get(i));
             }
-
         }
         return counter;
     }
