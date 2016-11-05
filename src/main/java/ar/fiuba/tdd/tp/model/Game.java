@@ -13,6 +13,7 @@ public class Game extends Observable {
     private GameBuilder gameBuilder;
     private Vector<Value> allowedValues;
     private boolean isFinished;
+    private boolean combineValues;
 
     public Vector<Value> getAllowedValues() {
         return allowedValues;
@@ -28,6 +29,8 @@ public class Game extends Observable {
         grid = gameBuilder.createGrid();
 
         this.isFinished = false;
+
+        this.combineValues = false; // TODO: get this value of gameBuilder and add to json archives.
 
         gridView = new GridView(gameName);
         this.addObserver(gridView);
@@ -70,14 +73,14 @@ public class Game extends Observable {
     }
 
     public boolean setValue(int row, int col, Value value) {
-        boolean worked = grid.setCell(value, row, col);
+        boolean worked = grid.setCell(value, row, col, this.combineValues);
         this.update();
         this.notifyObservers();
         return worked;
     }
 
     public boolean setValueInCompilationTime(int row, int col, Value value) {
-        boolean worked = grid.setCell(value, row, col);
+        boolean worked = grid.setCell(value, row, col, this.combineValues);
         this.update();
         return worked;
     }
@@ -89,11 +92,11 @@ public class Game extends Observable {
     }
 
     public boolean addKeypadValue(Value value, int row, int col) {
-        //boolean worked = grid.addKeypadValue(value, row, col);
+        //boolean worked = grid.addKeypadValue(value, row, col, this.combineValues);
         /* System.out.println("VALOR: " + value.getValue());
         System.out.println("FILA: " + row);
         System.out.println("COLUMNA: " + col); */
-        boolean worked = grid.setCell(value, row, col);
+        boolean worked = grid.setCell(value, row, col, this.combineValues);
         this.update();
         this.notifyObservers();
         return worked;

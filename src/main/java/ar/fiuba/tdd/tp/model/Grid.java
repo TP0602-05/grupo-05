@@ -125,16 +125,21 @@ class Grid {
         }
     }
 
-    boolean setCell(Value value,int row, int col) {
+    boolean setCell(Value value,int row, int col, boolean combine) {
         //System.out.println("TO STRING: "+value.toString());
 
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
+        if (combine) {
+            value = value.copyValue();
+            value.combineDots(this.cells.elementAt(row).elementAt(col).getValue());
+        }
         PositionValueDuo newPosValue  =
                 new PositionValueDuo(value, new Position(row, col));
         PositionValueDuo prevPosValue =
                 new PositionValueDuo(this.cells.elementAt(row).elementAt(col).getValue(), new Position(row, col));
         if (checkNewValueInSets(mySets, newPosValue, prevPosValue)) {
             Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
+            value.updateInternBorders(prevValue);
             this.cells.elementAt(row).elementAt(col).setValue(value);
             for (int position : mySets) {
                 PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row, col));
@@ -144,8 +149,6 @@ class Grid {
             this.updateBorderCells(value, row, col, 1);
             return true;
         }
-
-
         return false;
     }
 
