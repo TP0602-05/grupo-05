@@ -229,6 +229,6 @@ public class AmountOfLinesCornerRule implements Rule {
     }
 
     public void printRule() {
-        System.out.println("CORNER: "+this.amountOfLines);
+        System.out.println("CORNER: " + this.amountOfLines);
     }
 }
