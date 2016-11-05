@@ -86,7 +86,12 @@ class GameBuilder {
         Vector<Long> values = null ;
         for (Object arulesArray : rulesArray) {
             int idRule = ((Long) arulesArray).intValue();
-            switch (idRule) {
+            if (idRule < 5) {
+                values = parserRulesFirst(idRule);
+            } else {
+                values = parserRulesSecond(idRule);
+            }
+            /*switch (idRule) {
                 case 2:
                     JSONArray sums = this.gameParser.getJSONarray("sum");
                     values = this.gameParser.toVector(sums);
@@ -109,9 +114,47 @@ class GameBuilder {
                     break;
                 default:
                     break;
-            }
+            }*/
             grid.loadRulesSet(idRule, values);
         }
+    }
+
+    private Vector<Long> parserRulesFirst(int idRule) {
+        Vector<Long> values = null ;
+        switch (idRule) {
+            case 2:
+                JSONArray sums = this.gameParser.getJSONarray("sum");
+                values = this.gameParser.toVector(sums);
+                break;
+            case 3:
+                JSONArray muls = this.gameParser.getJSONarray("mul");
+                values = this.gameParser.toVector(muls);
+                break;
+            case 4:
+                JSONArray count = this.gameParser.getJSONarray("count");
+                values = this.gameParser.toVector(count);
+                break;
+            default:
+                break;
+        }
+        return values;
+    }
+
+    private Vector<Long> parserRulesSecond(int idRule) {
+        Vector<Long> values = null ;
+        switch (idRule) {
+            case 5:
+                JSONArray continuity = this.gameParser.getJSONarray("continuity");
+                values = this.gameParser.toVector(continuity);
+                break;
+            case 6:
+                JSONArray corner = this.gameParser.getJSONarray("corner");
+                values = this.gameParser.toVector(corner);
+                break;
+            default:
+                break;
+        }
+        return values;
     }
 
     private Grid loadRulesGame(Grid grid) {
