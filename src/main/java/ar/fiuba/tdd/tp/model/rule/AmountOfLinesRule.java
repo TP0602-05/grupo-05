@@ -111,6 +111,6 @@ public class AmountOfLinesRule implements Rule {
     }
 
     public void printRule() {
-
+        System.out.println("CANT LINES:" + this.amountOfLines);
     }
 }

@@ -5,9 +5,10 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
+
+import java.util.Vector;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
-import java.util.Vector;
 
 public class Paintor {
 

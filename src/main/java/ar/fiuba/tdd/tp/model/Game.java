@@ -90,9 +90,9 @@ public class Game extends Observable {
 
     public boolean addKeypadValue(Value value, int row, int col) {
         //boolean worked = grid.addKeypadValue(value, row, col);
-        System.out.println("VALOR: " + value.getValue());
-        System.out.println("FILA: " + value.getValue());
-        System.out.println("COLUMNA: " + value.getValue());
+        /* System.out.println("VALOR: " + value.getValue());
+        System.out.println("FILA: " + row);
+        System.out.println("COLUMNA: " + col); */
         boolean worked = grid.setCell(value, row, col);
         this.update();
         this.notifyObservers();

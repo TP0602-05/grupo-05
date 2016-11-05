@@ -251,7 +251,12 @@ class Grid {
         for (int row = 0; row < this.nsets; ++row) {
             SetOfValues set = this.sets.elementAt(row);
             Rule rule = null;
-            if (idRules == 1) {
+            if (idRules < 5) {
+                rule = loadRulesSetFirst(idRules,values.elementAt(row).intValue());
+            } else {
+                rule = loadRulesSetSecond(idRules,values.elementAt(row).intValue());
+            }
+            /*if (idRules == 1) {
                 rule = new NoRepeatRule();
             } else if (idRules == 2) {
                 rule = new SummationRule(values.elementAt(row).intValue());
@@ -263,15 +268,46 @@ class Grid {
                 rule = new LineContinuityRule(values.elementAt(row).intValue());
             } else if (idRules == 6) {
                 rule = new AmountOfLinesCornerRule(values.elementAt(row).intValue());
-            }
+            }*/
             set.loadRule(rule);
         }
+    }
+
+    Rule loadRulesSetFirst(int idRules, int value) {
+        Rule rule = null;
+        if (idRules == 1) {
+            rule = new NoRepeatRule();
+        } else if (idRules == 2) {
+            rule = new SummationRule(value);
+        } else if (idRules == 3) {
+            rule = new MultiplicationRule(value);
+        } else {
+            rule = new AmountOfLinesRule(value);
+        }
+        return rule;
+    }
+
+    Rule loadRulesSetSecond(int idRules, int value) {
+        Rule rule = null;
+        if (idRules == 5) {
+            rule = new LineContinuityRule(value);
+        } else if (idRules == 6) {
+            rule = new AmountOfLinesCornerRule(value);
+        }
+        return rule;
     }
 
     void printSets() {
         for (int i = 0; i < sets.size(); i++) {
             System.out.println("SET: " + i);
             this.sets.elementAt(i).printSet();
+        }
+    }
+
+    void printRules() {
+        for (int i = 0; i < sets.size(); i++) {
+            System.out.println("SET: " + i + " RULES");
+            this.sets.elementAt(i).printRules();
         }
     }
 
