@@ -199,7 +199,7 @@ public class AmountOfLinesCornerRule implements Rule {
 
     //It checks TopLeft DownRight diagonal.
     private int checkOddDiagonal(PositionValueDuo val) {
-        Vector<Boolean> vec = val.getValue().getDotsWithBorders();
+        Vector<Boolean> vec = val.getValue().getDots();
         if (vec.elementAt(0) && vec.elementAt(4) && vec.elementAt(8)) {
             //System.out.println("habemus linea ODD DIAGONAL");
             return 1;
@@ -210,7 +210,7 @@ public class AmountOfLinesCornerRule implements Rule {
 
     //It checks TopRight DownLeft diagonal.
     private int checkEvenDiagonal(PositionValueDuo val) {
-        Vector<Boolean> vec = val.getValue().getDotsWithBorders();
+        Vector<Boolean> vec = val.getValue().getDots();
         if (vec.elementAt(2) && vec.elementAt(4) && vec.elementAt(6)) {
             //System.out.println("habemus linea EVEN DIAGONAL");
             return 1;
