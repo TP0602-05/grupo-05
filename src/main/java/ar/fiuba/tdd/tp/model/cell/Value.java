@@ -222,7 +222,7 @@ public class Value {
         return equal;
     }
 
-    void combineDots(Value otherValue) {
+    public void combineDots(Value otherValue) {
         Vector<Boolean> newDots = new Vector<>();
         for ( int i = 0; i < NUM_DOTS; i++ ) {
             newDots.add( this.dots.elementAt(i) || otherValue.getDots().elementAt(i) );
@@ -256,6 +256,18 @@ public class Value {
         Value newValue = new Value(0, new Vector<>(Arrays.asList(valueDots)));
         newValue.borderDots = this.borderDots;
         return newValue;
+    }
+
+    public void updateInternBorders(Value prevValue) {
+        this.borderDots = prevValue.borderDots;
+    }
+
+    public Value copyValue() {
+        Vector<Boolean> cpBoolean = new Vector<>();
+        for (int i = 0; i < this.dots.size(); i++) {
+            cpBoolean.add(this.dots.elementAt(i));
+        }
+        return new Value(cpBoolean);
     }
 }
 

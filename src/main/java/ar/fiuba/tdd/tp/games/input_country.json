@@ -1,0 +1,52 @@
+{
+  "plays":[{
+      "number": 1,
+      "position": [1,2],
+      "value": "16"
+  }, {
+      "number": 2,
+      "position": [1,3],
+      "value": "17"
+  }, {
+      "number": 3,
+      "position": [2,3],
+      "value": "18"
+  }, {
+      "number": 4,
+      "position": [2,4],
+      "value": "17"
+  }, {
+      "number": 5,
+      "position": [3,4],
+      "value": "19"
+  }, {
+      "number": 6,
+      "position": [3,3],
+      "value": "16"
+  }, {
+      "number": 7,
+      "position": [4,3],
+      "value": "19"
+  }, {
+      "number": 8,
+      "position": [4,2],
+      "value": "21"
+  }, {
+      "number": 9,
+      "position": [4,1],
+      "value": "18"
+  }, {
+      "number": 10,
+      "position": [3,1],
+      "value": "20"
+  }, {
+      "number": 11,
+      "position": [2,1],
+      "value": "16"
+  }, {
+      "number": 12,
+      "position": [2,2],
+      "value": "19"
+  }
+  ]
+}
