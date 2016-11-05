@@ -220,6 +220,6 @@ public class LineContinuityRule implements Rule {
     }
 
     public void printRule() {
-        System.out.println("CONT" );
+        System.out.println("CONT: " + this.ruleType);
     }
 }
