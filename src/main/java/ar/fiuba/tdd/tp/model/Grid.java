@@ -304,6 +304,13 @@ class Grid {
         }
     }
 
+    void printRules() {
+        for (int i = 0; i < sets.size(); i++) {
+            System.out.println("SET: " + i + " RULES");
+            this.sets.elementAt(i).printRules();
+        }
+    }
+
     /*public boolean addKeypadValue(Value value, int row, int col) {
         // ARREGLAR ESTOOOOOOOOOO!
         // ARREGLAR ESTOOOOOOOOOO!

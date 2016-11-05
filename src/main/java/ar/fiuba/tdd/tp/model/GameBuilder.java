@@ -44,6 +44,7 @@ class GameBuilder {
         }
         grid = loadRulesGame(grid);
         //grid.printSets();
+        grid.printRules();
         return grid;
     }
 

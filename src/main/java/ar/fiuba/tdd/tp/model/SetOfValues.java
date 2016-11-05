@@ -73,14 +73,14 @@ class SetOfValues {
             System.out.println(myValue.getPos().toString() + " : " + myValue.getValue().getDots().toString());
         }
     }
-        /*
+
     void printRules() {
         for (Iterator<Rule> iterator = this.rules.iterator(); iterator.hasNext();) {
             Rule myValue = iterator.next();
             myValue.printRule();
         }
     }
-    */
+
 
     void loadRule(Rule rule) {
 
