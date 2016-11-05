@@ -74,7 +74,12 @@ public class Value {
 
     public Value getBorderValueAt(int border) {
         Boolean[] valueDots;
-        switch (border) {
+        if (border < 4) {
+            valueDots = getBorderValueFirst(border);
+        } else {
+            valueDots = getBorderValueSecond(border);
+        }
+        /*switch (border) {
             case 0:
                 valueDots = new Boolean[] {false, false, false, false, false, false, false, false,
                         this.dots.elementAt(UP_LEFT_BORDER)};
@@ -123,8 +128,72 @@ public class Value {
             default:
                 valueDots = new Boolean[] {false, false, false, false, false, false, false, false, false};
         }
+        */
         Vector<Boolean> myDots = new Vector<>(Arrays.asList(valueDots));
         return new Value(myDots);
+    }
+
+    private Boolean[] getBorderValueFirst(int border) {
+        Boolean[] valueDots;
+        switch (border) {
+            case 0:
+                valueDots = new Boolean[] {false, false, false, false, false, false, false, false,
+                        this.dots.elementAt(UP_LEFT_BORDER)};
+                break;
+            case 1:
+                valueDots = new Boolean[]{false, false, false, false, false, false,
+                        this.dots.elementAt(UP_LEFT_BORDER),
+                        this.dots.elementAt(UP_BORDER),
+                        this.dots.elementAt(UP_RIGHT_BORDER)};
+                break;
+            case 2:
+                valueDots = new Boolean[]{false, false, false, false, false, false,
+                        this.dots.elementAt(UP_RIGHT_BORDER), false, false};
+                break;
+            case 3:
+                valueDots = new Boolean[]{false, false,
+                        this.dots.elementAt(UP_LEFT_BORDER),
+                        false, false,
+                        this.dots.elementAt(LEFT_BORDER),
+                        false, false,
+                        this.dots.elementAt(DOWN_LEFT_BORDER)};
+                break;
+            default:
+                valueDots = new Boolean[] {false, false, false, false, false, false, false, false, false};
+        }
+        return valueDots;
+    }
+
+    private Boolean[] getBorderValueSecond(int border) {
+        Boolean[] valueDots;
+        switch (border) {
+            case 4:
+                valueDots = new Boolean[]{this.dots.elementAt(UP_RIGHT_BORDER),
+                        false, false,
+                        this.dots.elementAt(RIGHT_BORDER),
+                        false, false,
+                        this.dots.elementAt(DOWN_RIGHT_BORDER),
+                        false, false };
+                break;
+            case 5:
+                valueDots = new Boolean[]{ false, false,
+                        this.dots.elementAt(DOWN_LEFT_BORDER),
+                        false, false, false, false, false, false };
+                break;
+            case 6:
+                valueDots = new Boolean[]{this.dots.elementAt(DOWN_LEFT_BORDER),
+                        this.dots.elementAt(DOWN_BORDER),
+                        this.dots.elementAt(DOWN_RIGHT_BORDER),
+                        false, false, false, false, false, false};
+                break;
+            case 7:
+                valueDots = new Boolean[] {this.dots.elementAt(DOWN_RIGHT_BORDER),
+                        false, false, false, false, false, false, false, false};
+                break;
+            default:
+                valueDots = new Boolean[] {false, false, false, false, false, false, false, false, false};
+        }
+        return valueDots;
     }
 
     public void updateBorders(Value newBorders, int sumValue) {
