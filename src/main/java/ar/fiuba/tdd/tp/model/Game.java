@@ -29,8 +29,7 @@ public class Game extends Observable {
         grid = gameBuilder.createGrid();
 
         this.isFinished = false;
-
-        this.combineValues = false; // TODO: get this value of gameBuilder and add to json archives.
+        this.combineValues = grid.getCombine();
 
         gridView = new GridView(gameName);
         this.addObserver(gridView);
@@ -82,6 +81,7 @@ public class Game extends Observable {
     public boolean setValueInCompilationTime(int row, int col, Value value) {
         boolean worked = grid.setCell(value, row, col, this.combineValues);
         this.update();
+        //System.out.println("Game is " + this.checkFinish());
         return worked;
     }
 

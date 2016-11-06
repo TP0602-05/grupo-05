@@ -31,6 +31,10 @@ class GameBuilder {
 
     Grid createGrid() {
         Grid grid = new Grid(this.gameParser.getJsonInt("cols"),this.gameParser.getJsonInt("rows"), this.gameParser.getJsonInt("nsets"));
+        String combine = this.gameParser.getString("combine");
+        if (combine != null) {
+            grid.setCombine(combine);
+        }
         for (Object cell : this.gameParser.getJSONarray("cells")) {
             JSONObject cellJson = (JSONObject) cell;
             int row = ((Long)cellJson.get("row")).intValue();
@@ -39,12 +43,11 @@ class GameBuilder {
             ArrayList sets = (JSONArray) cellJson.get("sets");
             ArrayList borders = (JSONArray) cellJson.get("borders");
             int type = ((Long)cellJson.get("type")).intValue();
-            String blocked = (String)cellJson.get("isBlocked");
             this.internalProcessOfValue(grid, type, val, sets, col, row, borders);
         }
         grid = loadRulesGame(grid);
         //grid.printSets();
-        grid.printRules();
+        //grid.printRules();
         return grid;
     }
 

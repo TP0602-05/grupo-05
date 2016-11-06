@@ -224,11 +224,12 @@ public class AmountOfLinesCornerRule implements Rule {
             return true;
         }
         int countFinal = countLines(this.getOrdenatedValues(values));
+        //System.out.println("** CHECK FINAL: "+ countFinal + " | " + this.amountOfLines + " **");
         return (countFinal == this.amountOfLines);
 
     }
 
     public void printRule() {
-        System.out.println("CORNER: " + this.amountOfLines);
+        System.out.println(" CORNER: " + this.amountOfLines );
     }
 }

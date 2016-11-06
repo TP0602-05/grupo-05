@@ -49,6 +49,13 @@ class SetOfValues {
         boolean result = true;
         this.deleteValue(prevValue);
         for (Rule myRule: this.rules) {
+            /*System.out.println(" ***** CHECK RULE ********");
+            myRule.printRule();
+            System.out.println("VALUES ");
+            System.out.println(this.values);
+            System.out.println("NEW VAL: " +value.getValue() + " POS: "+ value.getPos());
+
+            System.out.println("Status rule: " + myRule.check(this.values, value)); */
             if ( ! myRule.check(this.values, value) ) {
                 result = false;
             }

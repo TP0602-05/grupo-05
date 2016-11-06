@@ -13,14 +13,16 @@ public class Main {
 
         Game.init("gokigen");
 
-        /*String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/input_country.json" ;
+
+        String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/input_gokigen.json" ;
         try {
             AutomaticPlayer automaticPlayer = new AutomaticPlayer(path);
             automaticPlayer.playGame();
         } catch (Exception e) {
             e.printStackTrace();
         }
-*/
+
+
     }
 
 }

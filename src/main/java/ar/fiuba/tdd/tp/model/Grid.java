@@ -19,6 +19,7 @@ class Grid {
     private int height;
     private int nsets;
     private static final int NUM_BORDERS = 8;
+    private boolean combineValues = false;
 
     private void initializeVectorCells() {
         this.cells = new Vector<>(height);
@@ -84,7 +85,6 @@ class Grid {
     private boolean checkNewValueInSets(ArrayList<Integer> mySets, PositionValueDuo newValue, PositionValueDuo prevValue) {
         for (int position: mySets) {
             // TODO Correct parameter from Value to PositionValueDuo
-            //System.out.println("POS: "+position);
             if ( !this.sets.elementAt(position).canInsertValue(newValue, prevValue) ) {
                 return false;
             }
@@ -126,8 +126,6 @@ class Grid {
     }
 
     boolean setCell(Value value,int row, int col, boolean combine) {
-        //System.out.println("TO STRING: "+value.toString());
-
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         if (combine) {
             value = value.copyValue();
@@ -149,6 +147,7 @@ class Grid {
             this.updateBorderCells(value, row, col, 1);
             return true;
         }
+
         return false;
     }
 
@@ -242,11 +241,16 @@ class Grid {
     }
 
     boolean checkFinish() {
+        //System.out.println(" ************* CHECK FINISH SETS ************ ");
         for (SetOfValues set : this.sets) {
+            //set.printSet();
+
             if (!set.isSetFinished()) {
                 return false;
             }
         }
+        //System.out.println(" ****************************** ");
+
         return true;
     }
 
@@ -313,6 +317,19 @@ class Grid {
             this.sets.elementAt(i).printRules();
         }
     }
+
+    public void setCombine(String combine) {
+        if (("true").equals(combine)) {
+            this.combineValues = true;
+        } else {
+            this.combineValues = false;
+        }
+    }
+
+    public boolean getCombine() {
+        return this.combineValues;
+    }
+
 
     /*public boolean addKeypadValue(Value value, int row, int col) {
         // ARREGLAR ESTOOOOOOOOOO!

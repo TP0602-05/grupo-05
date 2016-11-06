@@ -2,6 +2,7 @@ package ar.fiuba.tdd.tp.utils;
 
 import ar.fiuba.tdd.tp.model.Game;
 import ar.fiuba.tdd.tp.model.cell.Value;
+import ar.fiuba.tdd.tp.view.ButtonHashing;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -40,7 +41,8 @@ public class AutomaticPlayer {
             int row = array.elementAt(0).intValue();
             int col = array.elementAt(1).intValue();
             vnumber.add(number);
-            if (Game.getInstance().setValueInCompilationTime(row - 1,col - 1,new Value(value))) {
+            ButtonHashing hashing = new ButtonHashing();
+            if (Game.getInstance().setValueInCompilationTime(row - 1,col - 1,hashing.getMapAt(value))) {
                 vboardStatus.add("valid");
             } else {
                 vboardStatus.add("invalid");

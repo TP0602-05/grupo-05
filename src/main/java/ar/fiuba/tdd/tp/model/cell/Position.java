@@ -132,4 +132,8 @@ public class Position {
     public int getCol() {
         return col;
     }
+
+    public void print() {
+        System.out.println("POS X:" + this.getFil() + " POS Y:" + this.getCol() + " VALUE:" + this.toString());
+    }
 }

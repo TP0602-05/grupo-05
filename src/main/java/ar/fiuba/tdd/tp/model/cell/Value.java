@@ -223,11 +223,15 @@ public class Value {
     }
 
     public void combineDots(Value otherValue) {
+        //System.out.println("before combine");
+        //System.out.println(this.dots);
         Vector<Boolean> newDots = new Vector<>();
         for ( int i = 0; i < NUM_DOTS; i++ ) {
             newDots.add( this.dots.elementAt(i) || otherValue.getDots().elementAt(i) );
         }
         this.dots = newDots;
+        //System.out.println("after combine");
+        //System.out.println(this.dots);
     }
 
     void printValue() {
