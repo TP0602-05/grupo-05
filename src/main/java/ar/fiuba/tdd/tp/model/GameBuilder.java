@@ -154,6 +154,10 @@ class GameBuilder {
                 JSONArray corner = this.gameParser.getJSONarray("corner");
                 values = this.gameParser.toVector(corner);
                 break;
+            case 7:
+                JSONArray border = this.gameParser.getJSONarray("border");
+                values = this.gameParser.toVector(border);
+                break;
             default:
                 break;
         }

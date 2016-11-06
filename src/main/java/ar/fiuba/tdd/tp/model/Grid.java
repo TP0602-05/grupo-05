@@ -302,6 +302,8 @@ class Grid {
             rule = new LineContinuityRule(value);
         } else if (idRules == 6) {
             rule = new AmountOfLinesCornerRule(value);
+        } else if (idRules == 7) {
+            rule = new AmountOfLinesBorderRule(value);
         }
         return rule;
     }
