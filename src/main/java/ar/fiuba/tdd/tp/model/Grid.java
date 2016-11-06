@@ -83,6 +83,8 @@ class Grid {
     }
 
     private boolean checkNewValueInSets(ArrayList<Integer> mySets, PositionValueDuo newValue, PositionValueDuo prevValue) {
+        newValue.getValue().copyArrayOfBordersOf(prevValue.getValue());
+
         for (int position: mySets) {
             // TODO Correct parameter from Value to PositionValueDuo
             if ( !this.sets.elementAt(position).canInsertValue(newValue, prevValue) ) {

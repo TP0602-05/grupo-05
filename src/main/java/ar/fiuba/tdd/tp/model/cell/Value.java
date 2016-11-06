@@ -273,5 +273,9 @@ public class Value {
         }
         return new Value(cpBoolean);
     }
+
+    public void copyArrayOfBordersOf(Value value) {
+        this.borderDots = value.borderDots;
+    }
 }
 
