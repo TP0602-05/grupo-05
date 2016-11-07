@@ -24,6 +24,6 @@ public class PositionValueDuo {
     }
 
     public void print() {
-        System.out.println("POS X:" + this.pos.getFil() + " POS Y:" + this.pos.getCol() + " VALUE:" + this.val.toString());
+        System.out.println("POS X:" + this.pos.getRow() + " POS Y:" + this.pos.getCol() + " VALUE:" + this.val.toString());
     }
 }

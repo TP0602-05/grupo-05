@@ -159,7 +159,7 @@ class Grid {
         for ( int i = 0; i < len; i++ ) {
             if ( newCells.elementAt(i) != null ) {
                 Value prevValue = newCells.elementAt(i).getValue();
-                actualRow = cellPositions.elementAt(i).getFil();
+                actualRow = cellPositions.elementAt(i).getRow();
                 actualCol = cellPositions.elementAt(i).getCol();
                 for (int position : this.map.elementAt(actualRow).elementAt(actualCol)) {
                     PositionValueDuo posValue =
@@ -206,14 +206,14 @@ class Grid {
 
     private Vector<Position> borderPositionValues(Position centerPosition) {
         Vector<Position> borderPositions = new Vector<>();
-        borderPositions.add(new Position(centerPosition.getFil() - 1, centerPosition.getCol() - 1));
-        borderPositions.add(new Position(centerPosition.getFil() - 1, centerPosition.getCol()));
-        borderPositions.add(new Position(centerPosition.getFil() - 1, centerPosition.getCol() + 1));
-        borderPositions.add(new Position(centerPosition.getFil(), centerPosition.getCol() - 1));
-        borderPositions.add(new Position(centerPosition.getFil(), centerPosition.getCol() + 1));
-        borderPositions.add(new Position(centerPosition.getFil() + 1, centerPosition.getCol() - 1));
-        borderPositions.add(new Position(centerPosition.getFil() + 1, centerPosition.getCol()));
-        borderPositions.add(new Position(centerPosition.getFil() + 1, centerPosition.getCol() + 1));
+        borderPositions.add(new Position(centerPosition.getRow() - 1, centerPosition.getCol() - 1));
+        borderPositions.add(new Position(centerPosition.getRow() - 1, centerPosition.getCol()));
+        borderPositions.add(new Position(centerPosition.getRow() - 1, centerPosition.getCol() + 1));
+        borderPositions.add(new Position(centerPosition.getRow(), centerPosition.getCol() - 1));
+        borderPositions.add(new Position(centerPosition.getRow(), centerPosition.getCol() + 1));
+        borderPositions.add(new Position(centerPosition.getRow() + 1, centerPosition.getCol() - 1));
+        borderPositions.add(new Position(centerPosition.getRow() + 1, centerPosition.getCol()));
+        borderPositions.add(new Position(centerPosition.getRow() + 1, centerPosition.getCol() + 1));
         return borderPositions;
     }
 
@@ -226,7 +226,7 @@ class Grid {
         for (int i = 0; i < NUM_BORDERS; i++) {
             if ( borders.elementAt(i) != null ) {
 
-                actualRow = borderPositionValues.elementAt(i).getFil();
+                actualRow = borderPositionValues.elementAt(i).getRow();
                 actualCol = borderPositionValues.elementAt(i).getCol();
 
                 //this.cells.elementAt(actualRow).elementAt(actualCol).getValue().printBorders();
@@ -304,6 +304,8 @@ class Grid {
             rule = new AmountOfLinesCornerRule(value);
         } else if (idRules == 7) {
             rule = new AmountOfLinesBorderRule(value);
+        } else if (idRules == 8) {
+            rule = new NoRepeatEndingRule();
         }
         return rule;
     }

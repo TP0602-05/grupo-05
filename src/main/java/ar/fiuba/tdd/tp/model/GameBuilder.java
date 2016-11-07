@@ -94,30 +94,6 @@ class GameBuilder {
             } else {
                 values = parserRulesSecond(idRule);
             }
-            /*switch (idRule) {
-                case 2:
-                    JSONArray sums = this.gameParser.getJSONarray("sum");
-                    values = this.gameParser.toVector(sums);
-                    break;
-                case 3:
-                    JSONArray muls = this.gameParser.getJSONarray("mul");
-                    values = this.gameParser.toVector(muls);
-                    break;
-                case 4:
-                    JSONArray count = this.gameParser.getJSONarray("count");
-                    values = this.gameParser.toVector(count);
-                    break;
-                case 5:
-                    JSONArray continuity = this.gameParser.getJSONarray("continuity");
-                    values = this.gameParser.toVector(continuity);
-                    break;
-                case 6:
-                    JSONArray corner = this.gameParser.getJSONarray("corner");
-                    values = this.gameParser.toVector(corner);
-                    break;
-                default:
-                    break;
-            }*/
             grid.loadRulesSet(idRule, values);
         }
     }
@@ -169,10 +145,6 @@ class GameBuilder {
         ArrayList rulesArray = this.gameParser.toArrayList(rules);
         this.parseRules(grid, rulesArray);
         return grid;
-    }
-
-    public String getGameName() {
-        return this.gameName;
     }
 
     public Vector<Value> getAllowedValues() {

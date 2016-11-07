@@ -56,36 +56,36 @@ public class AmountOfLinesCornerRule implements Rule {
         int col1 = -1;
         int fil2 = -1;
         int col2 = -1; */
-        if ( values.get(0).getPos().getFil() == values.get(1).getPos().getFil() ) {
+        if ( values.get(0).getPos().getRow() == values.get(1).getPos().getRow() ) {
             addIntegerValuesToVector(cols,values.get(0).getPos().getCol(),values.get(1).getPos().getCol(),-200);
-            if ( values.get(0).getPos().getFil() == 0 ) {
+            if ( values.get(0).getPos().getRow() == 0 ) {
                 // Case two cells in same row up
                 addIntegerValuesToVector(rows,-1,-1,cpdKillYourself);
                 /*col1 = values.get(0).getPos().getCol();
                 col2 = values.get(1).getPos().getCol(); */
             } else {
                 // Case two cells in same row down
-                addIntegerValuesToVector(rows,values.get(0).getPos().getFil() + 1,values.get(0).getPos().getFil() + 1,-200);
-                /* fil1 = values.get(0).getPos().getFil() + 1;
+                addIntegerValuesToVector(rows,values.get(0).getPos().getRow() + 1,values.get(0).getPos().getRow() + 1,-200);
+                /* fil1 = values.get(0).getPos().getRow() + 1;
                 fil2 = fil1;
                 col1 = values.get(0).getPos().getCol();
                 col2 = values.get(1).getPos().getCol(); */
             }
         } else if ( values.get(0).getPos().getCol() == values.get(1).getPos().getCol() ) {
-            int row = values.get(0).getPos().getFil();
-            addIntegerValuesToVector(rows,row,values.get(1).getPos().getFil(),cpdKillYourself);
+            int row = values.get(0).getPos().getRow();
+            addIntegerValuesToVector(rows,row,values.get(1).getPos().getRow(),cpdKillYourself);
             if ( values.get(0).getPos().getCol() != 0 ) {
                 // Case two cells in same column right
                 addIntegerValuesToVector(cols,values.get(0).getPos().getCol() + 1,values.get(1).getPos().getCol() + 1,-200);
-                /* fil1 = values.get(0).getPos().getFil();
-                fil2 = values.get(1).getPos().getFil();
+                /* fil1 = values.get(0).getPos().getRow();
+                fil2 = values.get(1).getPos().getRow();
                 col1 = values.get(0).getPos().getCol() + 1;
                 col2 = col1; */
             } else {
                 // Case two cells in same column left
                 addIntegerValuesToVector(cols,-1,-1,cpdKillYourself);
-                /* fil1 = values.get(0).getPos().getFil();
-                fil2 = values.get(1).getPos().getFil(); */
+                /* fil1 = values.get(0).getPos().getRow();
+                fil2 = values.get(1).getPos().getRow(); */
             }
         }
         /* values.add(new PositionValueDuo(new Value(0), new Position(fil1, col1)));
@@ -98,7 +98,7 @@ public class AmountOfLinesCornerRule implements Rule {
         Vector<Integer> rows = new Vector<>();
         Vector<Integer> cols = new Vector<>();
 
-        if ( values.get(0).getPos().getFil() == 0 ) {
+        if ( values.get(0).getPos().getRow() == 0 ) {
             addIntegerValuesToVector(rows,-1,-1,0);
             /* rows.add(-1);
             rows.add(-1);
@@ -116,7 +116,7 @@ public class AmountOfLinesCornerRule implements Rule {
                 cols.add(values.get(0).getPos().getCol() + 1); */
             }
         } else {
-            int row = values.get(0).getPos().getFil();
+            int row = values.get(0).getPos().getRow();
             addIntegerValuesToVector(rows,row,row + 1,row + 1);
             /* rows.add(row);
             rows.add(row + 1);
@@ -158,8 +158,8 @@ public class AmountOfLinesCornerRule implements Rule {
         int filMin = 99;
         int colMin = 99;
         for (PositionValueDuo tempValue : values) {
-            if (tempValue.getPos().getFil() < filMin) {
-                filMin = tempValue.getPos().getFil();
+            if (tempValue.getPos().getRow() < filMin) {
+                filMin = tempValue.getPos().getRow();
             }
 
             if (tempValue.getPos().getCol() < colMin) {
