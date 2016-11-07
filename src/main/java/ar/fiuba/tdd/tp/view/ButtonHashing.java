@@ -110,6 +110,13 @@ public class ButtonHashing {
         map.put(21,new Value(0,boolvec13));
     }
 
+    void putVectorThirteen() {
+        // 13
+        Boolean[] boollist14 = {true,true,true,true,true,true,true,true,true};
+        Vector<Boolean> boolvec14 = new Vector<>(Arrays.asList(boollist14));
+        map.put(22,new Value(0,boolvec14));
+    }
+
     public ButtonHashing() {
         map = new HashMap<>();
         Boolean[] boollist1 = {false,false,false,false,false,false,false,false,false};
@@ -129,6 +136,6 @@ public class ButtonHashing {
         putVectorTen();
         putVectorEleven();
         putVectorTwelve();
-
+        putVectorThirteen();
     }
 }

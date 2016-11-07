@@ -88,6 +88,18 @@ public class Paintor {
         }
     }
 
+    void drawSix(Vector<Boolean> dots, Graphics2D g2, int height, int width) {
+        //11
+        if (dots.get(1) && dots.get(4) && dots.get(7)) {
+            g2.draw(new Line2D.Float(width / (float) 2, 0, width / (float) 2, height));
+        }
+
+        //12
+        if (dots.get(3) && dots.get(4) && dots.get(5)) {
+            g2.draw(new Line2D.Float(0, height / (float) 2, width, height / (float) 2));
+        }
+    }
+
     public void paint(Graphics graphics, int width, int height) {
         Vector<Boolean> dots = value.getDots();
         Graphics2D g2 = (Graphics2D) graphics;
@@ -98,15 +110,14 @@ public class Paintor {
         drawThree(dots,g2,height,width);
         drawFour(dots,g2,height,width);
         drawFive(dots,g2,height,width);
+        drawSix(dots,g2,height,width);
 
-        //11
-        if (dots.get(1) && dots.get(4) && dots.get(7)) {
-            g2.draw(new Line2D.Float(width / (float) 2, 0, width / (float) 2, height));
-        }
-
-        //12
-        if (dots.get(3) && dots.get(4) && dots.get(5)) {
-            g2.draw(new Line2D.Float(0, height / (float) 2, width, height / (float) 2));
+        //13
+        if (dots.get(0) && dots.get(1) && dots.get(2)
+                && dots.get(3) && dots.get(4) && dots.get(5)
+                && dots.get(6) && dots.get(7) && dots.get(8)) {
+            g2.setColor(Color.black);
+            g2.fillRect(0,0,width,height);
         }
 
     }
