@@ -15,7 +15,7 @@ public class NoRepeatEndingRuleTests {
     @Test
     public void testAddCorrectValueToSet() {
         ArrayList<PositionValueDuo> values = new ArrayList<>();
-        NoRepeatEndingRule noRepEndRule = new NoRepeatEndingRule();
+        NoRepeatEndingRule noRepEndRule = new NoRepeatEndingRule(1);
         PositionValueDuo firstValue = new PositionValueDuo(new Value(5), new Position(0,0));
         PositionValueDuo secondValue = new PositionValueDuo(new Value(4), new Position(0,0));
         values.add(firstValue);
@@ -25,7 +25,7 @@ public class NoRepeatEndingRuleTests {
     @Test
     public void testAddIncorrectValueToEmptySet() {
         ArrayList<PositionValueDuo> values = new ArrayList<>();
-        NoRepeatEndingRule noRepEndRule = new NoRepeatEndingRule();
+        NoRepeatEndingRule noRepEndRule = new NoRepeatEndingRule(1);
         PositionValueDuo firstValue = new PositionValueDuo(new Value(5), new Position(0,0));
         PositionValueDuo secondValue = new PositionValueDuo(new Value(5), new Position(0,0));
         values.add(firstValue);
@@ -46,7 +46,7 @@ public class NoRepeatEndingRuleTests {
         values.add(thirdValue);
         values.add(forthValue);
         values.add(fifthValue);
-        NoRepeatEndingRule noRepEndingRule = new NoRepeatEndingRule();
+        NoRepeatEndingRule noRepEndingRule = new NoRepeatEndingRule(1);
         assertTrue(noRepEndingRule.checkFinal(values));
     }
 }

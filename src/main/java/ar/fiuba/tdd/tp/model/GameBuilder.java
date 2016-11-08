@@ -121,7 +121,6 @@ class GameBuilder {
     }
 
     private Vector<Long> getValues(String name) {
-        Vector<Long> values = null ;
         JSONArray valArray = this.gameParser.getJSONarray(name);
         return this.gameParser.toVector(valArray);
     }
@@ -155,12 +154,10 @@ class GameBuilder {
         Vector<Long> values = null ;
         switch (idRule) {
             case 8:
-                JSONArray noRepeatEnding = this.gameParser.getJSONarray("noRepeatEnding");
-                values = this.gameParser.toVector(noRepeatEnding);
+                values = this.getValues("noRepeatEnding");
                 break;
             case 9:
-                JSONArray adjacents = this.gameParser.getJSONarray("adjacents");
-                values = this.gameParser.toVector(adjacents);
+                values = this.getValues("adjacents");
                 break;
             default:
                 break;
