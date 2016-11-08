@@ -1,9 +1,11 @@
 package ar.fiuba.tdd.tp.model;
 
+import ar.fiuba.tdd.tp.controller.KeyboardController;
 import ar.fiuba.tdd.tp.model.cell.Cell;
 import ar.fiuba.tdd.tp.model.cell.Value;
 import ar.fiuba.tdd.tp.view.GridView;
 
+import java.util.Stack;
 import java.util.Vector;
 
 public class Game extends Observable {
@@ -14,6 +16,7 @@ public class Game extends Observable {
     private Vector<Value> allowedValues;
     private boolean isFinished;
     private boolean combineValues;
+    private KeyboardController keyboardController;
 
     public Vector<Value> getAllowedValues() {
         return allowedValues;
@@ -34,6 +37,7 @@ public class Game extends Observable {
         gridView = new GridView(gameName);
         this.addObserver(gridView);
         this.addObserver(new FinishGameListener());
+        this.addObserver(new UndoListener());
         this.allowedValues = this.gameBuilder.getAllowedValues();
     }
 
