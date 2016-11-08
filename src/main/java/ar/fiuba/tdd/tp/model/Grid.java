@@ -306,6 +306,8 @@ class Grid {
             rule = new AmountOfLinesBorderRule(value);
         } else if (idRules == 8) {
             rule = new NoRepeatEndingRule();
+        } else if (idRules == 9) {
+            rule = new CheckAdjacentRule(value);
         }
         return rule;
     }

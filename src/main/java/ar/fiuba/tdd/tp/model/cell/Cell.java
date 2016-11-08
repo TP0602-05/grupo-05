@@ -57,4 +57,5 @@ public abstract class Cell {
     public String toString() {
         return this.value.toString();
     }
+
 }

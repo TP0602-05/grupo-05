@@ -3,7 +3,6 @@ package ar.fiuba.tdd.tp.model;
 import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.utils.Parser;
 import ar.fiuba.tdd.tp.view.ButtonHashing;
-import ar.fiuba.tdd.tp.view.KeypadFrame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -47,7 +46,7 @@ class GameBuilder {
         }
         grid = loadRulesGame(grid);
         //grid.printSets();
-        //grid.printRules();
+        grid.printRules();
         return grid;
     }
 
@@ -91,8 +90,10 @@ class GameBuilder {
             int idRule = ((Long) arulesArray).intValue();
             if (idRule < 5) {
                 values = parserRulesFirst(idRule);
-            } else {
+            } else if (idRule < 8) {
                 values = parserRulesSecond(idRule);
+            } else {
+                values = parserRulesThird(idRule);
             }
             grid.loadRulesSet(idRule, values);
         }
@@ -119,20 +120,47 @@ class GameBuilder {
         return values;
     }
 
+    private Vector<Long> getValues(String name) {
+        Vector<Long> values = null ;
+        JSONArray valArray = this.gameParser.getJSONarray(name);
+        return this.gameParser.toVector(valArray);
+    }
+
     private Vector<Long> parserRulesSecond(int idRule) {
         Vector<Long> values = null ;
         switch (idRule) {
             case 5:
-                JSONArray continuity = this.gameParser.getJSONarray("continuity");
-                values = this.gameParser.toVector(continuity);
+                values = this.getValues("continuity");
+                //JSONArray continuity = this.gameParser.getJSONarray("continuity");
+                //values = this.gameParser.toVector(continuity);
                 break;
             case 6:
-                JSONArray corner = this.gameParser.getJSONarray("corner");
-                values = this.gameParser.toVector(corner);
+                values = this.getValues("corner");
+                //JSONArray corner = this.gameParser.getJSONarray("corner");
+                //values = this.gameParser.toVector(corner);
                 break;
             case 7:
-                JSONArray border = this.gameParser.getJSONarray("border");
-                values = this.gameParser.toVector(border);
+                values = this.getValues("border");
+
+                //JSONArray border = this.gameParser.getJSONarray("border");
+                //values = this.gameParser.toVector(border);
+                break;
+            default:
+                break;
+        }
+        return values;
+    }
+
+    private Vector<Long> parserRulesThird(int idRule) {
+        Vector<Long> values = null ;
+        switch (idRule) {
+            case 8:
+                JSONArray noRepeatEnding = this.gameParser.getJSONarray("noRepeatEnding");
+                values = this.gameParser.toVector(noRepeatEnding);
+                break;
+            case 9:
+                JSONArray adjacents = this.gameParser.getJSONarray("adjacents");
+                values = this.gameParser.toVector(adjacents);
                 break;
             default:
                 break;

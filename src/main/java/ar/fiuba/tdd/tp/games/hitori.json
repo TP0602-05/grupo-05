@@ -1,8 +1,10 @@
 {
   "nsets":17,
-  "rulesets":[],
+  "rulesets":[8,9],
   "sum":[],
   "mul":[],
+  "noRepeatEnding" : [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0],
+  "adjacents" : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
   "rows":8,
   "cols":8,
   "buttons" : [22],

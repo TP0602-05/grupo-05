@@ -26,6 +26,6 @@ public class NoRepeatEndingRule implements Rule {
     }
 
     public void printRule() {
-
+        System.out.println("noRepeatEnding");
     }
 }
