@@ -391,7 +391,7 @@
       "value":[8],
       "isBlocked": "true",
       "type": 1,
-      "borders": [1,0,0,0],
+      "borders": [0,1,0,0],
       "sets":[7,14,24]
     },
     {
