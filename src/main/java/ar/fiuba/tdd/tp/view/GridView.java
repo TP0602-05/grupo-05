@@ -31,8 +31,21 @@ public class GridView extends Observer{
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setLayout(new BorderLayout());
                 board = new Board();
+
+                JPanel panelBoton = new JPanel();
+
+                JButton undo = new UndoButton();
+                undo.setSize(50,50);
+                undo.setVisible(true);
+                undo.setText("Undo");
+                panelBoton.add(undo,BorderLayout.EAST);
+
+
+                frame.add(panelBoton);
+                frame.pack();
                 frame.add(board);
                 frame.pack();
+
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
                 frame.setResizable(false);

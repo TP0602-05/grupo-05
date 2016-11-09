@@ -44,6 +44,16 @@ public class Value {
         this.initializeEmptyBorderDots();
     }
 
+    public Value(Value val) {
+        this.value = val.getValue();
+        this.borderDots = new Vector<>();
+        this.dots = new Vector<>();
+        for (int i = 0; i < NUM_DOTS; i++) {
+            this.borderDots.add(val.getBorderDots().elementAt(i));
+            this.dots.add(val.getDots().elementAt(i));
+        }
+    }
+
     public Value(Integer value) {
         this.value = value;
         this.initializeEmptyDots();

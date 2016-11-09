@@ -152,7 +152,19 @@ class Grid {
 
         return false;
     }
+//TODO
+   /* void setUniverifiedCell(Value value, int row, int col) {
+        ArrayList<Integer> cellSets = this.map.elementAt(row).elementAt(col);
+        Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
 
+        this.cells.elementAt(row).elementAt(col);
+        for (int position : cellSets) {
+            PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row, col));
+            PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row, col));
+            this.sets.elementAt(position).addValue(pvalue, prevPValue);
+        }
+    }
+*/
     private void setValuesInSets(Vector<Cell> newCells, Vector<Position> cellPositions, int len) {
         int actualRow;
         int actualCol;

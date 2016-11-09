@@ -1,7 +1,8 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.controller.KeyboardController;
 import ar.fiuba.tdd.tp.model.cell.Cell;
+import ar.fiuba.tdd.tp.model.cell.Position;
+import ar.fiuba.tdd.tp.model.cell.PositionValueDuo;
 import ar.fiuba.tdd.tp.model.cell.Value;
 import ar.fiuba.tdd.tp.view.GridView;
 
@@ -16,7 +17,7 @@ public class Game extends Observable {
     private Vector<Value> allowedValues;
     private boolean isFinished;
     private boolean combineValues;
-    private KeyboardController keyboardController;
+    private Stack plays = new Stack();
 
     public Vector<Value> getAllowedValues() {
         return allowedValues;
@@ -37,7 +38,7 @@ public class Game extends Observable {
         gridView = new GridView(gameName);
         this.addObserver(gridView);
         this.addObserver(new FinishGameListener());
-        this.addObserver(new UndoListener());
+        //this.addObserver(new UndoListener());
         this.allowedValues = this.gameBuilder.getAllowedValues();
     }
 
@@ -96,13 +97,29 @@ public class Game extends Observable {
     }
 
     public boolean addKeypadValue(Value value, int row, int col) {
-        //boolean worked = grid.addKeypadValue(value, row, col, this.combineValues);
-        /* System.out.println("VALOR: " + value.getValue());
-        System.out.println("FILA: " + row);
-        System.out.println("COLUMNA: " + col); */
         boolean worked = grid.setCell(value, row, col, this.combineValues);
+        if (worked) {
+            this.addToStack(value, row, col);
+        }
         this.update();
         this.notifyObservers();
         return worked;
+    }
+
+    public boolean undoPlay() {
+        System.out.println("UNDO");
+        PositionValueDuo undo = this.removeFromStack();
+
+        return true;
+    }
+
+    private boolean addToStack(Value val, int row, int col) {
+        PositionValueDuo play = new PositionValueDuo(new Value(val), new Position(row,col));
+        this.plays.push(play);
+        return true;
+    }
+
+    private PositionValueDuo removeFromStack() {
+        return (PositionValueDuo) this.plays.pop();
     }
 }
