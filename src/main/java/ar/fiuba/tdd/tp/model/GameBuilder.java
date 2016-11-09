@@ -85,7 +85,7 @@ class GameBuilder {
     }
 
     private void parseRules(Grid grid, ArrayList rulesArray) {
-        Vector<Long> values = null ;
+        Vector<Long> values;
         for (Object arulesArray : rulesArray) {
             int idRule = ((Long) arulesArray).intValue();
             if (idRule < 5) {
@@ -103,16 +103,13 @@ class GameBuilder {
         Vector<Long> values = null ;
         switch (idRule) {
             case 2:
-                JSONArray sums = this.gameParser.getJSONarray("sum");
-                values = this.gameParser.toVector(sums);
+                values = this.getValues("sum");
                 break;
             case 3:
-                JSONArray muls = this.gameParser.getJSONarray("mul");
-                values = this.gameParser.toVector(muls);
+                values = this.getValues("mul");
                 break;
             case 4:
-                JSONArray count = this.gameParser.getJSONarray("count");
-                values = this.gameParser.toVector(count);
+                values = this.getValues("count");
                 break;
             default:
                 break;
@@ -130,19 +127,12 @@ class GameBuilder {
         switch (idRule) {
             case 5:
                 values = this.getValues("continuity");
-                //JSONArray continuity = this.gameParser.getJSONarray("continuity");
-                //values = this.gameParser.toVector(continuity);
                 break;
             case 6:
                 values = this.getValues("corner");
-                //JSONArray corner = this.gameParser.getJSONarray("corner");
-                //values = this.gameParser.toVector(corner);
                 break;
             case 7:
                 values = this.getValues("border");
-
-                //JSONArray border = this.gameParser.getJSONarray("border");
-                //values = this.gameParser.toVector(border);
                 break;
             default:
                 break;

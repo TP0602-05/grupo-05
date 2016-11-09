@@ -260,7 +260,9 @@ class Grid {
         for (int row = 0; row < this.nsets; ++row) {
             SetOfValues set = this.sets.elementAt(row);
             Rule rule = null;
-            if (idRules < 5) {
+            if (idRules == 1) {
+                rule = loadRulesSetFirst(idRules,0);
+            } else if (idRules < 5) {
                 rule = loadRulesSetFirst(idRules,values.elementAt(row).intValue());
             } else {
                 rule = loadRulesSetSecond(idRules,values.elementAt(row).intValue());
@@ -283,7 +285,7 @@ class Grid {
     }
 
     Rule loadRulesSetFirst(int idRules, int value) {
-        Rule rule = null;
+        Rule rule;
         if (idRules == 1) {
             rule = new NoRepeatRule();
         } else if (idRules == 2) {
