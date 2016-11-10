@@ -9,9 +9,10 @@ import javax.swing.*;
 /*
 This kind of JButton is the one that has a crossline, and values in the sides.
  */
-public class BlackCrossBox extends JButton {
+public class BlackCrossBox extends Button {
 
     public BlackCrossBox(Vector<Value> values, int row, int col) {
+        painter = new Paintor(new Value(0));
         setBackground(Color.black);
         setForeground(Color.white);
         setContentAreaFilled(false);

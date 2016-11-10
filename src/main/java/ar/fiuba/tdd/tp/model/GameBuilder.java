@@ -1,8 +1,8 @@
 package ar.fiuba.tdd.tp.model;
 
-import ar.fiuba.tdd.tp.model.cell.Cell;
-import ar.fiuba.tdd.tp.model.cell.Value;
+import ar.fiuba.tdd.tp.model.cell.*;
 import ar.fiuba.tdd.tp.utils.Parser;
+import ar.fiuba.tdd.tp.view.ButtonHashing;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -17,79 +17,161 @@ class GameBuilder {
 
     private String gameName;
     private Parser gameParser;
-    private boolean gridHasBlocks;
 
     GameBuilder(String gameName) {
         this.gameName = gameName;
-        gridHasBlocks = false;
     }
 
     GameBuilder loadConf() throws Exception {
         String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/" + gameName + ".json" ;
-        gridHasBlocks = gameName.equals("sudoku");
         this.gameParser = new Parser(path);
         return this;
     }
 
-    public boolean gridHasBlocks() {
-        return gridHasBlocks;
-    }
-
     Grid createGrid() {
         Grid grid = new Grid(this.gameParser.getJsonInt("cols"),this.gameParser.getJsonInt("rows"), this.gameParser.getJsonInt("nsets"));
+        String combine = this.gameParser.getString("combine");
+        if (combine != null) {
+            grid.setCombine(combine);
+        }
         for (Object cell : this.gameParser.getJSONarray("cells")) {
             JSONObject cellJson = (JSONObject) cell;
             int row = ((Long)cellJson.get("row")).intValue();
             int col = ((Long)cellJson.get("col")).intValue();
             ArrayList val = (JSONArray) cellJson.get("value");
             ArrayList sets = (JSONArray) cellJson.get("sets");
-            this. internalProcessOfValue(grid, val, sets, col, row);
+            ArrayList borders = (JSONArray) cellJson.get("borders");
+            int type = ((Long)cellJson.get("type")).intValue();
+            this.internalProcessOfValue(grid, type, val, sets, col, row, borders);
         }
         grid = loadRulesGame(grid);
+        //grid.printSets();
+        //grid.printRules();
         return grid;
     }
 
-    private void internalProcessOfValue(Grid grid, ArrayList val, ArrayList sets, int col, int row) {
-        if (val.size() == 1) {
-            int intValue = ((Long) val.get(0)).intValue();
-            if (intValue == 0) {
-                grid.addCell(new Cell(), row - 1, col - 1, sets);
-            } else {
-                grid.addCell(new Cell(new Value(intValue)), row - 1, col - 1, sets);
-            }
-        } else {
-            Vector<Value> vecAux = new Vector<>(val.size());
-            for (Object values : val) {
-                vecAux.add(new Value(((Long) values).intValue()));
-            }
-            grid.addCell(new Cell(vecAux),row - 1, col - 1, sets);
+    private void internalProcessOfValue(Grid grid, int type, ArrayList val, ArrayList sets, int col, int row, ArrayList borders) {
+
+        switch (type) {
+            case 1:
+                addCellFlagsAndNumbers(grid, val, row  , col, sets, borders);
+                break;
+            case 2:
+                addCellDualSum(grid, val, row, col, sets, borders);
+                break;
+            case 3:
+                grid.addCell(new CellBlack(),row - 1 ,col - 1,sets, borders);
+                break;
+            case 4:
+                addCellFlagsAndNumbers(grid, val, row, col, sets, borders);
+                break;
+            default:
+                break;
         }
+    }
+
+    private void addCellDualSum(Grid grid, ArrayList val, int row, int col, ArrayList sets, ArrayList borders) {
+        Vector<Value> vecAux = new Vector<>(val.size());
+        for (Object values : val) {
+            vecAux.add(new Value(((Long) values).intValue()));
+        }
+
+        grid.addCell(new CellDualSum(vecAux),row - 1, col - 1, sets, borders);
+    }
+
+    private void addCellFlagsAndNumbers(Grid grid, ArrayList val, int row, int col, ArrayList sets, ArrayList borders) {
+        int intValue = ((Long) val.get(0)).intValue();
+        grid.addCell(new CellFlagsAndNumbers(new Value(intValue)), row - 1, col - 1, sets, borders);
+    }
+
+    private void parseRules(Grid grid, ArrayList rulesArray) {
+        Vector<Long> values;
+        for (Object arulesArray : rulesArray) {
+            int idRule = ((Long) arulesArray).intValue();
+            if (idRule < 5) {
+                values = parserRulesFirst(idRule);
+            } else if (idRule < 8) {
+                values = parserRulesSecond(idRule);
+            } else {
+                values = parserRulesThird(idRule);
+            }
+            grid.loadRulesSet(idRule, values);
+        }
+    }
+
+    private Vector<Long> parserRulesFirst(int idRule) {
+        Vector<Long> values = null ;
+        switch (idRule) {
+            case 2:
+                values = this.getValues("sum");
+                break;
+            case 3:
+                values = this.getValues("mul");
+                break;
+            case 4:
+                values = this.getValues("count");
+                break;
+            default:
+                break;
+        }
+        return values;
+    }
+
+    private Vector<Long> getValues(String name) {
+        JSONArray valArray = this.gameParser.getJSONarray(name);
+        return this.gameParser.toVector(valArray);
+    }
+
+    private Vector<Long> parserRulesSecond(int idRule) {
+        Vector<Long> values = null ;
+        switch (idRule) {
+            case 5:
+                values = this.getValues("continuity");
+                break;
+            case 6:
+                values = this.getValues("corner");
+                break;
+            case 7:
+                values = this.getValues("border");
+                break;
+            default:
+                break;
+        }
+        return values;
+    }
+
+    private Vector<Long> parserRulesThird(int idRule) {
+        Vector<Long> values = null ;
+        switch (idRule) {
+            case 8:
+                values = this.getValues("noRepeatEnding");
+                break;
+            case 9:
+                values = this.getValues("adjacents");
+                break;
+            default:
+                break;
+        }
+        return values;
     }
 
     private Grid loadRulesGame(Grid grid) {
         JSONArray rules = this.gameParser.getJSONarray("rulesets");
         ArrayList rulesArray = this.gameParser.toArrayList(rules);
-        Vector<Long> values = null ;
-        for (Object arulesArray : rulesArray) {
-            int idRule = ((Long) arulesArray).intValue();
-            switch (idRule) {
-                case 2:
-                    JSONArray sums = this.gameParser.getJSONarray("sum");
-                    values = this.gameParser.toVector(sums);
-                    break;
-                case 3:
-                    JSONArray muls = this.gameParser.getJSONarray("mul");
-                    values = this.gameParser.toVector(muls);
-                    break;
-                default:
-                    break;
-            }
-            grid.loadRulesSet(idRule, values);
-        }
+        this.parseRules(grid, rulesArray);
         return grid;
     }
 
-    public String getGameName() {
-        return this.gameName;
+    public Vector<Value> getAllowedValues() {
+        Vector<Value> valueAux = new Vector<>();
+        ButtonHashing hashing = new ButtonHashing();
+
+        JSONArray buttonsJson = this.gameParser.getJSONarray("buttons");
+        ArrayList buttons = this.gameParser.toArrayList(buttonsJson);
+        for (Object id: buttons) {
+            int idButton = ((Long) id).intValue();
+            valueAux.add(hashing.getMapAt(idButton));
+        }
+        return valueAux;
     }
 }

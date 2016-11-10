@@ -28,47 +28,23 @@ public class Board extends JPanel {
                 gbc.gridx = col;
                 gbc.gridy = row;
 
-                JButton cellPane;
+                Button cellPane;
                 cellPane = getCellType(row,col);
-
-                if (Game.getInstance().gridHasBlocks()) {
-                    cellPane.setBorder(setBlocks(row,col));
-                }
 
                 add(cellPane, gbc);
             }
         }
     }
 
-    private JButton getCellType(int row, int col) {
+    private Button getCellType(int row, int col) {
         Cell cell = Game.getInstance().getCell(row,col);
-        JButton cellPane;
-        if (cell.getAmountOfValues() == 1) {
-            cellPane = new InputButton(Game.getInstance().getValue(row,col), row, col);
-        } else {
-            Vector<Value> valuesAux = cell.getValues();
-            if ((valuesAux.elementAt(0).getValue() == 0) && (valuesAux.elementAt(1).getValue() == 0)) {
-                cellPane = new BlackBox();
-            } else {
-                cellPane = new BlackCrossBox(cell.getValues(), row, col);
-            }
-        }
+        Button cellPane;
+        cellPane = cell.getView(row,col);
+        Vector<Integer> bordersCell = Game.getInstance().getCell(row,col).getBorders();
+        Border border = new MatteBorder(bordersCell.get(0) * 4,bordersCell.get(1) * 4,
+                bordersCell.get(2) * 4,bordersCell.get(3) * 4,Color.yellow);
+        cellPane.setBorders(border);
         return cellPane;
     }
 
-    private Border setBlocks(int row, int col) {
-        Border border = null;
-        if ((row % 3) == 0 && (col % 3) == 0) {
-            border = new MatteBorder(4, 4, 0, 0, Color.pink);
-        } else {
-            if ((row % 3) == 0) {
-                border = new MatteBorder(4, 0, 0, 0, Color.pink);
-            } else {
-                if ((col % 3) == 0) {
-                    border = new MatteBorder(0, 4, 0, 0, Color.pink);
-                }
-            }
-        }
-        return border;
-    }
 }

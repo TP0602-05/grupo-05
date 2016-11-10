@@ -11,13 +11,17 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) {
 
-        Game.init("inshi");
-        String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/input.json" ;
+        Game.init("gokigen");
+/*
+        String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/input_slitherlink.json" ;
         try {
             AutomaticPlayer automaticPlayer = new AutomaticPlayer(path);
             automaticPlayer.playGame();
         } catch (Exception e) {
             e.printStackTrace();
         }
+*/
+
     }
+
 }

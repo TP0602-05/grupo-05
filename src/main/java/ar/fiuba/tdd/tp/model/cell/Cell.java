@@ -1,37 +1,22 @@
 package ar.fiuba.tdd.tp.model.cell;
 
+import ar.fiuba.tdd.tp.view.Button;
+
 import java.util.Vector;
+import javax.swing.*;
 
 /**
  * Holds an array of values and knows whether it can be blocked or not.
  */
-public class Cell {
+public abstract class Cell {
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
     private boolean blocked;
-    private Vector<Value> value;
 
-    public Cell() {
-        value = new Vector<>(1);
-        this.blocked = false;
-        this.value.addElement(new Value(0));
-    }
-
-    public Cell(Value value) {
-        this.value = new Vector<>(1);
-        this.blocked = true;
-        this.value.addElement(value);
-    }
-
-    public Cell(Vector<Value> values) {
-        this.blocked = true;
-        this.value = values;
-    }
-
-    public int getAmountOfValues() {
-        return this.value.size();
-    }
-
-    public boolean isBlocked() {
-        return this.blocked;
+    public void setValue(Vector<Value> value) {
+        this.value = value;
     }
 
     public void setValue(Value value) {
@@ -39,6 +24,27 @@ public class Cell {
             this.value.setElementAt(value,0);
         }
     }
+
+    public void setBorders(Vector<Integer> borders) {
+        this.borders = borders;
+    }
+
+    public Vector<Integer> getBorders() {
+        return borders;
+    }
+
+    private Vector<Integer> borders;
+
+    protected Vector<Value> value;
+
+    public Cell() {}
+
+    public abstract Button getView(int row, int col);
+
+    public boolean isBlocked() {
+        return this.blocked;
+    }
+
 
     public Value getValue() {
         return this.value.elementAt(0);
@@ -52,7 +58,4 @@ public class Cell {
         return this.value.toString();
     }
 
-   /* public void printCell() {
-        this.value.elementAt(0).printValue();
-    }*/
 }

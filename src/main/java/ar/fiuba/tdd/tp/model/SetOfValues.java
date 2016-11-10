@@ -14,7 +14,7 @@ Values and rules are loaded in runtime.
 */
 class SetOfValues {
 
-    private ArrayList<Value> values;
+    private ArrayList<PositionValueDuo> values;
     private ArrayList<Rule> rules;
 
     SetOfValues() {
@@ -22,11 +22,11 @@ class SetOfValues {
         this.rules  = new ArrayList<>();
     }
 
-    void insertValue(Value value) {
+    void insertValue(PositionValueDuo value) {
         this.values.add(value);
     }
 
-    void addValue(Value value, Value prevValue) {
+    void addValue(PositionValueDuo value, PositionValueDuo prevValue) {
         this.values.add(value);
         this.deleteValue(prevValue);
     }
@@ -35,18 +35,17 @@ class SetOfValues {
         this.rules.add(rule);
     }
 
-    void deleteValue(Value value) {
-        for (Iterator<Value> iterator = this.values.iterator(); iterator.hasNext();) {
-            Value myValue = iterator.next();
-            if (myValue.isEqualTo(value)) {
+    void deleteValue(PositionValueDuo value) {
+        for (Iterator<PositionValueDuo> iterator = this.values.iterator(); iterator.hasNext();) {
+            PositionValueDuo myValue = iterator.next();
+            if (myValue.getPos().isEqual(value.getPos())) {
                 iterator.remove();
                 break;
             }
         }
     }
     
-    boolean canInsertValue(Value value, Value prevValue) {
-        // TODO: Recibir valor previo, quitarlo del set antes de chequear y volver a agregarlo al final.
+    boolean canInsertValue(PositionValueDuo value, PositionValueDuo prevValue) {
         boolean result = true;
         this.deleteValue(prevValue);
         for (Rule myRule: this.rules) {
@@ -67,11 +66,11 @@ class SetOfValues {
         return true;
     }
 
-    /*
+
     void printSet() {
-        for (Iterator<Value> iterator = this.values.iterator(); iterator.hasNext();) {
-            Value myValue = iterator.next();
-            myValue.printValue();
+        for (Iterator<PositionValueDuo> iterator = this.values.iterator(); iterator.hasNext();) {
+            PositionValueDuo myValue = iterator.next();
+            System.out.println(myValue.getPos().toString() + " : " + myValue.getValue().getDots().toString());
         }
     }
 
@@ -81,11 +80,9 @@ class SetOfValues {
             myValue.printRule();
         }
     }
-    */
+
 
     void loadRule(Rule rule) {
-
         this.rules.add(rule);
-
     }
 }
