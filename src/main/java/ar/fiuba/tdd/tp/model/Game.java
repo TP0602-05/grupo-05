@@ -97,9 +97,10 @@ public class Game extends Observable {
     }
 
     public boolean addKeypadValue(Value value, int row, int col) {
+        this.addToStack(row, col);
         boolean worked = grid.setCell(value, row, col, this.combineValues);
-        if (worked) {
-            this.addToStack(value, row, col);
+        if (!worked) {
+            this.removeFromStack();
         }
         this.update();
         this.notifyObservers();
@@ -108,18 +109,30 @@ public class Game extends Observable {
 
     public boolean undoPlay() {
         System.out.println("UNDO");
-        PositionValueDuo undo = this.removeFromStack();
-
+        Vector<PositionValueDuo> undo = this.removeFromStack();
+        if ( undo != null ) {
+            System.out.println("Valores en la jugada a revertir: "+undo.size());
+            for (PositionValueDuo undoValue : undo) {
+                this.grid.setUnverifiedCell(undoValue);
+            }
+        } else {
+            System.out.println("No hay nada en la pila");
+        }
+        this.notifyObservers();
         return true;
     }
 
-    private boolean addToStack(Value val, int row, int col) {
-        PositionValueDuo play = new PositionValueDuo(new Value(val), new Position(row,col));
-        this.plays.push(play);
+    private boolean addToStack(int row, int col) {
+        Vector<PositionValueDuo> playCellWithBorders = this.grid.getValueInCellWithBorders(row,col);
+        this.plays.push(playCellWithBorders);
         return true;
     }
 
-    private PositionValueDuo removeFromStack() {
-        return (PositionValueDuo) this.plays.pop();
+    private Vector<PositionValueDuo> removeFromStack() {
+        if (!this.plays.isEmpty()) {
+            System.out.println(" - Remove from Stack - ");
+            return (Vector<PositionValueDuo>) this.plays.pop();
+        }
+        return null;
     }
 }

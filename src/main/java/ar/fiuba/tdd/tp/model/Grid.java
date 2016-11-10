@@ -140,31 +140,35 @@ class Grid {
         if (checkNewValueInSets(mySets, newPosValue, prevPosValue)) {
             Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
             value.updateInternBorders(prevValue);
-            this.cells.elementAt(row).elementAt(col).setValue(value);
+            this.setUnverifiedCell(newPosValue);
+            /*this.cells.elementAt(row).elementAt(col).setValue(value);
             for (int position : mySets) {
                 PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row, col));
                 PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row, col));
                 this.sets.elementAt(position).addValue(pvalue, prevPValue);
-            }
+            }*/
             this.updateBorderCells(value, row, col, 1);
             return true;
         }
 
         return false;
     }
-//TODO
-   /* void setUniverifiedCell(Value value, int row, int col) {
+
+    void setUnverifiedCell(PositionValueDuo posValue) {
+        int row = posValue.getPos().getRow();
+        int col = posValue.getPos().getCol();
+        Value value = posValue.getValue();
         ArrayList<Integer> cellSets = this.map.elementAt(row).elementAt(col);
         Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
 
-        this.cells.elementAt(row).elementAt(col);
+        this.cells.elementAt(row).elementAt(col).setValue(value);
         for (int position : cellSets) {
-            PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row, col));
+            PositionValueDuo pValue = new PositionValueDuo(value, new Position(row, col));
             PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row, col));
-            this.sets.elementAt(position).addValue(pvalue, prevPValue);
+            this.sets.elementAt(position).addValue(pValue, prevPValue);
         }
     }
-*/
+
     private void setValuesInSets(Vector<Cell> newCells, Vector<Position> cellPositions, int len) {
         int actualRow;
         int actualCol;
@@ -350,27 +354,19 @@ class Grid {
         return this.combineValues;
     }
 
+    public Vector<PositionValueDuo> getValueInCellWithBorders(int row, int col) {
+        Vector<PositionValueDuo> values = new Vector<>();
+        Value copyValue = new Value(this.cells.elementAt(row).elementAt(col).getValue());
+        Position copyPosition = new Position(row, col);
+        values.add(new PositionValueDuo(copyValue, copyPosition));
 
-    /*public boolean addKeypadValue(Value value, int row, int col) {
-        // ARREGLAR ESTOOOOOOOOOO!
-        // ARREGLAR ESTOOOOOOOOOO!
-        // ARREGLAR ESTOOOOOOOOOO!
-        // ARREGLAR ESTOOOOOOOOOO!
-        if (checkValidations(value)) {
-            ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-            if (checkNewValueInSets(mySets, value, (this.cells.elementAt(row).elementAt(col).getValue()))) {
-                Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
-                this.cells.elementAt(row).elementAt(col).setValue(value);
-                for (int position : mySets) {
-                    //System.out.println(" ROW: "+row+"COL: "+col+"VAL: ");
-
-                    PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row - 1,col - 1));
-                    PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
-                    this.sets.elementAt(position).addValue(pvalue, prevPValue);
-                }
-                return true;
+        Vector<Position> positionBorders = this.borderPositionValues(copyPosition);
+        for (Position actualPosition:positionBorders) {
+            if ( this.isValidPosition(actualPosition.getRow(),actualPosition.getCol()) ) {
+                copyValue = new Value(this.cells.elementAt(actualPosition.getRow()).elementAt(actualPosition.getCol()).getValue());
+                values.add(new PositionValueDuo(copyValue,actualPosition));
             }
         }
-        return false;
-    }*/
+        return values;
+    }
 }
