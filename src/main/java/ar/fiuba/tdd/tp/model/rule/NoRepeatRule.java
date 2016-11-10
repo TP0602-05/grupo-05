@@ -24,7 +24,7 @@ public class NoRepeatRule implements Rule{
 
     public boolean checkFinal(ArrayList<PositionValueDuo> values) {
         for (PositionValueDuo value: values) {
-            if (value.getValue().isEqualTo(new Value(0))) {
+            if (value.getValue().isEqualTo(new Value(-1))) {
                 return false;
             }
         }

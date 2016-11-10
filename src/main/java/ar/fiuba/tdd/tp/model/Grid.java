@@ -14,7 +14,7 @@ class Grid {
     private Vector<Vector<Cell>> cells;
     private Vector<SetOfValues> sets;
     private Vector<Vector<ArrayList<Integer>>> map;
-   // private Vector<Validation> validations;
+    // private Vector<Validation> validations;
     private int width;
     private int height;
     private int nsets;
@@ -24,7 +24,7 @@ class Grid {
     private void initializeVectorCells() {
         this.cells = new Vector<>(height);
         for (int row = 0; row < height; ++row) {
-            this.cells.insertElementAt(new Vector<>(width),row);
+            this.cells.insertElementAt(new Vector<>(width), row);
         }
     }
 
@@ -38,9 +38,9 @@ class Grid {
     private void initializeVectorMap() {
         this.map = new Vector<>(height);
         for (int row = 0; row < height; ++row) {
-            this.map.insertElementAt(new Vector<>(width),row);
+            this.map.insertElementAt(new Vector<>(width), row);
             for (int col = 0; col < width; ++col) {
-                this.map.elementAt(row).insertElementAt(new ArrayList<>(),col);
+                this.map.elementAt(row).insertElementAt(new ArrayList<>(), col);
             }
         }
     }
@@ -67,17 +67,17 @@ class Grid {
     void addCell(Cell cell, int row, int col, ArrayList sets, ArrayList borders) {
         this.cells.elementAt(row).insertElementAt(cell, col);
         Vector<Integer> bordersAux = new Vector<>();
-        for (Object border:borders) {
+        for (Object border : borders) {
             int borderAux = ((Long) border).intValue();
             bordersAux.add(borderAux);
         }
         this.cells.elementAt(row).elementAt(col).setBorders(bordersAux);
-        for (Object position:sets) {
+        for (Object position : sets) {
             int pos = ((Long) position).intValue();
             if (pos == 0) {
                 continue;
             }
-            this.sets.elementAt(pos - 1).insertValue( new PositionValueDuo(cell.getValue(), new Position(row, col)));
+            this.sets.elementAt(pos - 1).insertValue(new PositionValueDuo(cell.getValue(), new Position(row, col)));
             this.map.elementAt(row).elementAt(col).add(pos - 1);
         }
     }
@@ -85,9 +85,9 @@ class Grid {
     private boolean checkNewValueInSets(ArrayList<Integer> mySets, PositionValueDuo newValue, PositionValueDuo prevValue) {
         newValue.getValue().copyArrayOfBordersOf(prevValue.getValue());
 
-        for (int position: mySets) {
+        for (int position : mySets) {
             // TODO Correct parameter from Value to PositionValueDuo
-            if ( !this.sets.elementAt(position).canInsertValue(newValue, prevValue) ) {
+            if (!this.sets.elementAt(position).canInsertValue(newValue, prevValue)) {
                 return false;
             }
         }
@@ -127,13 +127,13 @@ class Grid {
         }
     }
 
-    boolean setCell(Value value,int row, int col, boolean combine) {
+    boolean setCell(Value value, int row, int col, boolean combine) {
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         if (combine) {
             value = value.copyValue();
             value.combineDots(this.cells.elementAt(row).elementAt(col).getValue());
         }
-        PositionValueDuo newPosValue  =
+        PositionValueDuo newPosValue =
                 new PositionValueDuo(value, new Position(row, col));
         PositionValueDuo prevPosValue =
                 new PositionValueDuo(this.cells.elementAt(row).elementAt(col).getValue(), new Position(row, col));
@@ -156,8 +156,8 @@ class Grid {
     private void setValuesInSets(Vector<Cell> newCells, Vector<Position> cellPositions, int len) {
         int actualRow;
         int actualCol;
-        for ( int i = 0; i < len; i++ ) {
-            if ( newCells.elementAt(i) != null ) {
+        for (int i = 0; i < len; i++) {
+            if (newCells.elementAt(i) != null) {
                 Value prevValue = newCells.elementAt(i).getValue();
                 actualRow = cellPositions.elementAt(i).getRow();
                 actualCol = cellPositions.elementAt(i).getCol();
@@ -177,7 +177,7 @@ class Grid {
     }
 
     Cell getCell(int row, int col) {
-        if ( this.isValidPosition(row,col) ) {
+        if (this.isValidPosition(row, col)) {
             return this.cells.elementAt(row).elementAt(col);
         }
         return null;
@@ -198,7 +198,7 @@ class Grid {
 
     private Vector<Value> borderValuesToCombine(Value value) {
         Vector<Value> borderValues = new Vector<>();
-        for ( int i = 0; i < NUM_BORDERS; i++) {
+        for (int i = 0; i < NUM_BORDERS; i++) {
             borderValues.add(value.getBorderValueAt(i));
         }
         return borderValues;
@@ -220,11 +220,11 @@ class Grid {
     private void updateBorderCells(Value value, int row, int col, int sumValue) {
         Vector<Cell> borders = this.borderCells(row, col);
         Vector<Value> borderValues = this.borderValuesToCombine(value);
-        Vector<Position> borderPositionValues = this.borderPositionValues(new Position(row,col));
+        Vector<Position> borderPositionValues = this.borderPositionValues(new Position(row, col));
         int actualRow;
         int actualCol;
         for (int i = 0; i < NUM_BORDERS; i++) {
-            if ( borders.elementAt(i) != null ) {
+            if (borders.elementAt(i) != null) {
 
                 actualRow = borderPositionValues.elementAt(i).getRow();
                 actualCol = borderPositionValues.elementAt(i).getCol();
@@ -232,18 +232,17 @@ class Grid {
                 //this.cells.elementAt(actualRow).elementAt(actualCol).getValue().printBorders();
                 //System.out.println("=====================================");
 
-                borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i),sumValue);
+                borders.elementAt(i).getValue().updateBorders(borderValues.elementAt(i), sumValue);
                 this.cells.elementAt(actualRow).elementAt(actualCol).setValue(borders.elementAt(i).getValue());
 
                 // PRINT VALUE
                 //this.cells.elementAt(actualRow).elementAt(actualCol).getValue().printBorders();
             }
         }
-        this.setValuesInSets(borders,borderPositionValues,NUM_BORDERS);
+        this.setValuesInSets(borders, borderPositionValues, NUM_BORDERS);
     }
 
     boolean checkFinish() {
-        //System.out.println(" ************* CHECK FINISH SETS ************ ");
         for (SetOfValues set : this.sets) {
             //set.printSet();
 
@@ -251,35 +250,20 @@ class Grid {
                 return false;
             }
         }
-        //System.out.println(" ****************************** ");
-
         return true;
     }
 
-    void loadRulesSet(int idRules,  Vector<Long> values) {
+    void loadRulesSet(int idRules, Vector<Long> values) {
         for (int row = 0; row < this.nsets; ++row) {
             SetOfValues set = this.sets.elementAt(row);
-            Rule rule = null;
+            Rule rule;
             if (idRules == 1) {
-                rule = loadRulesSetFirst(idRules,0);
+                rule = loadRulesSetFirst(idRules, 0);
             } else if (idRules < 5) {
-                rule = loadRulesSetFirst(idRules,values.elementAt(row).intValue());
+                rule = loadRulesSetFirst(idRules, values.elementAt(row).intValue());
             } else {
-                rule = loadRulesSetSecond(idRules,values.elementAt(row).intValue());
+                rule = loadRulesSetSecond(idRules, values.elementAt(row).intValue());
             }
-            /*if (idRules == 1) {
-                rule = new NoRepeatRule();
-            } else if (idRules == 2) {
-                rule = new SummationRule(values.elementAt(row).intValue());
-            } else if (idRules == 3) {
-                rule = new MultiplicationRule(values.elementAt(row).intValue());
-            } else if (idRules == 4) {
-                rule = new AmountOfLinesRule(values.elementAt(row).intValue());
-            } else if (idRules == 5) {
-                rule = new LineContinuityRule(values.elementAt(row).intValue());
-            } else if (idRules == 6) {
-                rule = new AmountOfLinesCornerRule(values.elementAt(row).intValue());
-            }*/
             set.loadRule(rule);
         }
     }
@@ -339,28 +323,4 @@ class Grid {
     public boolean getCombine() {
         return this.combineValues;
     }
-
-
-    /*public boolean addKeypadValue(Value value, int row, int col) {
-        // ARREGLAR ESTOOOOOOOOOO!
-        // ARREGLAR ESTOOOOOOOOOO!
-        // ARREGLAR ESTOOOOOOOOOO!
-        // ARREGLAR ESTOOOOOOOOOO!
-        if (checkValidations(value)) {
-            ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
-            if (checkNewValueInSets(mySets, value, (this.cells.elementAt(row).elementAt(col).getValue()))) {
-                Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
-                this.cells.elementAt(row).elementAt(col).setValue(value);
-                for (int position : mySets) {
-                    //System.out.println(" ROW: "+row+"COL: "+col+"VAL: ");
-
-                    PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row - 1,col - 1));
-                    PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row - 1,col - 1));
-                    this.sets.elementAt(position).addValue(pvalue, prevPValue);
-                }
-                return true;
-            }
-        }
-        return false;
-    }*/
 }

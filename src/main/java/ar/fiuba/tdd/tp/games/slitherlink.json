@@ -11,7 +11,7 @@
     {
       "row":1,
       "col":1,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -29,7 +29,7 @@
     {
       "row":1,
       "col":3,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -47,7 +47,7 @@
     {
       "row":1,
       "col":5,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -74,7 +74,7 @@
     {
       "row":2,
       "col":3,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -83,7 +83,7 @@
     {
       "row":2,
       "col":4,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -92,7 +92,7 @@
     {
       "row":2,
       "col":5,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -101,7 +101,7 @@
     {
       "row":3,
       "col":1,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -110,7 +110,7 @@
     {
       "row":3,
       "col":2,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -119,7 +119,7 @@
     {
       "row":3,
       "col":3,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -128,7 +128,7 @@
     {
       "row":3,
       "col":4,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -155,7 +155,7 @@
     {
       "row":4,
       "col":2,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -173,7 +173,7 @@
     {
       "row":4,
       "col":4,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -191,7 +191,7 @@
     {
       "row":5,
       "col":1,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
@@ -227,7 +227,7 @@
     {
       "row":5,
       "col":5,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
