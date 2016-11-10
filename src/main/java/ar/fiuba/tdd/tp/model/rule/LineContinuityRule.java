@@ -31,12 +31,9 @@ public class LineContinuityRule implements Rule {
             if (ruleType > 0) {
                 //Checks if already empty or not. If empty, it doesn't have to check the continuity.
                 if (!isEmpty(values)) {
-                    if (checkAdjacentCells(valuesNext, value)
-                            || (checkCornerCells(valuesNext, value))) {
-                    }
+
                     return (checkAdjacentCells(valuesNext, value)
-                            || (checkCornerCells(valuesNext, value))
-                    );
+                            || (checkCornerCells(valuesNext, value)));
                 }
                 //initValue is later used to check if the circuit is closed.
                 initValue = value;

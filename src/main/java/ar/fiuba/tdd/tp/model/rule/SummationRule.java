@@ -43,7 +43,9 @@ public class SummationRule implements Rule {
     private Integer calculate(ArrayList<PositionValueDuo> values) {
         Integer summation = 0;
         for (PositionValueDuo myValue: values ) {
-            summation += myValue.getValue().getValue();
+            if (myValue.getValue().getValue() != -1) {
+                summation += myValue.getValue().getValue();
+            }
         }
         return summation;
     }

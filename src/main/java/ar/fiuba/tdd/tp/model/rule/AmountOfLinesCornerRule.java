@@ -7,9 +7,6 @@ import ar.fiuba.tdd.tp.model.cell.Value;
 import java.util.ArrayList;
 import java.util.Vector;
 
-/**
- * Created by balrog on 03/11/16.
- */
 
 public class AmountOfLinesCornerRule implements Rule {
 
@@ -67,7 +64,7 @@ public class AmountOfLinesCornerRule implements Rule {
             if ( values.get(0).getPos().getCol() != 0 ) {
                 // Case two cells in same column right
                 addIntegerValuesToVector(cols,values.get(0).getPos().getCol() + 1,values.get(1).getPos().getCol() + 1,-200);
-              } else {
+            } else {
                 // Case two cells in same column left
                 addIntegerValuesToVector(cols,-1,-1,cpdKillYourself);
             }

@@ -50,7 +50,6 @@ public class Game extends Observable {
     }
 
     private void update() {
-        System.out.println("     - checkFinal -");
         this.isFinished = this.grid.checkFinish();
     }
 

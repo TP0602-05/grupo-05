@@ -35,8 +35,8 @@ public class NoRepeatEndingRuleTests {
 
     @Test
     public void testCheckFinalWithCeros() {
-        PositionValueDuo firstValue = new PositionValueDuo(new Value(0), new Position(0,0));
-        PositionValueDuo secondValue = new PositionValueDuo(new Value(0), new Position(0,0));
+        PositionValueDuo firstValue = new PositionValueDuo(new Value(-1), new Position(0,0));
+        PositionValueDuo secondValue = new PositionValueDuo(new Value(-1), new Position(0,0));
         PositionValueDuo thirdValue = new PositionValueDuo(new Value(1), new Position(0,0));
         PositionValueDuo forthValue = new PositionValueDuo(new Value(2), new Position(0,0));
         PositionValueDuo fifthValue = new PositionValueDuo(new Value(3), new Position(0,0));
