@@ -52,24 +52,14 @@ public class AmountOfLinesCornerRule implements Rule {
         Vector<Integer> rows = new Vector<>();
         int cpdKillYourself = -200;
         Vector<Integer> cols = new Vector<>();
-        /* int fil1 = -1;
-        int col1 = -1;
-        int fil2 = -1;
-        int col2 = -1; */
         if ( values.get(0).getPos().getRow() == values.get(1).getPos().getRow() ) {
             addIntegerValuesToVector(cols,values.get(0).getPos().getCol(),values.get(1).getPos().getCol(),-200);
             if ( values.get(0).getPos().getRow() == 0 ) {
                 // Case two cells in same row up
                 addIntegerValuesToVector(rows,-1,-1,cpdKillYourself);
-                /*col1 = values.get(0).getPos().getCol();
-                col2 = values.get(1).getPos().getCol(); */
             } else {
                 // Case two cells in same row down
                 addIntegerValuesToVector(rows,values.get(0).getPos().getRow() + 1,values.get(0).getPos().getRow() + 1,-200);
-                /* fil1 = values.get(0).getPos().getRow() + 1;
-                fil2 = fil1;
-                col1 = values.get(0).getPos().getCol();
-                col2 = values.get(1).getPos().getCol(); */
             }
         } else if ( values.get(0).getPos().getCol() == values.get(1).getPos().getCol() ) {
             int row = values.get(0).getPos().getRow();
@@ -77,19 +67,11 @@ public class AmountOfLinesCornerRule implements Rule {
             if ( values.get(0).getPos().getCol() != 0 ) {
                 // Case two cells in same column right
                 addIntegerValuesToVector(cols,values.get(0).getPos().getCol() + 1,values.get(1).getPos().getCol() + 1,-200);
-                /* fil1 = values.get(0).getPos().getRow();
-                fil2 = values.get(1).getPos().getRow();
-                col1 = values.get(0).getPos().getCol() + 1;
-                col2 = col1; */
-            } else {
+              } else {
                 // Case two cells in same column left
                 addIntegerValuesToVector(cols,-1,-1,cpdKillYourself);
-                /* fil1 = values.get(0).getPos().getRow();
-                fil2 = values.get(1).getPos().getRow(); */
             }
         }
-        /* values.add(new PositionValueDuo(new Value(0), new Position(fil1, col1)));
-        values.add(new PositionValueDuo(new Value(0), new Position(fil2, col2))); */
         this.addValues(values, rows, cols);
         return values;
     }
@@ -100,38 +82,20 @@ public class AmountOfLinesCornerRule implements Rule {
 
         if ( values.get(0).getPos().getRow() == 0 ) {
             addIntegerValuesToVector(rows,-1,-1,0);
-            /* rows.add(-1);
-            rows.add(-1);
-            rows.add(0); */
             if ( values.get(0).getPos().getCol() == 0 ) {
                 addIntegerValuesToVector(cols,-1,0,-1);
-                /* cols.add(-1);
-                cols.add(0);
-                cols.add(-1); */
             } else {
                 int col = values.get(0).getPos().getCol();
                 addIntegerValuesToVector(cols,col,col + 1,col + 1);
-                /* cols.add(values.get(0).getPos().getCol());
-                cols.add(values.get(0).getPos().getCol() + 1);
-                cols.add(values.get(0).getPos().getCol() + 1); */
             }
         } else {
             int row = values.get(0).getPos().getRow();
             addIntegerValuesToVector(rows,row,row + 1,row + 1);
-            /* rows.add(row);
-            rows.add(row + 1);
-            rows.add(row + 1); */
             if ( values.get(0).getPos().getCol() == 0 ) {
                 addIntegerValuesToVector(cols,-1,-1,0);
-                /* cols.add(-1);
-                cols.add(-1);
-                cols.add(0); */
             } else {
                 int col = values.get(0).getPos().getCol();
                 addIntegerValuesToVector(cols,col + 1,col,col + 1);
-                /* cols.add(values.get(0).getPos().getCol() + 1);
-                cols.add(values.get(0).getPos().getCol());
-                cols.add(values.get(0).getPos().getCol() + 1); */
             }
         }
         this.addValues(values, rows, cols);
@@ -144,14 +108,12 @@ public class AmountOfLinesCornerRule implements Rule {
         if (ccc > -100) {
             vec.add(ccc);
         }
-        //System.out.println(vec.size());
     }
 
     private void addValues(ArrayList<PositionValueDuo> values, Vector<Integer> rows, Vector<Integer> cols) {
         for (int i = 0; i < rows.size(); i++) {
             values.add(new PositionValueDuo(new Value(0), new Position(rows.elementAt(i), cols.elementAt(i))));
         }
-        //System.out.println("Final size :" +values.size());
     }
 
     private ArrayList<PositionValueDuo> getOrderedValuesForPosition(ArrayList<PositionValueDuo> values) {
@@ -184,7 +146,6 @@ public class AmountOfLinesCornerRule implements Rule {
     }
 
     private int countLines(ArrayList<PositionValueDuo> values) {
-        //System.out.println("Size before count :" +values.size());
         int counter = 0;
         for (int i = 0; i < 4; i++) {
             if ((i % 2) == 0) {
@@ -193,7 +154,6 @@ public class AmountOfLinesCornerRule implements Rule {
                 counter += checkEvenDiagonal(values.get(i));
             }
         }
-        //System.out.println("COUNTER: "+counter);
         return counter;
     }
 
@@ -201,7 +161,6 @@ public class AmountOfLinesCornerRule implements Rule {
     private int checkOddDiagonal(PositionValueDuo val) {
         Vector<Boolean> vec = val.getValue().getDots();
         if (vec.elementAt(0) && vec.elementAt(4) && vec.elementAt(8)) {
-            //System.out.println("habemus linea ODD DIAGONAL");
             return 1;
         } else {
             return 0;
@@ -212,7 +171,6 @@ public class AmountOfLinesCornerRule implements Rule {
     private int checkEvenDiagonal(PositionValueDuo val) {
         Vector<Boolean> vec = val.getValue().getDots();
         if (vec.elementAt(2) && vec.elementAt(4) && vec.elementAt(6)) {
-            //System.out.println("habemus linea EVEN DIAGONAL");
             return 1;
         } else {
             return 0;
@@ -224,7 +182,6 @@ public class AmountOfLinesCornerRule implements Rule {
             return true;
         }
         int countFinal = countLines(this.getOrdenatedValues(values));
-        //System.out.println("** CHECK FINAL: "+ countFinal + " | " + this.amountOfLines + " **");
         return (countFinal == this.amountOfLines);
 
     }

@@ -44,25 +44,6 @@ public class MultiplicationRule implements Rule {
         return multiplication;
     }
 
-    /*
-    public boolean check(ArrayList<Value> values, Value value) {
-        if (this.multiplicationValue == 0) {
-            return true;
-        }
-        Integer multiplication = this.calculate(values) * value.getValue();
-        return (multiplication <= this.multiplicationValue);
-    }
-    */
-
-    /*
-    public boolean checkFinal(ArrayList<Value> values) {
-        if (this.multiplicationValue == 0) {
-            return true;
-        }
-        Integer multiplication = this.calculate(values);
-        return (multiplication == this.multiplicationValue);
-    }
-    */
 
     public void printRule() {
         System.out.println("MUL:" + this.multiplicationValue);
