@@ -1,8 +1,8 @@
 {
-  "nsets":16,
+  "nsets":17,
   "rulesets":[2,9],
-  "sum":[0,20,20,11,13,12,25,8,31,4,32,18,14,12,14,10],
-  "adjacents" : [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  "sum":[0,20,20,11,13,12,25,8,26,4,32,18,14,12,14,10,31],
+  "adjacents" : [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   "rows":9,
   "cols":9,
   "buttons":[22],
@@ -73,7 +73,7 @@
     {
       "row":1,
       "col":8,
-      "value":[0,31],
+      "value":[0,26],
       "isBlocked": "true",
       "type": 2,
       "borders": [0,0,0,0],
@@ -626,7 +626,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[]
+      "sets":[1]
     },
     {
       "row":8,
@@ -653,14 +653,14 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[]
+      "sets":[1]
     },
     {
       "row":9,
       "col":1,
-      "value":[0],
+      "value":[31,0],
       "isBlocked": "true",
-      "type": 3,
+      "type": 2,
       "borders": [0,0,0,0],
       "sets":[]
     },
@@ -671,7 +671,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1,2]
+      "sets":[1,2,17]
     },
     {
       "row":9,
@@ -680,7 +680,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1,3]
+      "sets":[1,3,17]
     },
     {
       "row":9,
@@ -689,7 +689,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1,5]
+      "sets":[1,5,17]
     },
     {
       "row":9,
@@ -698,7 +698,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1,6]
+      "sets":[1,6,17]
     },
     {
       "row":9,
@@ -707,7 +707,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1]
+      "sets":[1,17]
     },
     {
       "row":9,
@@ -716,7 +716,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1,8]
+      "sets":[1,8,17]
     },
     {
       "row":9,
@@ -725,7 +725,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1,9]
+      "sets":[1,9,17]
     },
     {
       "row":9,
@@ -734,7 +734,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1]
+      "sets":[1,17]
     }
   ]
 }
