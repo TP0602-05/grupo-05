@@ -38,7 +38,6 @@ public class Game extends Observable {
         gridView = new GridView(gameName);
         this.addObserver(gridView);
         this.addObserver(new FinishGameListener());
-        //this.addObserver(new UndoListener());
         this.allowedValues = this.gameBuilder.getAllowedValues();
     }
 
@@ -86,7 +85,6 @@ public class Game extends Observable {
     public boolean setValueInCompilationTime(int row, int col, Value value) {
         boolean worked = grid.setCell(value, row, col, this.combineValues);
         this.update();
-        //System.out.println("Game is " + this.checkFinish());
         return worked;
     }
 

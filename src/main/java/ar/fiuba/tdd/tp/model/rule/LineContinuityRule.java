@@ -31,14 +31,12 @@ public class LineContinuityRule implements Rule {
             if (ruleType > 0) {
                 //Checks if already empty or not. If empty, it doesn't have to check the continuity.
                 if (!isEmpty(values)) {
-                    //System.out.println("not empty");
                     if (checkAdjacentCells(valuesNext, value)
                             || (checkCornerCells(valuesNext, value))) {
-                        //System.out.println("true continue");
                     }
                     return (checkAdjacentCells(valuesNext, value)
                             || (checkCornerCells(valuesNext, value))
-                    /*|| (checkCornerAdjacentDots(valuesNext,value))*/);
+                    );
                 }
                 //initValue is later used to check if the circuit is closed.
                 initValue = value;
@@ -97,18 +95,7 @@ public class LineContinuityRule implements Rule {
                 || (checkOneContinuousValue(value.getValue(),vecValues.elementAt(3),6,8)));
     }
 
-    /*private boolean checkCornerAdjacentDots(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
-        Vector<Value> vecValues = getTransversalValues(values,value);
-        return ((checkOneContinuousValue(value.getValue(),vecValues.elementAt(0),0,6))
-                || (checkOneContinuousValue(value.getValue(),vecValues.elementAt(0),2,8))
-                || (checkOneContinuousValue(value.getValue(),vecValues.elementAt(1),2,0))
-                || (checkOneContinuousValue(value.getValue(),vecValues.elementAt(1),8,6))
-                || (checkOneContinuousValue(value.getValue(),vecValues.elementAt(2),8,2))
-                || (checkOneContinuousValue(value.getValue(),vecValues.elementAt(2),6,0))
-                || (checkOneContinuousValue(value.getValue(),vecValues.elementAt(3),0,2))
-                || (checkOneContinuousValue(value.getValue(),vecValues.elementAt(3),6,8)));
-    }
-    */
+
     //It takes the Values UpLeft, UpRight, DownRight, DownLeft and checks
     //any possible continuity it may have with the surrounding values.
     private boolean checkCornerCells(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
@@ -187,10 +174,6 @@ public class LineContinuityRule implements Rule {
         counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(2),7,1));
         counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(3),3,5));
         return counter;
-        /*return (boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(0),1,7))
-                + boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(1),5,3))
-                + boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(2),7,1))
-                + boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(3),3,5)));*/
     }
 
     //Like previous functions, but instead of a boolean it returns the amount of booleans.
