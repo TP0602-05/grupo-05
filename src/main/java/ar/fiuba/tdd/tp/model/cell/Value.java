@@ -267,7 +267,7 @@ public class Value {
 
     public Value emptyValue() {
         Boolean[] valueDots = new Boolean[] {false, false, false, false, false, false, false, false, false};
-        Value newValue = new Value(0, new Vector<>(Arrays.asList(valueDots)));
+        Value newValue = new Value(-1, new Vector<>(Arrays.asList(valueDots)));
         newValue.borderDots = this.borderDots;
         return newValue;
     }

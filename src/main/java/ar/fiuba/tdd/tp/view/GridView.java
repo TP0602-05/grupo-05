@@ -40,9 +40,9 @@ public class GridView extends Observer{
                 panelBoton.add(undo,BorderLayout.EAST);
 
 
-                frame.add(panelBoton);
+                frame.add(panelBoton, BorderLayout.NORTH);
                 frame.pack();
-                frame.add(board);
+                frame.add(board, BorderLayout.CENTER);
                 frame.pack();
 
                 frame.setLocationRelativeTo(null);
@@ -56,7 +56,7 @@ public class GridView extends Observer{
     public void update() {
         frame.remove(board);
         board = new Board();
-        frame.add(board);
+        frame.add(board, BorderLayout.CENTER);
         frame.pack();
     }
 }
