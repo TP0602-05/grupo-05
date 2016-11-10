@@ -311,7 +311,7 @@
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
-      "sets":[1,8,12]
+      "sets":[1,12]
     },
     {
       "row":4,
@@ -676,7 +676,7 @@
     {
       "row":9,
       "col":3,
-      "value":[0],
+      "value":[4],
       "isBlocked": "false",
       "type": 1,
       "borders": [0,0,0,0],
