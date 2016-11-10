@@ -9,6 +9,9 @@ public class UndoButton extends JButton {
 
     public UndoButton() {
          //setText("UNDO");
+        this.setSize(50,50);
+        this.setVisible(true);
+        this.setText("Undo");
         addMouseListener(new UndoController());
     }
 

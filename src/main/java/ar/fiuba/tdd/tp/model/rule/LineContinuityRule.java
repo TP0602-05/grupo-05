@@ -166,7 +166,7 @@ public class LineContinuityRule implements Rule {
             for (PositionValueDuo val: values) {
                 //this.replaceInitValue(values);
                 Vector<Value> vecValues = getTransversalValues(values,val);
-                if(!val.getValue().areDotsEqualTo(new Value(0))) {
+                if (!val.getValue().areDotsEqualTo(new Value(0))) {
                     int middleDots = countMiddleDotsFinal(vecValues,val.getValue());
                     cfinal &= ((middleDots > 1) || ((countCornerDotsFinal(vecValues,val.getValue()) - middleDots) > 1));
                 }
