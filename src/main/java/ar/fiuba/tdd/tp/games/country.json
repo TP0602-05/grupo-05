@@ -2,7 +2,7 @@
   "nsets":7,
   "rulesets":[4, 5],
   "count":[-1,-1,1,-1,-1,2,-1],
-  "continuity" : [1,1,1,1,1,1,1],
+  "continuity" : [1,1,1,1,1,1,2],
   "conjuntoContinuidad":7,
   "mul":[],
   "rows":4,

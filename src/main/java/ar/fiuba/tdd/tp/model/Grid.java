@@ -309,13 +309,18 @@ class Grid {
     }
 
     boolean checkFinish() {
+        int i = 1;
         for (SetOfValues set : this.sets) {
             //set.printSet();
 
             if (!set.isSetFinished()) {
+                System.out.println("No esta completo. -" + i);
+
                 return false;
             }
+            i++;
         }
+        System.out.println("Sets finalizados");
         return true;
     }
 

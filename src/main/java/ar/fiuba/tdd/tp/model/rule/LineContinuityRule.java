@@ -155,17 +155,24 @@ public class LineContinuityRule implements Rule {
 
     // It simplifies the long listsof checks that need to be done in other methods.
     boolean checkOneContinuousValue(Value value1, Value value2, int pos1, int pos2) {
-        return ((value1.getDotsWithBorders().elementAt(pos1))
-                && (value2.getDotsWithBorders().elementAt(pos2)));
+        return ((value1.getDots().elementAt(pos1))
+                && (value2.getDots().elementAt(pos2)));
     }
 
     //Checks if the initValue is continuous to two other values, therefore closing the circuit.
     public boolean checkFinal(ArrayList<PositionValueDuo> values) {
         if (ruleType > 1) {
-            this.replaceInitValue(values);
-            Vector<Value> vecValues = getTransversalValues(values,initValue);
-            int middleDots = countMiddleDotsFinal(vecValues,initValue.getValue());
-            return ((middleDots > 1) || ((countCornerDotsFinal(vecValues,initValue.getValue()) - middleDots) > 1));
+            Boolean cfinal = true;
+            for (PositionValueDuo val: values) {
+                //this.replaceInitValue(values);
+                Vector<Value> vecValues = getTransversalValues(values,val);
+                if(!val.getValue().areDotsEqualTo(new Value(0))) {
+                    int middleDots = countMiddleDotsFinal(vecValues,val.getValue());
+                    cfinal &= ((middleDots > 1) || ((countCornerDotsFinal(vecValues,val.getValue()) - middleDots) > 1));
+                }
+
+            }
+            return cfinal;
         } else {
             return true;
         }
@@ -182,10 +189,18 @@ public class LineContinuityRule implements Rule {
     //Like previous functions, but instead of a boolean it returns the amount of booleans.
     private int countMiddleDotsFinal(Vector<Value> vecValues,Value value) {
         int counter = 0;
+        //counter += boolToInt(vecValues.elementAt(0).getDots().elementAt(4));
+        //System.out.println("Pos 0 counter : " + vecValues.elementAt(0).getDots().elementAt(4));
         counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(0),1,7));
+        //counter += boolToInt(vecValues.elementAt(1).getDots().elementAt(4));
         counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(1),5,3));
+        //System.out.println("Pos 1 counter : " + vecValues.elementAt(1).getDots().elementAt(4));
+        //counter += boolToInt(vecValues.elementAt(2).getDots().elementAt(4));
         counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(2),7,1));
+        //System.out.println("Pos 2 counter : " + vecValues.elementAt(2).getDots().elementAt(4));
+        //counter += boolToInt(vecValues.elementAt(3).getDots().elementAt(4));
         counter += boolToInt(checkOneContinuousValue(value,vecValues.elementAt(3),3,5));
+        //System.out.println("Pos 3 counter : " + vecValues.elementAt(3).getDots().elementAt(4));
         return counter;
         /*return (boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(0),1,7))
                 + boolToInt(checkOneContinuousValue(initValue.getValue(),vecValues.elementAt(1),5,3))
