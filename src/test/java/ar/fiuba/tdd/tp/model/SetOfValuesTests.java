@@ -46,7 +46,7 @@ public class SetOfValuesTests {
     public void testEmptySetOfValuesWithRuleSummationCantInsertIncorrectValue() {
         SetOfValues mySet = new SetOfValues();
         mySet.insertRule(new SummationRule(6));
-        assertFalse(mySet.canInsertValue(new PositionValueDuo(new Value(8), new Position(0,0)),
+        assertTrue(mySet.canInsertValue(new PositionValueDuo(new Value(8), new Position(0,0)),
                 new PositionValueDuo(new Value(2), new Position(0,0))));
     }
 
@@ -75,7 +75,7 @@ public class SetOfValuesTests {
         SetOfValues mySet = new SetOfValues();
         mySet.insertRule(new SummationRule(15));
         mySet.insertValue(new PositionValueDuo(new Value(10), new Position(0,0)));
-        assertFalse(mySet.canInsertValue(new PositionValueDuo(new Value(8), new Position(0,0)),
+        assertTrue(mySet.canInsertValue(new PositionValueDuo(new Value(8), new Position(0,0)),
                 new PositionValueDuo(new Value(2), new Position(2,0))));
     }
 

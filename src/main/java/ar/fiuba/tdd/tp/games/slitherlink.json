@@ -1,6 +1,6 @@
 { "nsets":26,
   "rulesets":[7,5],
-  "border":[-1,2,-1,2,-1,3,2,-1,-1,-1,-1,-1,-1,0,3,3,-1,3,-1,3,-1,2,2,2,-1, -1],
+  "border":[-1,2,-1,2,-1,3,2,-1,-1,-1,-1,-1,-1,-1,3,3,-1,3,-1,3,-1,2,2,2,-1,-1],
   "continuity" : [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
   "mul":[],
   "rows":5,
@@ -11,11 +11,11 @@
     {
       "row":1,
       "col":1,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[1]
+      "sets":[1,26]
     },
     {
       "row":1,
@@ -24,16 +24,16 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[2]
+      "sets":[2,26]
     },
     {
       "row":1,
       "col":3,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[3]
+      "sets":[3,26]
     },
     {
       "row":1,
@@ -42,16 +42,16 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[4]
+      "sets":[4,26]
     },
     {
       "row":1,
       "col":5,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[5]
+      "sets":[5,26]
     },
     {
       "row":2,
@@ -60,7 +60,7 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[6]
+      "sets":[6,26]
     },
     {
       "row":2,
@@ -69,70 +69,70 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[7]
+      "sets":[7,26]
     },
     {
       "row":2,
       "col":3,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[8]
+      "sets":[8,26]
     },
     {
       "row":2,
       "col":4,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[9]
+      "sets":[9,26]
     },
     {
       "row":2,
       "col":5,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[10]
+      "sets":[10,26]
     },
     {
       "row":3,
       "col":1,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[11]
+      "sets":[11,26]
     },
     {
       "row":3,
       "col":2,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[12]
+      "sets":[12,26]
     },
     {
       "row":3,
       "col":3,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[13]
+      "sets":[13,26]
     },
     {
       "row":3,
       "col":4,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[14]
+      "sets":[14,26]
     },
     {
       "row":3,
@@ -141,7 +141,7 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[15]
+      "sets":[15,26]
     },
     {
       "row":4,
@@ -150,16 +150,16 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[16]
+      "sets":[16,26]
     },
     {
       "row":4,
       "col":2,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[17]
+      "sets":[17,26]
     },
     {
       "row":4,
@@ -168,16 +168,16 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[18]
+      "sets":[18,26]
     },
     {
       "row":4,
       "col":4,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[19]
+      "sets":[19,26]
     },
     {
       "row":4,
@@ -186,16 +186,16 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[20]
+      "sets":[20,26]
     },
     {
       "row":5,
       "col":1,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[21]
+      "sets":[21,26]
     },
     {
       "row":5,
@@ -204,7 +204,7 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[22]
+      "sets":[22,26]
     },
     {
       "row":5,
@@ -213,7 +213,7 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[23]
+      "sets":[23,26]
     },
     {
       "row":5,
@@ -222,16 +222,16 @@
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[24]
+      "sets":[24,26]
     },
     {
       "row":5,
       "col":5,
-      "value":[0],
+      "value":[-1],
       "type":4,
       "isBlocked": "false",
       "borders": [0,0,0,0],
-      "sets":[25]
+      "sets":[25,26]
     }
   ]
 }

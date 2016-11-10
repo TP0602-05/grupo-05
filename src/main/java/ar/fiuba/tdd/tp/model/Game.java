@@ -1,9 +1,12 @@
 package ar.fiuba.tdd.tp.model;
 
 import ar.fiuba.tdd.tp.model.cell.Cell;
+import ar.fiuba.tdd.tp.model.cell.Position;
+import ar.fiuba.tdd.tp.model.cell.PositionValueDuo;
 import ar.fiuba.tdd.tp.model.cell.Value;
 import ar.fiuba.tdd.tp.view.GridView;
 
+import java.util.Stack;
 import java.util.Vector;
 
 public class Game extends Observable {
@@ -14,6 +17,7 @@ public class Game extends Observable {
     private Vector<Value> allowedValues;
     private boolean isFinished;
     private boolean combineValues;
+    private Stack<Vector<PositionValueDuo>> plays = new Stack<>();
 
     public Vector<Value> getAllowedValues() {
         return allowedValues;
@@ -81,7 +85,6 @@ public class Game extends Observable {
     public boolean setValueInCompilationTime(int row, int col, Value value) {
         boolean worked = grid.setCell(value, row, col, this.combineValues);
         this.update();
-        //System.out.println("Game is " + this.checkFinish());
         return worked;
     }
 
@@ -92,13 +95,37 @@ public class Game extends Observable {
     }
 
     public boolean addKeypadValue(Value value, int row, int col) {
-        //boolean worked = grid.addKeypadValue(value, row, col, this.combineValues);
-        /* System.out.println("VALOR: " + value.getValue());
-        System.out.println("FILA: " + row);
-        System.out.println("COLUMNA: " + col); */
+        this.addToStack(row, col);
         boolean worked = grid.setCell(value, row, col, this.combineValues);
+        if (!worked) {
+            this.removeFromStack();
+        }
         this.update();
         this.notifyObservers();
         return worked;
+    }
+
+    public boolean undoPlay() {
+        Vector<PositionValueDuo> undo = this.removeFromStack();
+        if ( undo != null ) {
+            for (PositionValueDuo undoValue : undo) {
+                this.grid.setUnverifiedCell(undoValue);
+            }
+        }
+        this.notifyObservers();
+        return true;
+    }
+
+    private boolean addToStack(int row, int col) {
+        Vector<PositionValueDuo> playCellWithBorders = this.grid.getValueInCellWithBorders(row,col);
+        this.plays.push(playCellWithBorders);
+        return true;
+    }
+
+    private Vector<PositionValueDuo> removeFromStack() {
+        if (!this.plays.isEmpty()) {
+            return this.plays.pop();
+        }
+        return null;
     }
 }

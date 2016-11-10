@@ -30,7 +30,7 @@ public class NoRepeatEndingRule implements Rule {
     private boolean checkNoRepeats(ArrayList<PositionValueDuo> values) {
         ArrayList<Integer> arrayAux = new ArrayList<>();
         for (PositionValueDuo myValue: values ) {
-            if (myValue.getValue().getValue() != 0) {
+            if (myValue.getValue().getValue() != -1) {
                 if (arrayAux.contains(myValue.getValue().getValue())) {
                     return false;
                 }
