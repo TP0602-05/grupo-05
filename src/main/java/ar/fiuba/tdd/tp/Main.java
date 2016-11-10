@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) {
 
-        Game.init("gokigen");
+        Game.init("slitherlink");
 
 /*
         String path = System.getProperty("user.dir") + "/src/main/java/ar/fiuba/tdd/tp/games/input_slitherlink.json" ;

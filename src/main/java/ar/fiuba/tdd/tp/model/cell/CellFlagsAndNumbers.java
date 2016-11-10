@@ -22,17 +22,4 @@ public class CellFlagsAndNumbers extends Cell {
         Button button = new InputFlagsButton(this.getValue(),row,col);
         return button;
     }
-
-    public Boolean isBlackCell() {
-        Value value = this.getValue();
-        Vector<Boolean> dots = value.getDots();
-        Boolean line = dots.get(0) && dots.get(1) && dots.get(2);
-
-        if (line && dots.get(3) && dots.get(4) && dots.get(5)
-                && dots.get(6) && dots.get(7) && dots.get(8)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 }

@@ -62,7 +62,7 @@ public class Value {
 
     public Value(Vector<Boolean> theDots) {
         this.dots = theDots;
-        this.value = 0;
+        this.value = -1;
         this.initializeEmptyBorderDots();
     }
 

@@ -31,13 +31,13 @@ public class SummationRuleTests {
     }
 
     @Test
-    public void testAddIncorrectValueToEmptySet() {
+    public void testAddValueToSetThatNotApply() {
         ArrayList<PositionValueDuo> values = new ArrayList<>();
-        SummationRule sumRule = new SummationRule(20);
+        SummationRule sumRule = new SummationRule(0);
         PositionValueDuo firstValue = new PositionValueDuo(new Value(15), new Position(0,0));
         PositionValueDuo secondValue = new PositionValueDuo(new Value(10), new Position(0,0));
         values.add(firstValue);
-        assertFalse(sumRule.check(values,secondValue));
+        assertTrue(sumRule.check(values,secondValue));
     }
 
     @Test

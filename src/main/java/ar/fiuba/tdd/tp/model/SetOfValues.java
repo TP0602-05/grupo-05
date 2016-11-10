@@ -90,8 +90,6 @@ class SetOfValues {
 
 
     void loadRule(Rule rule) {
-
         this.rules.add(rule);
-
     }
 }

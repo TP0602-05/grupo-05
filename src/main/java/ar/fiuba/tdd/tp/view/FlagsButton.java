@@ -10,7 +10,7 @@ public class FlagsButton extends Button {
     public FlagsButton(Value value) {
         this.painter = new Paintor(value);
 
-        if (value.getValue() != 0) {
+        if (value.getValue() != -1) {
             setText(value.getValue().toString());
         }
     }

@@ -11,19 +11,30 @@ import java.util.ArrayList;
 public class SummationRule implements Rule {
 
     private int summationValue;
+    private int apply;
 
     public SummationRule(Integer summationValue) {
-        this.summationValue = summationValue;
+        if (summationValue == 0) {
+            apply = summationValue;
+        } else {
+            apply = 1;
+            this.summationValue = summationValue;
+        }
     }
 
     public boolean check(ArrayList<PositionValueDuo> values, PositionValueDuo value) {
+        /*
         Integer summation = this.calculate(values) + value.getValue().getValue();
         return (summation <= this.summationValue);
+        */
+        return true;
     }
 
 
     public boolean checkFinal(ArrayList<PositionValueDuo> values) {
-
+        if (apply == 0) {
+            return true;
+        }
         Integer summation = this.calculate(values);
         return summation.equals(this.summationValue);
     }
