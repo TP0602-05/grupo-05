@@ -127,7 +127,8 @@ class Grid {
         }
     }
 
-    boolean setCell(Value value, int row, int col, boolean combine) {
+    /*
+    boolean setCellAux(Value value, int row, int col, boolean combine) {
         ArrayList<Integer> mySets = this.map.elementAt(row).elementAt(col);
         if (combine) {
             value = value.copyValue();
@@ -141,17 +142,66 @@ class Grid {
             Value prevValue = this.cells.elementAt(row).elementAt(col).getValue();
             value.updateInternBorders(prevValue);
             this.setUnverifiedCell(newPosValue);
-            /*this.cells.elementAt(row).elementAt(col).setValue(value);
-            for (int position : mySets) {
-                PositionValueDuo pvalue = new PositionValueDuo(value, new Position(row, col));
-                PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row, col));
-                this.sets.elementAt(position).addValue(pvalue, prevPValue);
-            }*/
+
             this.updateBorderCells(value, row, col, 1);
             return true;
         }
 
         return false;
+    }
+    */
+
+    boolean setCell(Value value, int row, int col, boolean combine) {
+        Vector<PositionValueDuo> preVals = new Vector<>();
+        Vector<PositionValueDuo> newValues  = new Vector<>();
+        if (combine) {
+            Position borderPos = value.getBorderToCombine();
+            int rowBorder = borderPos.getRow();
+            int colBorder = borderPos.getCol();
+            borderPos = new Position(rowBorder + row, colBorder + col);
+            if (this.isValidPosition(borderPos.getRow(),borderPos.getCol())) {
+                Value borderValue = value.getBorderValueToCombine();
+
+                borderValue.combineDots(this.cells.elementAt(borderPos.getRow()).elementAt(borderPos.getCol()).getValue());
+                newValues.add(new PositionValueDuo(borderValue, borderPos));
+                preVals.add(new PositionValueDuo(cells.elementAt(borderPos.getRow()).elementAt(borderPos.getCol()).getValue(), borderPos));
+            }
+            value = new Value(value);
+            value.combineDots(this.cells.elementAt(row).elementAt(col).getValue());
+        }
+        newValues.add(new PositionValueDuo(value, new Position(row, col)));
+        preVals.add(new PositionValueDuo(this.cells.elementAt(row).elementAt(col).getValue(), new Position(row, col)));
+
+        return checkAndInsertValues(newValues,preVals);
+    }
+
+    private boolean checkAndInsertValues(Vector<PositionValueDuo> newValues, Vector<PositionValueDuo> prevValues) {
+
+        boolean result = true;
+        ArrayList<Integer> mySets;
+        for (int i = 0; i < newValues.size(); i++) {
+            mySets = this.map.elementAt(newValues.elementAt(i).getPos().getRow()).elementAt(newValues.elementAt(i).getPos().getCol());
+            if (!checkNewValueInSets(mySets, newValues.elementAt(i), prevValues.elementAt(i))) {
+                result = false;
+            }
+        }
+
+        if (result) {
+            this.insertValues(newValues, prevValues);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void insertValues(Vector<PositionValueDuo> newValues, Vector<PositionValueDuo> prevValues) {
+        for (int i = 0; i < newValues.size(); i++) {
+            newValues.elementAt(i).getValue().updateInternBorders(prevValues.elementAt(i).getValue());
+            this.setUnverifiedCell(newValues.elementAt(i));
+            int rowAct = newValues.elementAt(i).getPos().getRow();
+            int colAct = newValues.elementAt(i).getPos().getCol();
+            this.updateBorderCells(newValues.elementAt(i).getValue(), rowAct, colAct, 1);
+        }
     }
 
     void setUnverifiedCell(PositionValueDuo posValue) {
@@ -163,9 +213,9 @@ class Grid {
 
         this.cells.elementAt(row).elementAt(col).setValue(value);
         for (int position : cellSets) {
-            PositionValueDuo pValue = new PositionValueDuo(value, new Position(row, col));
+            PositionValueDuo actValue = new PositionValueDuo(value, new Position(row, col));
             PositionValueDuo prevPValue = new PositionValueDuo(prevValue, new Position(row, col));
-            this.sets.elementAt(position).addValue(pValue, prevPValue);
+            this.sets.elementAt(position).addValue(actValue, prevPValue);
         }
     }
 

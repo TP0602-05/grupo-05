@@ -287,5 +287,36 @@ public class Value {
     public void copyArrayOfBordersOf(Value value) {
         this.borderDots = value.borderDots;
     }
+
+    public Position getBorderToCombine() {
+        int row = 0;
+        int col = 0;
+        if (this.dots.elementAt(UP_BORDER)) {
+            row = -1;
+        } else if (this.dots.elementAt(LEFT_BORDER)) {
+            col = -1;
+        } else if (this.dots.elementAt(RIGHT_BORDER)) {
+            col = 1;
+        } else if (this.dots.elementAt(DOWN_BORDER)) {
+            row = 1;
+        }
+        return new Position(row,col);
+    }
+
+    public Value getBorderValueToCombine() {
+        Boolean[] valueDots = new Boolean[] {false, false, false, false, false, false, false, false, false};
+
+        if (this.dots.elementAt(UP_BORDER)) {
+            valueDots = new Boolean[] {false, false, false, false, false, false, true, true, true};
+        } else if (this.dots.elementAt(LEFT_BORDER)) {
+            valueDots = new Boolean[] {false, false, true, false, false, true, false, false, true};
+        } else if (this.dots.elementAt(RIGHT_BORDER)) {
+            valueDots = new Boolean[] {true, false, false, true, false, false, true, false, false};
+        } else if (this.dots.elementAt(DOWN_BORDER)) {
+            valueDots = new Boolean[] {true, true, true, false, false, false, false, false,false};
+        }
+        Vector<Boolean> myDots = new Vector<>(Arrays.asList(valueDots));
+        return new Value(myDots);
+    }
 }
 

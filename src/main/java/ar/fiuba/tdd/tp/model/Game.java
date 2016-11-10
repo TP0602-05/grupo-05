@@ -17,7 +17,7 @@ public class Game extends Observable {
     private Vector<Value> allowedValues;
     private boolean isFinished;
     private boolean combineValues;
-    private Stack plays = new Stack();
+    private Stack<Vector<PositionValueDuo>> plays = new Stack<>();
 
     public Vector<Value> getAllowedValues() {
         return allowedValues;
@@ -108,15 +108,11 @@ public class Game extends Observable {
     }
 
     public boolean undoPlay() {
-        System.out.println("UNDO");
         Vector<PositionValueDuo> undo = this.removeFromStack();
         if ( undo != null ) {
-            System.out.println("Valores en la jugada a revertir: "+undo.size());
             for (PositionValueDuo undoValue : undo) {
                 this.grid.setUnverifiedCell(undoValue);
             }
-        } else {
-            System.out.println("No hay nada en la pila");
         }
         this.notifyObservers();
         return true;
@@ -130,8 +126,7 @@ public class Game extends Observable {
 
     private Vector<PositionValueDuo> removeFromStack() {
         if (!this.plays.isEmpty()) {
-            System.out.println(" - Remove from Stack - ");
-            return (Vector<PositionValueDuo>) this.plays.pop();
+            return this.plays.pop();
         }
         return null;
     }
