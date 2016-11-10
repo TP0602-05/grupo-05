@@ -35,7 +35,7 @@ public abstract class Cell {
 
     private Vector<Integer> borders;
 
-    private Vector<Value> value;
+    protected Vector<Value> value;
 
     public Cell() {}
 
